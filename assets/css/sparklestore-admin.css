@@ -1,0 +1,40 @@
+.screenshot img {
+    width: 100%;
+    border-radius: 10px;
+    padding: 5px 0px;
+}
+.remove-image {
+    cursor: pointer;
+}
+
+.sparklestore-multiplecat {
+	height: 100px;
+	overflow: auto;
+	border: 1px solid #ccc;
+	padding: 0px 10px;
+	margin-top: 5px;
+}
+
+#sparklestore-img-container li label {
+            display: inherit !important;
+            margin-left: 0px !important;
+}
+ #sparklestore-img-container .sparklestore-radio-img-img {
+     border: 3px solid #DEDEDE;
+     margin: 10px 4px 5px 0;
+     cursor: pointer;
+     border-radius: 3px;
+     -moz-border-radius: 3px;
+     -webkit-border-radius: 3px;
+     width:45%;
+ }
+ #sparklestore-img-container .sparklestore-radio-img-selected {
+     border: 3px solid #AAA;
+     border-radius: 3px;
+     -moz-border-radius: 3px;
+     -webkit-border-radius: 3px;
+ }
+ input[type=checkbox]:before {
+   content: '';
+     margin: -3px 0 0 -4px;
+ }
