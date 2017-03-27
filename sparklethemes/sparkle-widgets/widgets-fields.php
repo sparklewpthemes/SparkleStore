@@ -5,16 +5,32 @@
 */
 function sparklestore_widgets_show_widget_field($instance = '', $widget_field = '', $sparklestore_field_value = '') {
    
-    //list category list in array
+    // List Category List in array
     $sparklestore_category_list[0] = array(
         'value' => 0,
         'label' => esc_html__('Select Categories','sparklestore')
     );
     $sparklestore_posts = get_categories();
-    foreach ($sparklestore_posts as $sparklestore_post) :
+    foreach ( $sparklestore_posts as $sparklestore_post ) :
         $sparklestore_category_list[$sparklestore_post->term_id] = array(
             'value' => $sparklestore_post->term_id,
             'label' => $sparklestore_post->name
+        );
+    endforeach;
+
+    /**
+     * Default Page List in array
+    */
+    $sparklestore_pagelist[0] = array(
+        'value' => 0,
+        'label' => esc_html__('Select Pages','sparklestore')
+    );
+    $arg = array( 'posts_per_page' => -1 );
+    $sparklestore_pages = get_pages( $arg );
+    foreach ( $sparklestore_pages as $sparklestore_page ) :
+        $sparklestore_pagelist[$sparklestore_page->ID] = array(
+            'value' => $sparklestore_page->ID,
+            'label' => $sparklestore_page->post_title
         );
     endforeach;
 
@@ -145,6 +161,26 @@ function sparklestore_widgets_show_widget_field($instance = '', $widget_field = 
             <?php
             break;
 
+        // Select Pages field
+        case 'selectpage' :
+            ?>
+            <p>
+                <label for="<?php echo $instance->get_field_id($sparklestore_widgets_name); ?>"><?php echo $sparklestore_widgets_title; ?>:</label>
+                <select name="<?php echo $instance->get_field_name($sparklestore_widgets_name); ?>" id="<?php echo $instance->get_field_id($sparklestore_widgets_name); ?>" class="widefat">
+                    <?php foreach ($sparklestore_pagelist as $sparklestore_page) { ?>
+                        <option value="<?php echo $sparklestore_page['value']; ?>" id="<?php echo $instance->get_field_id($sparklestore_page['label']); ?>" <?php selected( $sparklestore_page['value'], $sparklestore_field_value ); ?>><?php echo $sparklestore_page['label']; ?></option>
+                    <?php } ?>
+                </select>
+
+                <?php if ( isset( $sparklestore_widgets_description ) ) { ?>
+                    <br />
+                    <small><?php echo $sparklestore_widgets_description; ?></small>
+                <?php } ?>
+            </p>
+            <?php
+            break;
+
+        // Number field
         case 'number' :
             ?>
             <p>
@@ -291,12 +327,6 @@ function sparklestore_widgets_updated_field_value($widget_field, $new_field_valu
  * Load about section widget area file.
 */
 require sparklestore_file_directory('sparklethemes/sparkle-widgets/sparkle-promo.php');
-
-
-/**
- * Load promo video section widget area file.
-*/
-require sparklestore_file_directory('sparklethemes/sparkle-widgets/sparkle-promo-video.php');
 
 
 /**

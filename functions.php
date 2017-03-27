@@ -233,9 +233,6 @@ function sparklestore_scripts() {
     wp_enqueue_script('respond', get_template_directory_uri() . '/assets/library/respond/respond.min.js', array('jquery'), esc_attr( $theme_version ), false);
     wp_script_add_data( 'respond', 'conditional', 'lt IE 9' );
 
-    /* Sparkle Store Video Promo Video */
-    wp_enqueue_script('jquery-youtubebackground', get_template_directory_uri() . '/assets/js/jquery.youtubebackground.js', array('jquery'), esc_attr( $theme_version ), true);
-
     /* Sparkle Store Lightslider */
     wp_enqueue_script('lightslider', get_template_directory_uri() . '/assets/library/lightslider/js/lightslider.js', array('jquery'), esc_attr( $theme_version ), true);
 

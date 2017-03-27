@@ -6,8 +6,7 @@
  *
  * @package Sparkle_Store
  */
-
-@$post_sidebar = esc_attr( get_post_meta($post->ID, 'sparklestore_page_layouts', true) );
+$post_sidebar = esc_attr( get_post_meta( $post->ID, 'sparklestore_page_layouts', true ) );
 
 if(!$post_sidebar){
 	$post_sidebar = 'rightsidebar';

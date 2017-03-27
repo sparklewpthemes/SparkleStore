@@ -20,31 +20,18 @@ class sparklestore_promo_pages_area extends WP_Widget {
     private function widget_fields() {
              
         
-        $fields = array( 
+        $fields = array(            
             
-            'sparklestore_promo_one_image' => array(
-                'sparklestore_widgets_name' => 'sparklestore_promo_one_image',
-                'sparklestore_widgets_title' => esc_html__('Upload Promo One Image', 'sparklestore'),
-                'sparklestore_widgets_field_type' => 'upload',
-            ),
-
             'banner_start_group_left' => array(
                 'sparklestore_widgets_name' => 'banner_start_group_left',
                 'sparklestore_widgets_title' => esc_html__('Promo Section One', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'group_start',
             ),
-            
-            'sparklestore_promo_one_title' => array(
-                'sparklestore_widgets_name' => 'sparklestore_promo_one_title',
-                'sparklestore_widgets_title' => esc_html__('Enter Promo One Title', 'sparklestore'),
-                'sparklestore_widgets_field_type' => 'title',
-            ),
-            
-            'sparklestore_promo_one_desc' => array(
-                'sparklestore_widgets_name' => 'sparklestore_promo_one_desc',
-                'sparklestore_widgets_title' => esc_html__('Enter Very Short Promo One Description', 'sparklestore'),
-                'sparklestore_widgets_field_type' => 'textarea',
-                'sparklestore_widgets_row' => 3,
+
+            'sparklestore_promo_one' => array(
+                'sparklestore_widgets_name' => 'sparklestore_promo_one',
+                'sparklestore_widgets_title' => esc_html__('Select Promo Page', 'sparklestore'),
+                'sparklestore_widgets_field_type' => 'selectpage'
             ),
            
             'sparklestore_promo_one_button_link' => array(
@@ -60,29 +47,16 @@ class sparklestore_promo_pages_area extends WP_Widget {
             
             // Promo two Area
             
-            'sparklestore_promo_two_image' => array(
-                'sparklestore_widgets_name' => 'sparklestore_promo_two_image',
-                'sparklestore_widgets_title' => esc_html__('Upload Promo Two Image', 'sparklestore'),
-                'sparklestore_widgets_field_type' => 'upload',
-            ),
-
             'banner_start_group_left_two' => array(
                 'sparklestore_widgets_name' => 'banner_start_group_left_two',
                 'sparklestore_widgets_title' => esc_html__('Promo Section Two', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'group_start',
             ),
             
-            'sparklestore_promo_two_title' => array(
-                'sparklestore_widgets_name' => 'sparklestore_promo_two_title',
-                'sparklestore_widgets_title' => esc_html__('Enter Promo Two Title', 'sparklestore'),
-                'sparklestore_widgets_field_type' => 'title',
-            ),
-            
-            'sparklestore_promo_two_desc' => array(
-                'sparklestore_widgets_name' => 'sparklestore_promo_two_desc',
-                'sparklestore_widgets_title' => esc_html__('Enter Very Short Promo Two Description', 'sparklestore'),
-                'sparklestore_widgets_field_type' => 'textarea',
-                'sparklestore_widgets_row' => 3,
+            'sparklestore_promo_two' => array(
+                'sparklestore_widgets_name' => 'sparklestore_promo_two',
+                'sparklestore_widgets_title' => esc_html__('Select Promo Page', 'sparklestore'),
+                'sparklestore_widgets_field_type' => 'selectpage'
             ),
            
             'sparklestore_promo_two_button_link' => array(
@@ -98,31 +72,17 @@ class sparklestore_promo_pages_area extends WP_Widget {
             
             // Promo three Area
 
-
-            'sparklestore_promo_three_image' => array(
-                'sparklestore_widgets_name' => 'sparklestore_promo_three_image',
-                'sparklestore_widgets_title' => esc_html__('Upload Promo Three Image', 'sparklestore'),
-                'sparklestore_widgets_field_type' => 'upload',
-            ),
-
             'banner_start_group_left_three' => array(
                 'sparklestore_widgets_name' => 'banner_start_group_left_three',
                 'sparklestore_widgets_title' => esc_html__('Promo Section Three', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'group_start',
             ),
             
-            'sparklestore_promo_three_title' => array(
-                'sparklestore_widgets_name' => 'sparklestore_promo_three_title',
-                'sparklestore_widgets_title' => esc_html__('Enter Promo Three Title', 'sparklestore'),
-                'sparklestore_widgets_field_type' => 'title',
-            ),
-            
-            'sparklestore_promo_three_desc' => array(
-                'sparklestore_widgets_name' => 'sparklestore_promo_three_desc',
-                'sparklestore_widgets_title' => esc_html__('Enter Very Short Promo Three Description', 'sparklestore'),
-                'sparklestore_widgets_field_type' => 'textarea',
-                'sparklestore_widgets_row' => 3,
-            ),          
+            'sparklestore_promo_three' => array(
+                'sparklestore_widgets_name' => 'sparklestore_promo_three',
+                'sparklestore_widgets_title' => esc_html__('Select Promo Page', 'sparklestore'),
+                'sparklestore_widgets_field_type' => 'selectpage'
+            ),       
            
             'sparklestore_promo_three_button_link' => array(
                 'sparklestore_widgets_name' => 'sparklestore_promo_three_button_link',
@@ -135,6 +95,12 @@ class sparklestore_promo_pages_area extends WP_Widget {
                 'sparklestore_widgets_field_type' => 'group_end',
             ),
 
+            'sparklestore_promo_info' => array(
+                'sparklestore_widgets_name' => 'sparklestore_promo_info',
+                'sparklestore_widgets_title' => esc_html__('Check to Disable Promo Information', 'sparklestore'),
+                'sparklestore_widgets_field_type' => 'checkbox',
+            ),
+
         );
 
         return $fields;
@@ -144,73 +110,90 @@ class sparklestore_promo_pages_area extends WP_Widget {
         extract($args);
         extract($instance);
         
-        $promo_one_title          = empty( $instance['sparklestore_promo_one_title'] ) ? '' : $instance['sparklestore_promo_one_title'];
-        $promo_one_desc           = empty( $instance['sparklestore_promo_one_desc'] ) ? '' : $instance['sparklestore_promo_one_desc'];
-        $promo_one_image          = empty( $instance['sparklestore_promo_one_image'] ) ? '' : $instance['sparklestore_promo_one_image'];
-        $promo_one_button_link    = empty( $instance['sparklestore_promo_one_button_link'] ) ? '' : $instance['sparklestore_promo_one_button_link'];
-        
-        $promo_two_title          = empty( $instance['sparklestore_promo_two_title'] ) ? '' : $instance['sparklestore_promo_two_title'];
-        $promo_two_desc           = empty( $instance['sparklestore_promo_two_desc'] ) ? '' : $instance['sparklestore_promo_two_desc'];
-        $promo_two_image          = empty( $instance['sparklestore_promo_two_image'] ) ? '' : $instance['sparklestore_promo_two_image'];
-        $promo_two_button_link    = empty( $instance['sparklestore_promo_two_button_link'] ) ? '' : $instance['sparklestore_promo_two_button_link'];
-        
-        $promo_three_title        = empty( $instance['sparklestore_promo_three_title'] ) ? '' : $instance['sparklestore_promo_three_title'];
-        $promo_three_desc         = empty( $instance['sparklestore_promo_three_desc'] ) ? '' : $instance['sparklestore_promo_three_desc'];
-        $promo_three_image        = empty( $instance['sparklestore_promo_three_image'] ) ? '' : $instance['sparklestore_promo_three_image'];
-        $promo_three_button_link  = empty( $instance['sparklestore_promo_three_button_link'] ) ? '' : $instance['sparklestore_promo_three_button_link'];
+        $promo_one               = empty( $instance['sparklestore_promo_one'] ) ? '' : $instance['sparklestore_promo_one'];
+        $promo_one_button_link   = empty( $instance['sparklestore_promo_one_button_link'] ) ? '' : $instance['sparklestore_promo_one_button_link'];
+        $promo_two               = empty( $instance['sparklestore_promo_two'] ) ? '' : $instance['sparklestore_promo_two'];
+        $promo_two_button_link   = empty( $instance['sparklestore_promo_two_button_link'] ) ? '' : $instance['sparklestore_promo_two_button_link'];
+        $promo_three             = empty( $instance['sparklestore_promo_three'] ) ? '' : $instance['sparklestore_promo_three'];
+        $promo_three_button_link = empty( $instance['sparklestore_promo_three_button_link'] ) ? '' : $instance['sparklestore_promo_three_button_link'];
+        $promo_info         = empty( $instance['sparklestore_promo_info'] ) ? '' : $instance['sparklestore_promo_info'];
 
         echo $before_widget; 
     ?>
         <div class="promosection">            
             <div class="container">
               <div class="row">
-                    <div class="promoarea-div">
-                      <div class="promoarea">
-                          <?php if(!empty( $promo_one_image )) { ?>
-                              <a href="<?php echo esc_url($promo_one_button_link ); ?>">
-                                  <figure class="promoimage">
-                                      <img src="<?php echo esc_url( $promo_one_image ); ?>"/>
-                                  </figure>
-                              </a>
-                          <?php } ?>
-                          <div class="textwrap">
-                              <?php if(!empty( $promo_one_desc )) { ?><span><?php echo esc_attr( $promo_one_desc ); ?></span><?php } ?>
-                              <?php if(!empty( $promo_one_title )) { ?><h2><?php echo esc_attr( $promo_one_title ); ?></h2><?php } ?>
-                          </div>
-                      </div>
-                    </div>
-                    
-                    <div class="promoarea-div">
-                      <div class="promoarea">                       
-                          <?php if(!empty( $promo_two_image )) { ?>
-                              <a href="<?php echo esc_url($promo_two_button_link ); ?>">
-                                  <figure class="promoimage">
-                                      <img src="<?php echo esc_url( $promo_two_image ); ?>"/>
-                                  </figure>
-                              </a>
-                          <?php } ?>                      
-                          <div class="textwrap">
-                               <?php if(!empty( $promo_two_desc )) { ?><span><?php echo esc_attr( $promo_two_desc ); ?></span><?php } ?>
-                              <?php if(!empty( $promo_two_title )) { ?><h2><?php echo esc_attr( $promo_two_title ); ?></h2><?php } ?>
-                          </div>
-                      </div>            
-                    </div>            
-                    
-                    <div class="promoarea-div">
-                      <div class="promoarea">
-                          <?php if(!empty( $promo_three_image )) { ?>
-                              <a href="<?php echo esc_url($promo_three_button_link ); ?>">
-                                  <figure class="promoimage">
-                                      <img src="<?php echo esc_url( $promo_three_image ); ?>"/>
-                                  </figure>
-                              </a>
-                          <?php } ?>
-                          <div class="textwrap">
-                              <?php if(!empty( $promo_three_desc )) { ?><span><?php echo esc_attr( $promo_three_desc ); ?></span><?php } ?>
-                              <?php if(!empty( $promo_three_title )) { ?><h2><?php echo esc_attr( $promo_three_title ); ?></h2><?php } ?>
-                          </div>                     
-                      </div>
-                    </div>
+                  <div class="promoarea-div">
+                    <?php
+                         if( !empty( $promo_one ) ) {
+                         $promo_one = new WP_Query( 'page_id='.$promo_one );
+                         if( $promo_one->have_posts() ) { while( $promo_one->have_posts() ) { $promo_one->the_post();
+                         $promo_one_image = wp_get_attachment_image_src( get_post_thumbnail_id() , 'full', true );         
+                    ?>                         
+                        <div class="promoarea">
+                              <?php if(!empty( $promo_one_image )) { ?>
+                                  <a href="<?php echo esc_url( $promo_one_button_link ); ?>">
+                                      <figure class="promoimage">
+                                          <img src="<?php echo esc_url( $promo_one_image[0] ); ?>" alt="<?php the_title(); ?>" />
+                                      </figure>
+                                  </a>
+                              <?php } if($promo_info != 1) { ?>
+                                <div class="textwrap">
+                                    <span><?php the_content(); ?></span>
+                                    <h2><?php the_title(); ?></h2>
+                                </div>
+                              <?php } ?>
+                        </div>                         
+                    <?php } } wp_reset_postdata(); } ?>
+                  </div>
+                  
+                  <div class="promoarea-div">
+                    <?php
+                         if( !empty( $promo_two ) ) {
+                         $promo_two = new WP_Query( 'page_id='.$promo_two );
+                         if( $promo_two->have_posts() ) { while( $promo_two->have_posts() ) { $promo_two->the_post();
+                         $promo_two_image = wp_get_attachment_image_src( get_post_thumbnail_id() , 'full', true );         
+                    ?>                         
+                        <div class="promoarea">
+                              <?php if(!empty( $promo_two_image )) { ?>
+                                  <a href="<?php echo esc_url( $promo_two_button_link ); ?>">
+                                      <figure class="promoimage">
+                                          <img src="<?php echo esc_url( $promo_two_image[0] ); ?>" alt="<?php the_title(); ?>" />
+                                      </figure>
+                                  </a>
+                              <?php } if($promo_info != 1) {  ?>
+                                <div class="textwrap">
+                                    <span><?php the_content(); ?></span>
+                                    <h2><?php the_title(); ?></h2>
+                                </div>
+                              <?php } ?>
+                        </div>                         
+                    <?php } } wp_reset_postdata(); } ?>
+                  </div>            
+                  
+                  <div class="promoarea-div">
+                    <?php
+                         if( !empty( $promo_three ) ) {
+                         $promo_three = new WP_Query( 'page_id='.$promo_three );
+                         if( $promo_three->have_posts() ) { while( $promo_three->have_posts() ) { $promo_three->the_post();
+                         $promo_three_image = wp_get_attachment_image_src( get_post_thumbnail_id() , 'full', true );         
+                    ?>                         
+                        <div class="promoarea">
+                              <?php if(!empty( $promo_three_image )) { ?>
+                                  <a href="<?php echo esc_url( $promo_three_button_link ); ?>">
+                                      <figure class="promoimage">
+                                          <img src="<?php echo esc_url( $promo_three_image[0] ); ?>" alt="<?php the_title(); ?>" />
+                                      </figure>
+                                  </a>
+                              <?php } if($promo_info != 1) { ?>
+                                <div class="textwrap">
+                                    <span><?php the_content(); ?></span>
+                                    <h2><?php the_title(); ?></h2>
+                                </div>
+                              <?php } ?>
+                        </div>                         
+                    <?php } } wp_reset_postdata(); } ?>
+                  </div>
               </div>
             </div>
         </div>

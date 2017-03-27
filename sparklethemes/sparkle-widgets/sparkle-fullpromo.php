@@ -22,23 +22,10 @@ class sparklestore_full_promo_area extends WP_Widget {
        
         $fields = array( 
 
-            'sparklestore_full_promo_bg_image' => array(
-                'sparklestore_widgets_name' => 'sparklestore_full_promo_bg_image',
-                'sparklestore_widgets_title' => esc_html__('Uplaod Promo Background Image', 'sparklestore'),
-                'sparklestore_widgets_field_type' => 'upload',
-            ),
-            
-            'sparklestore_full_promo_title' => array(
-                'sparklestore_widgets_name' => 'sparklestore_full_promo_title',
-                'sparklestore_widgets_title' => esc_html__('Title', 'sparklestore'),
-                'sparklestore_widgets_field_type' => 'title',
-            ),
-
-            'sparklestore_full_promo_desc' => array(
-                'sparklestore_widgets_name' => 'sparklestore_full_promo_desc',
-                'sparklestore_widgets_title' => esc_html__('Short Description', 'sparklestore'),
-                'sparklestore_widgets_field_type' => 'textarea',
-                'sparklestore_widgets_row'    => 4,
+            'sparklestore_full_promo_page' => array(
+                'sparklestore_widgets_name' => 'sparklestore_full_promo_page',
+                'sparklestore_widgets_title' => esc_html__('Select Promo Page', 'sparklestore'),
+                'sparklestore_widgets_field_type' => 'selectpage'
             ),
 
             'sparklestore_full_promo_button_link' => array(
@@ -52,6 +39,12 @@ class sparklestore_full_promo_area extends WP_Widget {
                 'sparklestore_widgets_title' => esc_html__('Promo Button Text', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'text',
             ),
+
+            'sparklestore_promo_info' => array(
+                'sparklestore_widgets_name' => 'sparklestore_promo_info',
+                'sparklestore_widgets_title' => esc_html__('Check to Disable Promo Information', 'sparklestore'),
+                'sparklestore_widgets_field_type' => 'checkbox',
+            ),
         );
 
         return $fields;
@@ -61,34 +54,35 @@ class sparklestore_full_promo_area extends WP_Widget {
         extract($args);
         extract($instance);
         
-        $promo_bg_image  = empty( $instance['sparklestore_full_promo_bg_image'] ) ? '' : $instance['sparklestore_full_promo_bg_image'];
-        $title           = empty( $instance['sparklestore_full_promo_title'] ) ? '' : $instance['sparklestore_full_promo_title'];
-        $short_desc      = empty( $instance['sparklestore_full_promo_desc'] ) ? '' : $instance['sparklestore_full_promo_desc'];
+        $sparklestore_full_promo_page  = empty( $instance['sparklestore_full_promo_page'] ) ? '' : $instance['sparklestore_full_promo_page'];
         $button_link     = empty( $instance['sparklestore_full_promo_button_link'] ) ? '' : $instance['sparklestore_full_promo_button_link'];
         $button_text     = empty( $instance['sparklestore_full_promo_button_text'] ) ? '' : $instance['sparklestore_full_promo_button_text'];
+        $promo_info     = empty( $instance['sparklestore_promo_info'] ) ? '' : $instance['sparklestore_promo_info'];
 
         echo $before_widget; 
     ?>
     <div class="fullpromowrap">
         <div class="container">
             <div class="row">
-                <div class="promoimage" <?php if ( !empty( $promo_bg_image ) ) { ?>style="background-image:url(<?php echo esc_url( $promo_bg_image ); ?>); background-size:cover;"<?php } ?>>
-                    <div class="fullwrap">                            
-                        <?php if ( !empty( $title ) ) { ?>
-                            <h4><?php echo esc_attr( $title ); ?></h4>
-                        <?php } ?>
-
-                        <?php if ( !empty( $short_desc ) ) { ?>
-                            <span><?php echo esc_html( $short_desc ); ?></span>
-                        <?php } ?> 
-
-                        <?php if ( !empty( $button_text ) ) { ?>
-                            <a href="<?php echo esc_url( $button_link ); ?>">
-                              <button class="btn promolink"><?php echo esc_attr( $button_text ); ?></button>
-                            </a>
-                        <?php } ?>
-                    </div> 
+            <?php
+                 if( !empty( $sparklestore_full_promo_page ) ) {
+                 $sparklestore_full_promo_page = new WP_Query( 'page_id='.$sparklestore_full_promo_page );
+                 if( $sparklestore_full_promo_page->have_posts() ) { while( $sparklestore_full_promo_page->have_posts() ) { $sparklestore_full_promo_page->the_post();
+                 $full_promo_image = wp_get_attachment_image_src( get_post_thumbnail_id() , 'full', true );         
+            ?>
+                <div class="promoimage" <?php if ( !empty( $full_promo_image ) ) { ?>style="background-image:url(<?php echo esc_url( $full_promo_image[0] ); ?>); background-size:cover;"<?php } ?>>
+                    <div class="fullwrap"> 
+                        <?php if($promo_info != 1) { ?>                          
+                            <h4><?php the_title(); ?></h4>
+                            <?php the_content(); ?>
+                            <?php if ( !empty( $button_text ) ) { ?>
+                                <a href="<?php echo esc_url( $button_link ); ?>">
+                                  <button class="btn promolink"><?php echo esc_attr( $button_text ); ?></button>
+                                </a>
+                        <?php } } ?>
+                    </div>               
                 </div>
+            <?php } } wp_reset_postdata(); } ?>
             </div>
         </div>
     </div> 

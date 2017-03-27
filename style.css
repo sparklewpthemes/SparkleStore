@@ -4,7 +4,7 @@ Theme URI: http://sparklewpthemes.com/wordpress-themes/sparklestore
 Author: sparklewpthemes
 Author URI: http://sparklewpthemes.com/
 Description: Sparkle Store is a clean, beautiful and fully customizable responsive WooCommerce WordPress theme. This theme is packed with lots of exciting feature that enhances the ecommerce experience. Theme is fully compatible with WooCommerce and YITH WooCommerce Wishlist, YITH WooCommerce Quick View plugins. This theme packs many premium features and several custom widgets which helps making your online store professional and well organized.
-Version: 1.0.3
+Version: 1.0.4
 License: GNU General Public License, version 3 (GPLv3)
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
 Text Domain: sparklestore
@@ -595,7 +595,7 @@ a:hover {
 ## Top Header Start
 --------------------------------------------------------------*/
 .topheader{
-    border-bottom: 1px solid #f7f7f7;
+    border-bottom: 1px solid #e7e7e7;
     padding:15px 0px;
     line-height:1;
     color:#141414;
@@ -629,6 +629,7 @@ a:hover {
     font-size: 12px;
     color:#000;
     font-family: Open Sans;
+    font-weight: 600;
 }
 .topheader .toplinkswrap .toplinks ul li{
     text-transform: uppercase;
@@ -853,7 +854,7 @@ a:hover {
     box-shadow: 0 1px 4px rgba(0, 0, 0, .15);
     -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, .15);
     text-align: left;
-    width:200px;
+    width:240px;
     height:0;    
     transition: all 0.3s linear;
     -moz-transition: all 0.3s linear;
@@ -869,7 +870,7 @@ a:hover {
 }
 .main-menu .main-menu-links ul > li.menu-item-has-children li{ 
     display: block;
-    min-width: 200px;
+    min-width: 240px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 .main-menu .main-menu-links ul > li.menu-item-has-children li a{ 
@@ -2186,7 +2187,7 @@ object {
 }
 .sparklelogo{
     float: left;
-    width: 250px;    
+    width: 375px;    
 }
 .site-branding {
     color: #033772;
@@ -2205,7 +2206,7 @@ object {
 }
 .rightheaderwrap{
     float: left;
-    width: calc( 100% - 250px );
+    width: calc( 100% - 375px );
     position: relative;
     display: inline-block;
     vertical-align: middle;
@@ -2312,9 +2313,9 @@ object {
 }
 .our-features-box .feature-box span {
     display: inline-block;
-    font-size: 26px;
+    font-size: 35px;
     font-weight: normal;
-    padding-top: 10px;
+    padding-top: 8px;
     text-transform: none;
     margin-right: 15px;
     color: #666;
@@ -2457,7 +2458,7 @@ object {
     font-size: 14px;
     display: inline-block;
     position: relative;
-    padding-bottom: 25px;
+    line-height: 2;
 }
 .promosection .promoarea .textwrap span:after {
     content: '';
@@ -3128,10 +3129,12 @@ ins .amount {
 --------------------------------------------------------------*/
 .fullpromowrap .fullwrap{
     position:relative;
-    padding:70px 0;
+    padding:70px 50px;
     background-repeat: no-repeat;
     text-align: center;
     z-index:1;
+    color: #fff;
+    min-height: 260px;
 }
 .fullpromowrap .fullwrap:after{
     position:absolute;
@@ -3156,18 +3159,15 @@ ins .amount {
     line-height: 40px;
     margin: 0;
 }
-.fullpromowrap .fullwrap span {
+.fullpromowrap .fullwrap p {
     color: #ffffff;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
     -moz-text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
     -webkit-text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
     font-family: 'Playfair Display', serif;
     font-weight: bold;
-    font-size: 42px;
     display: block;
     text-transform: uppercase;
-    line-height: 48px;
-    margin-top: 20px;
 }
 .fullpromowrap .fullwrap button,
 .categorproducts .block-title-desc .view-bnt{
@@ -3275,7 +3275,7 @@ ul.sparkletablinks > li.active a {
 }
 .sparklestore-blogwrap .bloginner .blogtitle{
     margin: -30px 0px 0 0;
-    padding: 10px 20px 0px;
+    padding: 10px 20px 15px;
     font-size: 18px;
     letter-spacing: 0.5px;
     font-weight: 500;
@@ -4948,6 +4948,11 @@ ul.products.list li.product .gridlist-buttonwrap {
     border-right: 1px solid #033772;
     margin-right: 5px;
 }
+
+.pagination span.current {
+    padding: 14px !important;
+}
+
 .pagination span.current, 
 .pagination a {
     text-align: center;

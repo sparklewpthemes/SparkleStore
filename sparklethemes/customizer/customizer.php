@@ -31,7 +31,7 @@ function sparklestore_customize_register( $wp_customize ) {
       
       $wp_customize->add_control('sparklestore_email_icon',array(
           'type' => 'text',
-          'description' => sprintf( esc_html__( 'Use font awesome icon: Eg: %s. %sSee more here%s', 'sparklestore' ), 'fa fa-truck','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
+          'description' => sprintf( esc_html__( 'Use font awesome icon: Eg: %1$s. %2$sSee more here%3$s', 'sparklestore' ), 'fa fa-truck','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
           'label' => esc_html__('Enter Email Icon', 'sparklestore'),
           'section' => 'sparklestore_header_quickinfo',
           'setting' => 'sparklestore_email_icon',
@@ -57,7 +57,7 @@ function sparklestore_customize_register( $wp_customize ) {
       
       $wp_customize->add_control('sparklestore_phone_icon',array(
           'type' => 'text',
-          'description' => sprintf( esc_html__( 'Use font awesome icon: Eg: %s. %sSee more here%s', 'sparklestore' ), 'fa fa-truck','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
+          'description' => sprintf( esc_html__( 'Use font awesome icon: Eg: %1$s. %2$s See more here%3$s', 'sparklestore' ), 'fa fa-truck','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
           'label' => esc_html__('Phone Icon', 'sparklestore'),
           'section' => 'sparklestore_header_quickinfo',
           'setting' => 'sparklestore_phone_icon',
@@ -82,7 +82,7 @@ function sparklestore_customize_register( $wp_customize ) {
       
       $wp_customize->add_control('sparklestore_address_icon',array(
           'type' => 'text',
-          'description' => sprintf( esc_html__( 'Use font awesome icon: Eg: %s. %sSee more here%s', 'sparklestore' ), 'fa fa-truck','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
+          'description' => sprintf( esc_html__( 'Use font awesome icon: Eg: %1$s. %2$s See more here%3$s', 'sparklestore' ), 'fa fa-truck','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
           'label' => esc_html__('Address Icon', 'sparklestore'),
           'section' => 'sparklestore_header_quickinfo',
           'setting' => 'sparklestore_address_icon',
@@ -108,7 +108,7 @@ function sparklestore_customize_register( $wp_customize ) {
       
       $wp_customize->add_control('sparklestore_start_open_icon',array(
           'type' => 'text',
-          'description' => sprintf( esc_html__( 'Use font awesome icon: Eg: %s. %sSee more here%s', 'sparklestore' ), 'fa fa-truck','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
+          'description' => sprintf( esc_html__( 'Use font awesome icon: Eg: %1$s. %2$s See more here%3$s', 'sparklestore' ), 'fa fa-truck','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
           'label' => esc_html__('Start Time Icon', 'sparklestore'),
           'section' => 'sparklestore_header_quickinfo',
           'setting' => 'sparklestore_start_open_icon',
@@ -226,7 +226,7 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
         
         $wp_customize->add_control('sparklestore_services_icon_one',array(
             'type' => 'text',
-            'description' => sprintf( esc_html__( 'Use font awesome icon: Eg: %s. %sSee more here%s', 'sparklestore' ), 'fa fa-truck','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
+            'description' => sprintf( esc_html__( 'Use font awesome icon: Eg: %1$s. %2$s See more here%3$s', 'sparklestore' ), 'fa fa-truck','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
             'label' => esc_html__('Service Icon One', 'sparklestore'),
             'section' => 'sparklestore_services_area',
             'setting' => 'sparklestore_services_icon_one',
@@ -267,7 +267,7 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
         
         $wp_customize->add_control('sparklestore_services_icon_two',array(
             'type' => 'text',
-            'description' => sprintf( esc_html__( 'Use font awesome icon: Eg: %s. %sSee more here%s', 'sparklestore' ), 'fa fa-headphones','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
+            'description' => sprintf( esc_html__( 'Use font awesome icon: Eg: %1$s. %2$s See more here%3$s', 'sparklestore' ), 'fa fa-headphones','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
            'label' => esc_html__('Service Icon Two', 'sparklestore'),
             'section' => 'sparklestore_services_area',
             'setting' => 'sparklestore_services_icon_two',
@@ -308,7 +308,7 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
         
         $wp_customize->add_control('sparklestore_services_icon_three',array(
             'type' => 'text',
-            'description' => sprintf( esc_html__( 'Use font awesome icon: Eg: %s. %sSee more here%s', 'sparklestore' ), 'fa fa-dollar','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
+            'description' => sprintf( esc_html__( 'Use font awesome icon: Eg: %1$s. %2$s See more here%3$s', 'sparklestore' ), 'fa fa-dollar','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
             'label' => esc_html__('Service Icon Three', 'sparklestore'),
             'section' => 'sparklestore_services_area',
             'setting' => 'sparklestore_services_icon_three',
@@ -349,7 +349,7 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
         
         $wp_customize->add_control('sparklestore_services_icon_four',array(
             'type' => 'text',
-            'description' => sprintf( esc_html__( 'Use font awesome icon: Eg: %s. %sSee more here%s', 'sparklestore' ), 'fa fa-mobile','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
+            'description' => sprintf( esc_html__( 'Use font awesome icon: Eg: %1$s. %2$s See more here%3$s', 'sparklestore' ), 'fa fa-mobile','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
             'label' => esc_html__('Service Icon Four', 'sparklestore'),
             'section' => 'sparklestore_services_area',
             'setting' => 'sparklestore_services_icon_four',

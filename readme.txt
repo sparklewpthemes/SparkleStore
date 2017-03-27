@@ -7,7 +7,7 @@ Contributors: sparklewpthemes
 Tags: right-sidebar, left-sidebar, custom-header, custom-background, custom-menu, featured-images, theme-options, custom-logo, e-commerce, translation-ready, footer-widgets
 
 Requires at least: 4.0
-Tested up to: 4.6
+Tested up to: 4.7
 Stable tag: 1.0.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -69,7 +69,12 @@ Sparklestore includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
-= 1.0.3 27th Dec 1016 =
+= 1.0.4 4rd Jan 2017 =
+
+** Fixed reviewer feedback issue.
+
+
+= 1.0.3 27th Dec 2016 =
 
 ** Fixed reviewer feedback issue.
 ** Fixed the default widget area style issue.
@@ -78,13 +83,13 @@ Sparklestore includes support for Infinite Scroll in Jetpack.
 ** Fixed the escaping issue.
 ** Fixed the missing prefix issue.
 
-= 1.0.2 11th Nov 1016 =
+= 1.0.2 11th Nov 2016 =
 
 ** Fixed the translations issue.
 ** Fixed the escaping issue.
 ** Fixed the missing prefix issue.
 
-= 1.0.1 6th Sep 1016 =
+= 1.0.1 6th Sep 2016 =
 
 ** Major Update.
 

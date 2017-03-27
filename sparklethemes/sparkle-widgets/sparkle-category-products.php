@@ -149,7 +149,7 @@ class sparklestore_cat_with_product_widget_area extends WP_Widget {
                             <div class="block-title-desc">                                
                                 <div class="table-outer">
                                     <div class="table-inner">
-                                        <?php if( !empty( $terms_name->name ) ) { ?><h2><a href="<?php echo esc_url( $category_link ); ?>"><?php echo esc_attr( $terms_name->name ); ?></a></h2></div><?php } ?>
+                                        <?php if( !empty( $terms_name->name ) ) { ?><h2><a href="<?php echo esc_url( $category_link ); ?>"><?php echo esc_attr( $terms_name->name ); ?></a></h2><?php } ?>
                                         <?php echo esc_attr( $terms ); ?>
                                         <a href="<?php echo esc_url($category_link); ?>" class="view-bnt"><?php esc_html_e('Shop Now','sparklestore'); ?></a>
                                     </div>

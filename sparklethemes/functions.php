@@ -267,7 +267,7 @@ if ( ! function_exists( 'sparklestore_comment' ) ) {
                   </div>
                   
                   <span class="date pt-right">
-                      <a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>">
+                      <a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ) ?>">
                         <?php printf( esc_attr__('%1$s at %2$s','sparklestore'), get_comment_date(),  get_comment_time()) ?>
                       </a>
                   </span>
@@ -358,11 +358,12 @@ if ( ! function_exists( 'sparklestore_display_layout_callback' ) ) {
 if ( ! function_exists( 'sparklestore_save_page_settings' ) ) {
     function sparklestore_save_page_settings( $post_id ) { 
         global $sparklestore_page_layouts, $post; 
-        if ( !isset( $_POST[ 'sparklestore_settings_nonce' ] ) || !wp_verify_nonce( $_POST[ 'sparklestore_settings_nonce' ], basename( __FILE__ ) ) )
+        $sparklestore_nonce = wp_unslash( $_POST[ 'sparklestore_settings_nonce' ] );
+        if ( !isset( $sparklestore_nonce ) || !wp_verify_nonce( $sparklestore_nonce , basename( __FILE__ ) ) )
             return;
         if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE)  
             return;        
-        if ('page' == $_POST['post_type']) {  
+        if ('page' == wp_unslash( $_POST['post_type'] ) ) {  
             if (!current_user_can( 'edit_page', $post_id ) )  
                 return $post_id;  
         } elseif (!current_user_can( 'edit_post', $post_id ) ) {  
@@ -370,7 +371,7 @@ if ( ! function_exists( 'sparklestore_save_page_settings' ) ) {
         }    
         foreach ($sparklestore_page_layouts as $field) {  
             $old = esc_attr( get_post_meta( $post_id, 'sparklestore_page_layouts', true) ); 
-            $new = sanitize_text_field($_POST['sparklestore_page_layouts']);
+            $new = sanitize_text_field( wp_unslash( $_POST['sparklestore_page_layouts'] ) );
             if ($new && $new != $old) {  
                 update_post_meta($post_id, 'sparklestore_page_layouts', $new);  
             } elseif ('' == $new && $old) {  
@@ -477,13 +478,13 @@ if (!function_exists('sparkle_store_breadcrumbs')) {
           if (get_post_type() != 'post') {
             $post_type = get_post_type_object(get_post_type());
             $slug = $post_type->rewrite;
-            echo '<a href="' . esc_url($homeLink) . '/' . esc_attr($slug['slug']) . '/">' . $post_type->labels->singular_name . '</a>';
+            echo '<a href="' . esc_url($homeLink) . '/' . esc_attr($slug['slug']) . '/">' . esc_attr($post_type->labels->singular_name) . '</a>';
             if ($showCurrent == 1)
-              echo ' ' . esc_attr($delimiter) . ' ' . $before . esc_attr(get_the_title()) . $after;
+              echo ' ' . esc_attr($delimiter) . ' ' . esc_attr($before) . esc_attr(get_the_title()) . esc_attr($after);
           } else {
             $cat = get_the_category();
             $cat = $cat[0];
-            $cats = get_category_parents($cat, TRUE, ' ' . esc_attr($delimiter) . ' ');
+            $cats = get_category_parents($cat, TRUE, ' ' . esc_html($delimiter) . ' ');
             if ($showCurrent == 0)
               $cats = preg_replace("#^(.+)\s$delimiter\s$#", "$1", $cats);
             echo wp_kses_post( $cats );
@@ -499,11 +500,11 @@ if (!function_exists('sparkle_store_breadcrumbs')) {
             $cat    = get_the_category($parent->ID);
             if ( isset($cat) && !empty($cat)) {
                 $cat    = $cat[0];
-                echo get_category_parents($cat, TRUE, ' ' . esc_attr( $delimiter ) . ' ');
+                echo get_category_parents($cat, TRUE, ' ' . esc_html( $delimiter ) . ' ');
                 echo '<li><a href="' . esc_url( get_permalink($parent) ) . '">' . esc_attr( $parent->post_title ) . '</a></li>';
             }
             if ($showCurrent == 1)
-                echo $before . get_the_title() . $after;
+                echo esc_attr($before) . esc_attr(get_the_title()) . esc_attr($after);
         } elseif (is_page() && !$post->post_parent) {
           if ($showCurrent == 1){
             echo esc_attr(get_the_title());
@@ -519,13 +520,13 @@ if (!function_exists('sparkle_store_breadcrumbs')) {
             }
           }
           $breadcrumbs = array_reverse($breadcrumbs);
-          for ($i = 0; $i < count($breadcrumbs); $i++) {
+          for ($i = 0; $i < esc_attr(count($breadcrumbs)); $i++) {
             echo sprintf( $breadcrumbs[$i] );
             if ($i != count($breadcrumbs) - 1)
-              echo ' ' . $delimiter . ' ';
+              echo ' ' . esc_attr($delimiter) . ' ';
           }
           if ($showCurrent == 1){
-            echo ' ' . esc_attr($delimiter) . ' ' . $before . esc_attr(get_the_title()) . $after;
+            echo ' ' . esc_attr($delimiter) . ' ' . esc_attr($before) . esc_attr(get_the_title()) . esc_attr($after);
           }
         } elseif (is_tag()) {
           echo esc_html__('Posts tagged','sparklestore').' "' . single_tag_title('', false) . '"';
@@ -540,7 +541,7 @@ if (!function_exists('sparkle_store_breadcrumbs')) {
         if (get_query_var('paged')) {
           if (is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author()){
             echo ' (';
-            echo esc_html__('Page', 'sparklestore') . ' ' . get_query_var('paged');
+            echo esc_html__('Page', 'sparklestore') . ' ' . esc_attr(get_query_var('paged'));
           }
           if (is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author()){
                 echo ')';

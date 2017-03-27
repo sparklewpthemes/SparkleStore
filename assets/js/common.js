@@ -10,16 +10,6 @@ jQuery(document).ready(function($) {
         });
     });
 
-    /** 
-     * Youtube video BG 
-    */
-    var vid_id = jQuery('.background-video').attr('vid');
-    if(vid_id != '') {
-        jQuery('.background-video').YTPlayer({
-          videoId: vid_id
-        });
-    }
-
     /**
      * Sparkle Store MobileMenu 
     */
