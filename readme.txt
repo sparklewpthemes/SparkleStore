@@ -69,6 +69,14 @@ Sparklestore includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
+= 1.0.6 20th February 2017 =
+
+** Fixed responsive issue.
+** Fixed the weblayout issue (boxed, fullwidth).
+** Fixed the background (image & color) issue.
+** Change screenshout.
+
+
 = 1.0.5 9rd Jan 2017 =
 
 ** Add banner slider.
