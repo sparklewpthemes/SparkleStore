@@ -404,24 +404,6 @@ function sparklestore_change_cross_sells_product_no( $columns ) {
 }
 
 /**
- * Define image sizes
-*/
-function sparklestore_woocommerce_image_dimensions() {
-    global $pagenow; 
-    if ( ! isset( $_GET['activated'] ) || $pagenow != 'themes.php' ) {
-        return;
-    }
-    $catalog = array(
-        'width'     => '275',   // px
-        'height'    => '335',   // px
-        'crop'      => 1        // true
-    );    
-    // Image sizes
-    update_option( 'shop_catalog_image_size', $catalog ); 
-}
-add_action( 'after_switch_theme', 'sparklestore_woocommerce_image_dimensions', 1 );
-
-/**
  * WooCommerce products manage settins
 */
 /*<div class="social">

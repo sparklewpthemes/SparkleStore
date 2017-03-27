@@ -70,6 +70,10 @@ Sparklestore includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
+= 1.0.8 24th February 2017 =
+
+** Remove custom image size function when theme activation.
+
 = 1.0.7 23th February 2017 =
 
 ** Change screenshout with gpl image with full image url.
