@@ -13,8 +13,8 @@ class sparklestore_promo_pages_area extends WP_Widget {
     **/
     public function __construct() {
         parent::__construct(
-            'sparklestore_promo_pages_area', __('SP: Promo Widget Section','sparklestore'), array(
-            'description' => __('A widget that promote you busincess visual way', 'sparklestore')
+            'sparklestore_promo_pages_area', esc_html__('SP: Promo Widget Section','sparklestore'), array(
+            'description' => esc_html__('A widget that promote you busincess visual way', 'sparklestore')
         ));
     }
     
@@ -25,32 +25,32 @@ class sparklestore_promo_pages_area extends WP_Widget {
             
             'sparklestore_promo_one_image' => array(
                 'sparklestore_widgets_name' => 'sparklestore_promo_one_image',
-                'sparklestore_widgets_title' => __('Upload Promo One Image', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Upload Promo One Image', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'upload',
             ),
 
             'banner_start_group_left' => array(
                 'sparklestore_widgets_name' => 'banner_start_group_left',
-                'sparklestore_widgets_title' => __('Promo Section One', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Promo Section One', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'group_start',
             ),
             
             'sparklestore_promo_one_title' => array(
                 'sparklestore_widgets_name' => 'sparklestore_promo_one_title',
-                'sparklestore_widgets_title' => __('Enter Promo One Title', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Enter Promo One Title', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'title',
             ),
             
             'sparklestore_promo_one_desc' => array(
                 'sparklestore_widgets_name' => 'sparklestore_promo_one_desc',
-                'sparklestore_widgets_title' => __('Enter Very Short Promo One Description', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Enter Very Short Promo One Description', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'textarea',
                 'sparklestore_widgets_row' => 3,
             ),
            
             'sparklestore_promo_one_button_link' => array(
                 'sparklestore_widgets_name' => 'sparklestore_promo_one_button_link',
-                'sparklestore_widgets_title' => __('Promo One Button Link', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Promo One Button Link', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'url',
             ),
             
@@ -63,32 +63,32 @@ class sparklestore_promo_pages_area extends WP_Widget {
             
             'sparklestore_promo_two_image' => array(
                 'sparklestore_widgets_name' => 'sparklestore_promo_two_image',
-                'sparklestore_widgets_title' => __('Upload Promo Two Image', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Upload Promo Two Image', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'upload',
             ),
 
             'banner_start_group_left_two' => array(
                 'sparklestore_widgets_name' => 'banner_start_group_left_two',
-                'sparklestore_widgets_title' => __('Promo Section Two', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Promo Section Two', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'group_start',
             ),
             
             'sparklestore_promo_two_title' => array(
                 'sparklestore_widgets_name' => 'sparklestore_promo_two_title',
-                'sparklestore_widgets_title' => __('Enter Promo Two Title', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Enter Promo Two Title', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'title',
             ),
             
             'sparklestore_promo_two_desc' => array(
                 'sparklestore_widgets_name' => 'sparklestore_promo_two_desc',
-                'sparklestore_widgets_title' => __('Enter Very Short Promo Two Description', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Enter Very Short Promo Two Description', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'textarea',
                 'sparklestore_widgets_row' => 3,
             ),
            
             'sparklestore_promo_two_button_link' => array(
                 'sparklestore_widgets_name' => 'sparklestore_promo_two_button_link',
-                'sparklestore_widgets_title' => __('Promo Two Button Link', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Promo Two Button Link', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'url',
             ),
             
@@ -102,32 +102,32 @@ class sparklestore_promo_pages_area extends WP_Widget {
 
             'sparklestore_promo_three_image' => array(
                 'sparklestore_widgets_name' => 'sparklestore_promo_three_image',
-                'sparklestore_widgets_title' => __('Upload Promo Three Image', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Upload Promo Three Image', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'upload',
             ),
 
             'banner_start_group_left_three' => array(
                 'sparklestore_widgets_name' => 'banner_start_group_left_three',
-                'sparklestore_widgets_title' => __('Promo Section Three', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Promo Section Three', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'group_start',
             ),
             
             'sparklestore_promo_three_title' => array(
                 'sparklestore_widgets_name' => 'sparklestore_promo_three_title',
-                'sparklestore_widgets_title' => __('Enter Promo Three Title', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Enter Promo Three Title', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'title',
             ),
             
             'sparklestore_promo_three_desc' => array(
                 'sparklestore_widgets_name' => 'sparklestore_promo_three_desc',
-                'sparklestore_widgets_title' => __('Enter Very Short Promo Three Description', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Enter Very Short Promo Three Description', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'textarea',
                 'sparklestore_widgets_row' => 3,
             ),          
            
             'sparklestore_promo_three_button_link' => array(
                 'sparklestore_widgets_name' => 'sparklestore_promo_three_button_link',
-                'sparklestore_widgets_title' => __('Promo Three Button Link', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Promo Three Button Link', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'url',
             ),
 

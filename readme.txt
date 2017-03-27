@@ -4,13 +4,13 @@ Sparkle Store is a clean, beautiful and fully customizable responsive WooCommerc
 
 Contributors: sparklewpthemes
 
-Tags: one-column, two-columns, right-sidebar, left-sidebar, custom-header, custom-background, custom-menu, threaded-comments, featured-images, theme-options, custom-logo, e-commerce, news, translation-ready, full-width-template, footer-widgets
+Tags: right-sidebar, left-sidebar, custom-header, custom-background, custom-menu, featured-images, theme-options, custom-logo, e-commerce, translation-ready, footer-widgets
 
 Requires at least: 4.0
 Tested up to: 4.6
 Stable tag: 1.0.0
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License: GPLv3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.txt
 
 == Description ==
 
@@ -23,14 +23,14 @@ sparklestore theme is translation ready.
 
 == License ==
 sparklestore is based on Underscores http://underscores.me/, (C) 2012-2014 Automattic, Inc.
-Unless otherwise specified, all the theme files, scripts and images are licensed under GNU General Public License Version 2 or later.
-License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Unless otherwise specified, all the theme files, scripts and images are licensed under GNU General Public License Version 3 or later.
+License: GNU General Public License v3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.txt
 sparklestore WordPress Theme, Copyright 2016 Sparkle Wp Themes
 sparklestore is distributed under the terms of the GNU General Public License v2
 The exceptions to license are as follows:
 
-* Based on Underscores http://underscores.me/, (C) 2012-2015 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
+* Based on Underscores http://underscores.me/, (C) 2012-2015 Automattic, Inc., [GPLv2 or later](http://www.gnu.org/licenses/gpl-3.0.txt)
 
 * Google Fonts - Apache License, version 2.0
 
@@ -68,6 +68,20 @@ https://pixabay.com/en/woman-portrait-face-model-canon-659352/ License CC0 Publi
 Sparklestore includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 1.0.3 22th Nov 1016 =
+
+** Fixed the default widget area style issue.
+** Fixed the WooCommerce related and up sale products slider issue.
+** Fixed responsive issue.
+** Fixed the escaping issue.
+** Fixed the missing prefix issue.
+
+= 1.0.2 11th Nov 1016 =
+
+** Fixed the translations issue.
+** Fixed the escaping issue.
+** Fixed the missing prefix issue.
 
 = 1.0.1 6th Sep 1016 =
 

@@ -14,8 +14,8 @@ class sparklestore_contact_info_area extends WP_Widget {
     **/
     public function __construct() {
         parent::__construct(
-            'sparklestore_contact_info_area', __('SP: Quick Contact Info','sparklestore'), array(
-            'description' => __('A widget that shows quick contact information', 'sparklestore')
+            'sparklestore_contact_info_area', esc_html__('SP: Quick Contact Info','sparklestore'), array(
+            'description' => esc_html__('A widget that shows quick contact information', 'sparklestore')
         ));
     }
     
@@ -25,23 +25,23 @@ class sparklestore_contact_info_area extends WP_Widget {
             
             'sparklestore_quick_contact_title' => array(
                 'sparklestore_widgets_name' => 'sparklestore_quick_contact_title',
-                'sparklestore_widgets_title' => __('Title', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Title', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'title',
             ),
             'sparklestore_quick_address' => array(
                 'sparklestore_widgets_name' => 'sparklestore_quick_address',
-                'sparklestore_widgets_title' => __('Contact Address', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Contact Address', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'textarea',
                 'sparklestore_widgets_row'    => 4,
             ),
             'sparklestore_quick_phone' => array(
                 'sparklestore_widgets_name' => 'sparklestore_quick_phone',
-                'sparklestore_widgets_title' => __('Contact Number', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Contact Number', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'text',
             ),
             'sparklestore_quick_email' => array(
                 'sparklestore_widgets_name' => 'sparklestore_quick_email',
-                'sparklestore_widgets_title' => __('Contact Email Address', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Contact Email Address', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'text',
             )                   
         );
@@ -56,7 +56,7 @@ class sparklestore_contact_info_area extends WP_Widget {
         $title           = esc_attr( $instance['sparklestore_quick_contact_title'] );
         $contact_address = esc_textarea( $instance['sparklestore_quick_address'] );
         $contact_number  = esc_attr( $instance['sparklestore_quick_phone'] );
-        $contact_email   = esc_attr( $instance['sparklestore_quick_email'] );
+        $contact_email   = sanitize_email( $instance['sparklestore_quick_email'] );
         
         echo $before_widget; 
         
@@ -71,12 +71,12 @@ class sparklestore_contact_info_area extends WP_Widget {
           </address>
         <?php }  if(!empty( $contact_number )) { ?>
           <div class="phone-footer">
-            <i class="phone-icon">&nbsp;</i> <?php echo $contact_number; ?>
+            <i class="phone-icon">&nbsp;</i> <?php echo esc_attr( $contact_number ); ?>
           </div>
         <?php }  if(!empty( $contact_email )) { ?>
           <div class="email-footer">
             <i class="email-icon">&nbsp;</i> 
-            <a href="mailto:<?php echo esc_attr( $contact_email ); ?>"><?php echo $contact_email; ?></a>
+            <a href="mailto:<?php echo sanitize_email( $contact_email ); ?>"><?php echo sanitize_email( $contact_email ); ?></a>
           </div>
         <?php } ?>
       </div>

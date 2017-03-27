@@ -3,35 +3,27 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-22 17:22+0000\n"
+"POT-Creation-Date: 2016-09-06 15:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
 "Language: \n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Loco - https://localise.biz/"
+"X-Generator: Loco https://localise.biz/"
 
-#: 404.php:23 sparklethemes/functions.php:398
+#: 404.php:20
 msgid "404"
 msgstr ""
 
-#: 404.php:24
+#: 404.php:21
 msgid "Oops! The Page you requested was not found!"
 msgstr ""
 
-#: 404.php:25
+#: 404.php:22
 msgid "Back To Home"
-msgstr ""
-
-#: archive.php:38 index.php:39 search.php:38
-msgid "Prev"
-msgstr ""
-
-#: archive.php:39 index.php:40 search.php:39 sparklethemes/functions.php:582
-msgid "Next"
 msgstr ""
 
 #: comments.php:30
@@ -58,61 +50,61 @@ msgstr ""
 msgid "ADD COMMENT"
 msgstr ""
 
-#: functions.php:66
+#: functions.php:61
 msgid "Primary"
 msgstr ""
 
-#: functions.php:67
-#: sparklethemes/sparkle-widgets/sparkle-category-collection.php:119
+#: functions.php:62 
+#: sparklethemes/sparkle-widgets/sparkle-category-collection.php:119 
 #: sparklethemes/sparkle-widgets/sparkle-products-area.php:26
 msgid "Category"
 msgstr ""
 
-#: functions.php:68
+#: functions.php:63
 msgid "Top Menu"
 msgstr ""
 
-#: functions.php:69
+#: functions.php:64
 msgid "Footer Menu"
 msgstr ""
 
-#: functions.php:130
+#: functions.php:119
 msgid "Left Sidebar Widget Area"
 msgstr ""
 
-#: functions.php:140
+#: functions.php:129
 msgid "Right Sidebar Widget Area"
 msgstr ""
 
-#: functions.php:150
+#: functions.php:139
 msgid "Sparkle: Main Widget Area"
 msgstr ""
 
-#: functions.php:159
+#: functions.php:148
 msgid "Footer Widget Area One"
 msgstr ""
 
-#: functions.php:168
+#: functions.php:157
 msgid "Footer Widget Area Two"
 msgstr ""
 
-#: functions.php:177
+#: functions.php:166
 msgid "Footer Widget Area Three"
 msgstr ""
 
-#: functions.php:186
+#: functions.php:175
 msgid "Footer Widget Area Four"
 msgstr ""
 
-#: functions.php:270 sparklethemes/sparkle-widgets/widgets-fields.php:228
+#: functions.php:251 sparklethemes/sparkle-widgets/widgets-fields.php:228
 msgid "Upload"
 msgstr ""
 
-#: functions.php:271 sparklethemes/sparkle-widgets/widgets-fields.php:230
+#: functions.php:252 sparklethemes/sparkle-widgets/widgets-fields.php:230
 msgid "Remove"
 msgstr ""
 
-#: header.php:48 sparklethemes/hooks/woocommerce.php:146
+#: header.php:48 sparklethemes/hooks/woocommerce.php:146 
 #: sparklethemes/hooks/woocommerce.php:154
 msgid "All Categories"
 msgstr ""
@@ -129,145 +121,119 @@ msgstr ""
 msgid "Front Page"
 msgstr ""
 
-#: sparklethemes/functions.php:40 sparklethemes/functions.php:49
-#: template-parts/content-search.php:37 template-parts/content-single.php:44
-#: template-parts/content.php:44
-#: sparklethemes/sparkle-widgets/sparkle-blogs-widget.php:148
-msgid "0 Comment"
+#: sparklethemes/functions.php:55 sparklethemes/functions.php:62
+msgid "by"
 msgstr ""
 
-#: sparklethemes/functions.php:40 sparklethemes/functions.php:49
-#: template-parts/content-search.php:37 template-parts/content-single.php:44
-#: template-parts/content.php:44 sparklethemes/core/template-tags.php:64
-#: sparklethemes/sparkle-widgets/sparkle-blogs-widget.php:148
-msgid "1 Comment"
+#: sparklethemes/functions.php:273
+msgid "<strong>%s</strong>"
 msgstr ""
 
-#: sparklethemes/functions.php:40 sparklethemes/functions.php:49
-#: template-parts/content-search.php:37 template-parts/content-single.php:44
-#: template-parts/content.php:44 sparklethemes/core/template-tags.php:64
-#: sparklethemes/sparkle-widgets/sparkle-blogs-widget.php:148
-msgid "% Comments"
-msgstr ""
-
-#: sparklethemes/functions.php:40 sparklethemes/functions.php:49
-#: template-parts/content-search.php:37 template-parts/content-single.php:44
-#: template-parts/content.php:44
-#: sparklethemes/sparkle-widgets/sparkle-blogs-widget.php:148
-msgid "Comments are Closed"
-msgstr ""
-
-#: sparklethemes/functions.php:263
+#: sparklethemes/functions.php:283
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: sparklethemes/functions.php:271
-#, php-format
+#: sparklethemes/functions.php:292
 msgid "%1$s at %2$s"
 msgstr ""
 
-#: sparklethemes/functions.php:289
+#: sparklethemes/functions.php:310
 msgid "Display Layout Options"
 msgstr ""
 
-#: sparklethemes/functions.php:302
+#: sparklethemes/functions.php:323
 msgid "Left Sidebar"
 msgstr ""
 
-#: sparklethemes/functions.php:307
+#: sparklethemes/functions.php:328
 msgid "Right (Default)"
 msgstr ""
 
-#: sparklethemes/functions.php:312
+#: sparklethemes/functions.php:333
 msgid "Full width"
 msgstr ""
 
-#: sparklethemes/functions.php:317
+#: sparklethemes/functions.php:338
 msgid "Both Sidebar"
 msgstr ""
 
-#: sparklethemes/functions.php:396 sparklethemes/functions.php:424
-#, php-format
+#: sparklethemes/functions.php:417 sparklethemes/functions.php:443
 msgid "Search Results for : %s"
 msgstr ""
 
-#: sparklethemes/functions.php:448
+#: sparklethemes/functions.php:468
 msgid "Home"
 msgstr ""
 
-#: sparklethemes/functions.php:463
+#: sparklethemes/functions.php:483
 msgid "Archive by category"
 msgstr ""
 
-#: sparklethemes/functions.php:465
+#: sparklethemes/functions.php:485
 msgid "Search results for"
 msgstr ""
 
-#: sparklethemes/functions.php:530
+#: sparklethemes/functions.php:543
 msgid "Posts tagged"
 msgstr ""
 
-#: sparklethemes/functions.php:534
+#: sparklethemes/functions.php:547
 msgid "Articles posted by "
 msgstr ""
 
-#: sparklethemes/functions.php:536
-msgid "Error 404"
-msgstr ""
-
-#: sparklethemes/functions.php:542 sparklethemes/functions.php:572
+#: sparklethemes/functions.php:555 sparklethemes/functions.php:583
 msgid "Page"
 msgstr ""
 
-#: sparklethemes/functions.php:572
+#: sparklethemes/functions.php:583
 msgid "of"
 msgstr ""
 
-#: sparklethemes/functions.php:573
+#: sparklethemes/functions.php:584
 msgid "First"
 msgstr ""
 
-#: sparklethemes/functions.php:574
+#: sparklethemes/functions.php:585
 msgid "Previous"
 msgstr ""
 
-#: sparklethemes/functions.php:583
+#: sparklethemes/functions.php:593
+msgid "Next"
+msgstr ""
+
+#: sparklethemes/functions.php:594
 msgid "Last"
 msgstr ""
 
-#: sparklethemes/functions.php:640
+#: sparklethemes/functions.php:652
 msgid "Install Required Plugins"
 msgstr ""
 
-#: sparklethemes/functions.php:641
+#: sparklethemes/functions.php:653
 msgid "Install Plugins"
 msgstr ""
 
-#: sparklethemes/functions.php:642
-#, php-format
+#: sparklethemes/functions.php:654
 msgid "Installing Plugin: %s"
 msgstr ""
 
-#: sparklethemes/functions.php:643
+#: sparklethemes/functions.php:655
 msgid "Something went wrong with the plugin API."
 msgstr ""
 
-#: sparklethemes/functions.php:644
-#, php-format
+#: sparklethemes/functions.php:656
 msgid "This theme requires the following plugin: %1$s."
 msgid_plural "This theme requires the following plugins: %1$s."
 msgstr[0] ""
 msgstr[1] ""
 
-#: sparklethemes/functions.php:647
-#, php-format
+#: sparklethemes/functions.php:659
 msgid "This theme recommends the following plugin: %1$s."
 msgid_plural "This theme recommends the following plugins: %1$s."
 msgstr[0] ""
 msgstr[1] ""
 
-#: sparklethemes/functions.php:650
-#, php-format
+#: sparklethemes/functions.php:662
 msgid ""
 "Sorry, but you do not have the correct permissions to install the %1$s "
 "plugin."
@@ -277,8 +243,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: sparklethemes/functions.php:653
-#, php-format
+#: sparklethemes/functions.php:665
 msgid ""
 "The following plugin needs to be updated to its latest version to ensure "
 "maximum compatibility with this theme: %1$s."
@@ -288,15 +253,13 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: sparklethemes/functions.php:656
-#, php-format
+#: sparklethemes/functions.php:668
 msgid "There is an update available for: %1$s."
 msgid_plural "There are updates available for the following plugins: %1$s."
 msgstr[0] ""
 msgstr[1] ""
 
-#: sparklethemes/functions.php:659
-#, php-format
+#: sparklethemes/functions.php:671
 msgid ""
 "Sorry, but you do not have the correct permissions to update the %1$s plugin."
 msgid_plural ""
@@ -305,22 +268,19 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: sparklethemes/functions.php:662
-#, php-format
+#: sparklethemes/functions.php:674
 msgid "The following required plugin is currently inactive: %1$s."
 msgid_plural "The following required plugins are currently inactive: %1$s."
 msgstr[0] ""
 msgstr[1] ""
 
-#: sparklethemes/functions.php:665
-#, php-format
+#: sparklethemes/functions.php:677
 msgid "The following recommended plugin is currently inactive: %1$s."
 msgid_plural "The following recommended plugins are currently inactive: %1$s."
 msgstr[0] ""
 msgstr[1] ""
 
-#: sparklethemes/functions.php:668
-#, php-format
+#: sparklethemes/functions.php:680
 msgid ""
 "Sorry, but you do not have the correct permissions to activate the %1$s "
 "plugin."
@@ -330,54 +290,51 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: sparklethemes/functions.php:671
+#: sparklethemes/functions.php:683
 msgid "Begin installing plugin"
 msgid_plural "Begin installing plugins"
 msgstr[0] ""
 msgstr[1] ""
 
-#: sparklethemes/functions.php:674
+#: sparklethemes/functions.php:686
 msgid "Begin updating plugin"
 msgid_plural "Begin updating plugins"
 msgstr[0] ""
 msgstr[1] ""
 
-#: sparklethemes/functions.php:677
+#: sparklethemes/functions.php:689
 msgid "Begin activating plugin"
 msgid_plural "Begin activating plugins"
 msgstr[0] ""
 msgstr[1] ""
 
-#: sparklethemes/functions.php:680
+#: sparklethemes/functions.php:692
 msgid "Return to Required Plugins Installer"
 msgstr ""
 
-#: sparklethemes/functions.php:681
+#: sparklethemes/functions.php:693
 msgid "Plugin activated successfully."
 msgstr ""
 
-#: sparklethemes/functions.php:682
+#: sparklethemes/functions.php:694
 msgid "The following plugin was activated successfully:"
 msgstr ""
 
-#: sparklethemes/functions.php:683
-#, php-format
+#: sparklethemes/functions.php:695
 msgid "No action taken. Plugin %1$s was already active."
 msgstr ""
 
-#: sparklethemes/functions.php:684
-#, php-format
+#: sparklethemes/functions.php:696
 msgid ""
 "Plugin not activated. A higher version of %s is needed for this theme. "
 "Please update the plugin."
 msgstr ""
 
-#: sparklethemes/functions.php:685
-#, php-format
+#: sparklethemes/functions.php:697
 msgid "All plugins installed and activated successfully. %1$s"
 msgstr ""
 
-#: sparklethemes/functions.php:686
+#: sparklethemes/functions.php:698
 msgid "Please contact the administrator of this site for help."
 msgstr ""
 
@@ -386,7 +343,6 @@ msgid "Nothing Found"
 msgstr ""
 
 #: template-parts/content-none.php:21
-#, php-format
 msgid ""
 "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
 msgstr ""
@@ -403,47 +359,47 @@ msgid ""
 "searching can help."
 msgstr ""
 
-#: template-parts/content-page.php:18 template-parts/content-single.php:54
+#: template-parts/content-page.php:21 template-parts/content-single.php:54
 msgid "Pages:"
 msgstr ""
 
 #. translators: %s: Name of current post
 #. translators: %s: Name of current post
-#: template-parts/content-page.php:29 sparklethemes/core/template-tags.php:71
-#, php-format
+#: template-parts/content-page.php:32 sparklethemes/core/template-tags.php:71
 msgid "Edit %s"
 msgstr ""
 
-#: template-parts/content-search.php:46 template-parts/content.php:53
+#: template-parts/content-search.php:36 template-parts/content-single.php:42 
+#: template-parts/content.php:43
+msgid "By"
+msgstr ""
+
+#: template-parts/content-search.php:47 template-parts/content.php:54
 msgid "Read More"
 msgstr ""
 
 #: sparklethemes/core/template-tags.php:28
-#, php-format
 msgctxt "post date"
 msgid "Posted on %s"
 msgstr ""
 
 #: sparklethemes/core/template-tags.php:33
-#, php-format
 msgctxt "post author"
 msgid "by %s"
 msgstr ""
 
 #. translators: used between list items, there is a space after the comma
 #. translators: used between list items, there is a space after the comma
-#: sparklethemes/core/template-tags.php:50
+#: sparklethemes/core/template-tags.php:50 
 #: sparklethemes/core/template-tags.php:56
 msgid ", "
 msgstr ""
 
 #: sparklethemes/core/template-tags.php:52
-#, php-format
 msgid "Posted in %1$s"
 msgstr ""
 
 #: sparklethemes/core/template-tags.php:58
-#, php-format
 msgid "Tagged %1$s"
 msgstr ""
 
@@ -451,19 +407,26 @@ msgstr ""
 msgid "Leave a comment"
 msgstr ""
 
+#: sparklethemes/core/template-tags.php:64
+msgid "1 Comment"
+msgstr ""
+
+#: sparklethemes/core/template-tags.php:64
+msgid "% Comments"
+msgstr ""
+
 #: sparklethemes/customizer/customizer.php:24
 msgid "Quick Contact Info"
 msgstr ""
 
-#: sparklethemes/customizer/customizer.php:34
-#: sparklethemes/customizer/customizer.php:60
-#: sparklethemes/customizer/customizer.php:85
-#: sparklethemes/customizer/customizer.php:111
-#: sparklethemes/customizer/customizer.php:230
-#: sparklethemes/customizer/customizer.php:271
-#: sparklethemes/customizer/customizer.php:312
+#: sparklethemes/customizer/customizer.php:34 
+#: sparklethemes/customizer/customizer.php:60 
+#: sparklethemes/customizer/customizer.php:85 
+#: sparklethemes/customizer/customizer.php:111 
+#: sparklethemes/customizer/customizer.php:230 
+#: sparklethemes/customizer/customizer.php:271 
+#: sparklethemes/customizer/customizer.php:312 
 #: sparklethemes/customizer/customizer.php:353
-#, php-format
 msgid "Use font awesome icon: Eg: %s. %sSee more here%s"
 msgstr ""
 
@@ -531,13 +494,13 @@ msgstr ""
 msgid "Enable/Disable Section"
 msgstr ""
 
-#: sparklethemes/customizer/customizer.php:198
-#: sparklethemes/customizer/customizer.php:709
+#: sparklethemes/customizer/customizer.php:198 
+#: sparklethemes/customizer/customizer.php:730
 msgid "Enable"
 msgstr ""
 
-#: sparklethemes/customizer/customizer.php:199
-#: sparklethemes/customizer/customizer.php:710
+#: sparklethemes/customizer/customizer.php:199 
+#: sparklethemes/customizer/customizer.php:731
 msgid "Disable"
 msgstr ""
 
@@ -566,9 +529,9 @@ msgstr ""
 msgid "Service One Title"
 msgstr ""
 
-#: sparklethemes/customizer/customizer.php:257
-#: sparklethemes/customizer/customizer.php:298
-#: sparklethemes/customizer/customizer.php:339
+#: sparklethemes/customizer/customizer.php:257 
+#: sparklethemes/customizer/customizer.php:298 
+#: sparklethemes/customizer/customizer.php:339 
 #: sparklethemes/customizer/customizer.php:380
 msgid "Service Area Description"
 msgstr ""
@@ -673,11 +636,11 @@ msgstr ""
 msgid "Payment Logo Images"
 msgstr ""
 
-#: sparklethemes/customizer/customizer.php:620
-#: sparklethemes/customizer/customizer.php:631
-#: sparklethemes/customizer/customizer.php:642
-#: sparklethemes/customizer/customizer.php:653
-#: sparklethemes/customizer/customizer.php:664
+#: sparklethemes/customizer/customizer.php:620 
+#: sparklethemes/customizer/customizer.php:631 
+#: sparklethemes/customizer/customizer.php:642 
+#: sparklethemes/customizer/customizer.php:653 
+#: sparklethemes/customizer/customizer.php:664 
 #: sparklethemes/customizer/customizer.php:675
 msgid "Upload Payment Logo Image"
 msgstr ""
@@ -690,8 +653,15 @@ msgstr ""
 msgid "Copyright"
 msgstr ""
 
+#: sparklethemes/customizer/customizer.php:704
+msgid "Custom CSS"
+msgstr ""
+
+#: sparklethemes/customizer/customizer.php:715
+msgid "Write your custom css"
+msgstr ""
+
 #: sparklethemes/hooks/footer.php:91
-#, php-format
 msgid "%1$s By %2$s"
 msgstr ""
 
@@ -743,7 +713,7 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: sparklethemes/hooks/woocommerce.php:257
+#: sparklethemes/hooks/woocommerce.php:259
 msgid "Sale!"
 msgstr ""
 
@@ -755,10 +725,11 @@ msgstr ""
 msgid "A widget that shows quick contact information"
 msgstr ""
 
-#: sparklethemes/sparkle-widgets/contact-info.php:28
-#: sparklethemes/sparkle-widgets/sparkle-category-products.php:59
-#: sparklethemes/sparkle-widgets/sparkle-fullpromo.php:34
-#: sparklethemes/sparkle-widgets/sparkle-products-area.php:62
+#: sparklethemes/sparkle-widgets/contact-info.php:28 
+#: sparklethemes/sparkle-widgets/sparkle-category-products.php:59 
+#: sparklethemes/sparkle-widgets/sparkle-fullpromo.php:34 
+#: sparklethemes/sparkle-widgets/sparkle-products-area.php:62 
+#: sparklethemes/sparkle-widgets/tabs-defaults.php:28
 msgid "Title"
 msgstr ""
 
@@ -814,12 +785,12 @@ msgstr ""
 msgid "Category Section Very Short Description"
 msgstr ""
 
-#: sparklethemes/sparkle-widgets/sparkle-category-collection.php:66
+#: sparklethemes/sparkle-widgets/sparkle-category-collection.php:66 
 #: sparklethemes/sparkle-widgets/sparkle-products-area.php:79
 msgid "Select Category"
 msgstr ""
 
-#: sparklethemes/sparkle-widgets/sparkle-category-collection.php:116
+#: sparklethemes/sparkle-widgets/sparkle-category-collection.php:116 
 #: sparklethemes/sparkle-widgets/sparkle-category-collection.php:120
 msgid "Products"
 msgstr ""
@@ -842,13 +813,7 @@ msgstr ""
 msgid "Left Align Category Image"
 msgstr ""
 
-#: sparklethemes/sparkle-widgets/sparkle-category-products.php:49
-#: sparklethemes/sparkle-widgets/sparkle-category-products.php:76
-#: sparklethemes/sparkle-widgets/sparkle-products-area.php:53
-msgid "Select Product Category"
-msgstr ""
-
-#: sparklethemes/sparkle-widgets/sparkle-category-products.php:64
+#: sparklethemes/sparkle-widgets/sparkle-category-products.php:64 
 #: sparklethemes/sparkle-widgets/sparkle-products-area.php:67
 msgid "Very Short Description"
 msgstr ""
@@ -857,8 +822,14 @@ msgstr ""
 msgid "Select Display Style (Image Alignment)"
 msgstr ""
 
-#: sparklethemes/sparkle-widgets/sparkle-category-products.php:82
-#: sparklethemes/sparkle-widgets/sparkle-products-area.php:85
+#: sparklethemes/sparkle-widgets/sparkle-category-products.php:76 
+#: sparklethemes/sparkle-widgets/sparkle-products-area.php:53
+msgid "Select Product Category"
+msgstr ""
+
+#: sparklethemes/sparkle-widgets/sparkle-category-products.php:82 
+#: sparklethemes/sparkle-widgets/sparkle-products-area.php:85 
+#: sparklethemes/sparkle-widgets/tabs-defaults.php:58
 msgid "Enter Number of Products Show"
 msgstr ""
 
@@ -1017,9 +988,7 @@ msgid "SP: Woo Category Tabs"
 msgstr ""
 
 #: sparklethemes/sparkle-widgets/sparkle-tabs-category.php:18
-msgid ""
-"A widget that shows WooCommerce category in multiple tabs with category "
-"related products"
+msgid "A widget that shows WooCommerce category in multiple tabs"
 msgstr ""
 
 #: sparklethemes/sparkle-widgets/sparkle-tabs-category.php:51
@@ -1030,8 +999,37 @@ msgstr ""
 msgid "Enter the Number Products Display"
 msgstr ""
 
-#: sparklethemes/sparkle-widgets/widgets-fields.php:11
-msgid "Select Categories"
+#: sparklethemes/sparkle-widgets/tabs-defaults.php:17
+msgid "SP: Woo Product Tab"
+msgstr ""
+
+#: sparklethemes/sparkle-widgets/tabs-defaults.php:18
+msgid ""
+"A widget that shows woocommerce product in tab format (Latest, Feature, On "
+"Sale, Up Sale)."
+msgstr ""
+
+#: sparklethemes/sparkle-widgets/tabs-defaults.php:34 
+#: sparklethemes/sparkle-widgets/tabs-defaults.php:101
+msgid "Latest Products"
+msgstr ""
+
+#: sparklethemes/sparkle-widgets/tabs-defaults.php:40 
+#: sparklethemes/sparkle-widgets/tabs-defaults.php:109
+msgid "Feature Products"
+msgstr ""
+
+#: sparklethemes/sparkle-widgets/tabs-defaults.php:46
+msgid "UpSell Products"
+msgstr ""
+
+#: sparklethemes/sparkle-widgets/tabs-defaults.php:52 
+#: sparklethemes/sparkle-widgets/tabs-defaults.php:117
+msgid "On Sale Products"
+msgstr ""
+
+#: sparklethemes/sparkle-widgets/tabs-defaults.php:125
+msgid "Up Sell Products"
 msgstr ""
 
 #: sparklethemes/sparkle-widgets/widgets-fields.php:224
@@ -1049,6 +1047,14 @@ msgstr ""
 #: woocommerce/global/quantity-input.php:27
 msgctxt "Product quantity input tooltip"
 msgid "Qty"
+msgstr ""
+
+#: woocommerce/single-product/related.php:53
+msgid "Related Products"
+msgstr ""
+
+#: woocommerce/single-product/up-sells.php:50
+msgid "You may also like&hellip;"
 msgstr ""
 
 #. Name of the theme

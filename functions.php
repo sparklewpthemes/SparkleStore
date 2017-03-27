@@ -40,9 +40,14 @@ function sparklestore_setup() {
 
 	/*
 	 * Enable support for custom logo.
-	 */
-	add_image_size( 'sparklestore-logo', 190, 60 );	
-	add_theme_support( 'custom-logo', array( 'size' => 'sparklestore-logo' ) );
+	*/
+	add_theme_support( 'custom-logo', array(
+		'width'       => 190,
+		'height'      => 60,
+		'flex-width'  => true,				
+		'flex-height' => true,
+		'header-text' => array( '.site-title', '.site-description' ),
+	) );
 
 	/*
 	 * Enable support for Post Thumbnails on posts and pages.
@@ -64,6 +69,12 @@ function sparklestore_setup() {
 		'sparklefootermenu' => esc_html__( 'Footer Menu', 'sparklestore' ),
 	) );
 
+
+	/*
+	 * Editor style.
+	*/
+	add_editor_style( 'css/editor-style.css' );
+	
 	/*
 	 * Switch default core markup for search form, comment form, and comments
 	 * to output valid HTML5.
@@ -185,7 +196,7 @@ add_action( 'widgets_init', 'sparklestore_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
- */
+*/
 function sparklestore_scripts() {
 
 	$sparklestore_theme = wp_get_theme();
@@ -198,14 +209,19 @@ function sparklestore_scripts() {
     wp_enqueue_style('sparklestore-google-fonts', add_query_arg( $sparklestore_font_args, "//fonts.googleapis.com/css" ) );
 
    /* Sparkle Store Font Awesome */
-    wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/assets/library/font-awesome/css/font-awesome.min.css', esc_attr( $theme_version ) );
+    wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/assets/library/font-awesome/css/font-awesome.min.css', esc_attr( $theme_version ) );
 
     /* Sparkle Store Lightslider CSS */
     wp_enqueue_style( 'lightslider', get_template_directory_uri() . '/assets/library/lightslider/css/lightslider.css' );
 
     /* Sparkle Store Main Style */
-    wp_enqueue_style( 'sparklestore-style', get_stylesheet_uri() );  
-  
+    wp_enqueue_style( 'sparklestore-style', get_stylesheet_uri() );
+
+    if ( has_header_image() ) {
+    	$custom_css = '.site-header{ background-image: url("' . esc_url( get_header_image() ) . '"); background-repeat: no-repeat; background-position: center center; background-size: cover; }';
+    	wp_add_inline_style( 'sparklestore-style', $custom_css );
+    }
+
     /* Sparkle Store html5 */
     wp_enqueue_script('html5', get_template_directory_uri() . '/assets/library/html5shiv/html5shiv.min.js', array('jquery'), esc_attr( $theme_version ), false);
     wp_script_add_data( 'html5', 'conditional', 'lt IE 9' );
@@ -238,18 +254,21 @@ add_action( 'wp_enqueue_scripts', 'sparklestore_scripts' );
 
 /**
  * Admin Enqueue scripts and styles.
-**/
+*/
 if ( ! function_exists( 'sparklestore_admin_scripts' ) ) {
 
     function sparklestore_admin_scripts($hook) {
 
+    	if( 'widgets.php' != $hook )
+        return;
+    
         if (function_exists('wp_enqueue_media')){
           wp_enqueue_media();
         }
 		wp_enqueue_script('sparklestore-media-uploader', get_template_directory_uri() . '/assets/js/sparklestore-admin.js', array( 'jquery', 'customize-controls' ) );
 		wp_localize_script('sparklestore-media-uploader', 'sparklestore_remove', array(
-		  'upload' => __('Upload', 'sparklestore'),
-		  'remove' => __('Remove', 'sparklestore')
+		  'upload' => esc_html__('Upload', 'sparklestore'),
+		  'remove' => esc_html__('Remove', 'sparklestore')
 		));
         wp_enqueue_style( 'sparklestore-style-admin', get_template_directory_uri() . '/assets/css/sparklestore-admin.css');   
     }
@@ -259,5 +278,5 @@ add_action('admin_enqueue_scripts', 'sparklestore_admin_scripts');
 
 /**
  * Require init.
-**/
+*/
 require  trailingslashit( get_template_directory() ).'sparklethemes/init.php';

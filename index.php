@@ -34,9 +34,12 @@ get_header(); ?>
 
 							endwhile;
 
-							if (function_exists("sparklestore_pagination")):
-		                        sparklestore_pagination();
-		                    endif;
+							the_posts_pagination( 
+			            		array(
+								    'prev_text' => esc_html__( 'Prev', 'sparklestore' ),
+								    'next_text' => esc_html__( 'Next', 'sparklestore' ),
+								)
+				            );
 
 						else :
 

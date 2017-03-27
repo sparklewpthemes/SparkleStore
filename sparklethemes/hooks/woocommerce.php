@@ -7,7 +7,7 @@ if (!function_exists('sparklestore_shopping_cart')) {
         <a class="cart-contents" href="<?php echo esc_url(WC()->cart->get_cart_url()); ?>">
             <div class="header-icon">
                 <i class="fa fa-shopping-bag"></i>
-                <span class="name-text"><?php _e('My Cart', 'sparklestore'); ?></span>
+                <span class="name-text"><?php esc_html_e('My Cart', 'sparklestore'); ?></span>
                 <span class="count">
                     <?php echo wp_kses_data(sprintf(WC()->cart->get_cart_contents_count())); ?>
                 </span>
@@ -44,17 +44,17 @@ if (defined('YITH_WCWL')) {
 
             <div class="yith-wcwl-add-button show" style="display:block">
                 <a href="<?php echo esc_url($url); ?>" data-toggle="tooltip" data-placement="top" rel="nofollow" data-product-id="<?php echo esc_attr($id); ?>" data-product-type="simple" title="<?php _e('Add to Wishlist', 'sparklestore'); ?>" class="add_to_wishlist link-wishlist">
-                    <?php _e('Add Wishlist', 'sparklestore'); ?>
+                    <?php esc_html_e('Add Wishlist', 'sparklestore'); ?>
                 </a>
                 <img src="<?php echo get_template_directory_uri() . '/assets/images/loading.gif'; ?>" class="ajax-loading" alt="loading" width="16" height="16">
             </div>
 
             <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                <a class="link-wishlist" href="<?php echo esc_url($wishlist_url); ?>"><?php _e('View Wishlist', 'sparklestore'); ?></a>
+                <a class="link-wishlist" href="<?php echo esc_url($wishlist_url); ?>"><?php esc_html_e('View Wishlist', 'sparklestore'); ?></a>
             </div>
 
             <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                <a class="link-wishlist" href="<?php echo esc_url($wishlist_url); ?>"><?php _e('Browse Wishlist', 'sparklestore'); ?></a>
+                <a class="link-wishlist" href="<?php echo esc_url($wishlist_url); ?>"><?php esc_html_e('Browse Wishlist', 'sparklestore'); ?></a>
             </div>
 
             <div class="clear"></div>
@@ -75,7 +75,7 @@ if (defined('YITH_WCWL')) {
                     <a href="<?php echo esc_url($wishlist_url); ?>" title="Wishlist" data-toggle="tooltip">
                         <i class="fa fa-heart"></i>
                         <span class="title-wishlist hidden-xs">
-                        <?php _e('Wishlist', 'sparklestore'); ?>
+                        <?php esc_html_e('Wishlist', 'sparklestore'); ?>
                         </span>
                         <div class="count">
                             <span><?php echo " (" . yith_wcwl_count_products() . ") "; ?></span>
@@ -105,7 +105,7 @@ if (defined('YITH_WOOCOMPARE')) {
         $is_button = !isset($button_or_link) || !$button_or_link ? get_option('yith_woocompare_is_button') : $button_or_link;
 
         if (!isset($button_text) || $button_text == 'default') {
-            $button_text = get_option('yith_woocompare_button_text', __('Compare', 'sparklestore'));
+            $button_text = get_option('yith_woocompare_button_text', esc_html__('Compare', 'sparklestore'));
             yit_wpml_register_string('Plugins', 'plugin_yit_compare_button_text', $button_text);
             $button_text = yit_wpml_string_translate('Plugins', 'plugin_yit_compare_button_text', $button_text);
         }
@@ -143,7 +143,7 @@ if (!function_exists('sparklestore_advance_search_form')) {
                 'hide_empty' => true
             );
             $product_categories = get_terms('product_cat', $args);
-            $categories_show = '<option value="">' . __('All Categories', 'sparklestore') . '</option>';
+            $categories_show = '<option value="">' . esc_html__('All Categories', 'sparklestore') . '</option>';
             $check = '';
             if (is_search()) {
                 if (isset($_GET['term']) && $_GET['term'] != '') {
@@ -151,7 +151,7 @@ if (!function_exists('sparklestore_advance_search_form')) {
                 }
             }
             $checked = '';
-            $allcat = __('All Categories', 'sparklestore');
+            $allcat = esc_html__('All Categories', 'sparklestore');
             $categories_show .= '<optgroup class="ap-adv-search" label="' . $allcat . '">';
             foreach ($product_categories as $category) {
                 if (isset($category->slug)) {
@@ -166,9 +166,9 @@ if (!function_exists('sparklestore_advance_search_form')) {
             $categories_show .= '</optgroup>';
                 $form = '<form role="search" method="get" id="search_mini_form"  action="' . esc_url(home_url('/')) . '">
                         <select id="cat" class="cate-dropdown hidden-sm hidden-md" name="term">' . $categories_show . '</select>
-                        <input id="search" type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="' . __('Search entire store here...', 'sparklestore') . '" class="searchbox" maxlength="128" />
+                        <input id="search" type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="' . esc_html__('Search entire store here...', 'sparklestore') . '" class="searchbox" maxlength="128" />
                          <button type="submit" title="Search" class="search-btn-bg" id="submit-button">
-                            <span>' . __('Search', 'sparklestore') . '</span>
+                            <span>' . esc_html__('Search', 'sparklestore') . '</span>
                          </button>
                         <input type="hidden" name="post_type" value="product" />
                         <input type="hidden" name="taxonomy" value="product_cat" />
@@ -203,7 +203,6 @@ if (!function_exists('sparklestore_tabs_ajax_action')) {
                             )),
                         'posts_per_page' => $product_number
                     );
-                     print_r($product_args);
 
                     $query = new WP_Query($product_args);
 
@@ -211,9 +210,8 @@ if (!function_exists('sparklestore_tabs_ajax_action')) {
                         while ($query->have_posts()) { $query->the_post();
                            woocommerce_get_template_part('content', 'product');
                         } 
-                    } 
-                    
-                    wp_reset_query(); 
+                    }                     
+                    wp_reset_postdata(); 
                 ?>
             </ul>
 
@@ -256,7 +254,7 @@ function sparklestore_woocommerce_template_loop_product_thumbnail() { ?>
             <?php 
                 global $post, $product;
                 if ($product->is_on_sale()) :
-                echo apply_filters('woocommerce_sale_flash', '<div class="new-label new-top-right">' . __('Sale!', 'sparklestore') . '</div>', $post, $product);
+                echo apply_filters('woocommerce_sale_flash', '<div class="new-label new-top-right">' . esc_html__('Sale!', 'sparklestore') . '</div>', $post, $product);
             ?>
             <?php endif; ?>
             <?php
@@ -374,6 +372,36 @@ if (!function_exists('sparklestore_woo_body_class')) {
 $column = get_theme_mod('sparklestore_woocommerce_display_product_number', '12');
 add_filter('loop_shop_per_page', create_function('$cols', 'return ' . $column . ';'), 20);
 
+/**
+ * WooCommerce display related product.
+*/
+if (!function_exists('sparklestore_related_products_args')) {
+  function sparklestore_related_products_args( $args ) {
+      $args['columns']  = intval(get_theme_mod('sparklestore_woocommerce_product_row', '3'));
+      return $args;
+  }
+}
+add_filter( 'woocommerce_output_related_products_args', 'sparklestore_related_products_args' );
+
+/**
+ * WooCommerce display upsell product.
+*/
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
+if ( ! function_exists( 'sparklestore_woocommerce_upsell_display' ) ) {
+  function sparklestore_woocommerce_upsell_display() {
+      woocommerce_upsell_display(3,3); 
+  }
+}
+add_action( 'woocommerce_after_single_product_summary', 'sparklestore_woocommerce_upsell_display', 15 );
+
+
+/**
+ * You may be interested in…
+*/
+add_filter( 'woocommerce_cross_sells_total', 'sparklestore_change_cross_sells_product_no' );
+function sparklestore_change_cross_sells_product_no( $columns ) {
+    return 2;
+}
 
 /**
  * WooCommerce products manage settins

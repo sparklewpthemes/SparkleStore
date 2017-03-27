@@ -9,9 +9,6 @@
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<div class="col-main">
-		<div class="page-title">
-			<?php the_title( '<h2>', '</h2>' ); ?>
-		</div><!-- .entry-header -->
 
 		<div class="static-contain">
 			<?php

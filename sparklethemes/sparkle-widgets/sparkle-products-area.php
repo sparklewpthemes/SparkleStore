@@ -14,8 +14,8 @@ class sparklestore_product_widget_area extends WP_Widget {
     **/
     public function __construct() {
         parent::__construct(
-            'sparklestore_product_widget_area', __('SP: Woo Product Area','sparklestore'), array(
-            'description' => __('A widget that shows woocommerce all type product (Latest, Feature, On Sale, Up Sale) and selected category products', 'sparklestore')
+            'sparklestore_product_widget_area', esc_html__('SP: Woo Product Area','sparklestore'), array(
+            'description' => esc_html__('A widget that shows woocommerce all type product (Latest, Feature, On Sale, Up Sale) and selected category products', 'sparklestore')
         ));
     }
     
@@ -23,11 +23,11 @@ class sparklestore_product_widget_area extends WP_Widget {
         
 
         $prod_type = array(
-            'category'        => __('Category', 'sparklestore'),
-            'latest_product'  => __('Latest Product', 'sparklestore'),
-            'upsell_product'  => __('UpSell Product', 'sparklestore'),
-            'feature_product' => __('Feature Product', 'sparklestore'),
-            'on_sale'         => __('On Sale Product', 'sparklestore'),
+            'category'        => esc_html__('Category', 'sparklestore'),
+            'latest_product'  => esc_html__('Latest Product', 'sparklestore'),
+            'upsell_product'  => esc_html__('UpSell Product', 'sparklestore'),
+            'feature_product' => esc_html__('Feature Product', 'sparklestore'),
+            'on_sale'         => esc_html__('On Sale Product', 'sparklestore'),
         );
 
           $taxonomy     = 'product_cat';
@@ -50,7 +50,7 @@ class sparklestore_product_widget_area extends WP_Widget {
 
           $woocommerce_categories = array();
           $woocommerce_categories_obj = get_categories($args);
-          $woocommerce_categories[''] = __('Select Product Category','sparklestore');
+          $woocommerce_categories[''] = esc_html__('Select Product Category','sparklestore');
           foreach ($woocommerce_categories_obj as $category) {
             $woocommerce_categories[$category->term_id] = $category->name;
           }
@@ -59,30 +59,30 @@ class sparklestore_product_widget_area extends WP_Widget {
             
             'sparklestore_product_title' => array(
                 'sparklestore_widgets_name' => 'sparklestore_product_title',
-                'sparklestore_widgets_title' => __('Title', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Title', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'title',
             ),
             'sparklestore_product_short_desc' => array(
                 'sparklestore_widgets_name' => 'sparklestore_product_short_desc',
-                'sparklestore_widgets_title' => __('Very Short Description', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Very Short Description', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'textarea',
                 'sparklestore_widgets_row'    => 4,
             ),
             'sparklestore_product_type' => array(
                 'sparklestore_widgets_name' => 'sparklestore_product_type',
-                'sparklestore_widgets_title' => __('Select Product Type', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Select Product Type', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'select',
                 'sparklestore_widgets_field_options' => $prod_type
             ),
             'sparklestore_woo_category' => array(
                 'sparklestore_widgets_name' => 'sparklestore_woo_category',
-                'sparklestore_widgets_title' => __('Select Category', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Select Category', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'select',
                 'sparklestore_widgets_field_options' => $woocommerce_categories
             ),
             'sparklestore_product_number' => array(
                 'sparklestore_widgets_name' => 'sparklestore_product_number',
-                'sparklestore_widgets_title' => __('Enter Number of Products Show', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Enter Number of Products Show', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'number',
             ),                                 
         );
@@ -98,7 +98,7 @@ class sparklestore_product_widget_area extends WP_Widget {
         ** wp query for first block
         **/  
         $title            = esc_attr( $instance['sparklestore_product_title'] ); 
-        $shot_desc        = esc_textarea( $instance['sparklestore_product_short_desc'] );
+        $shot_desc        = esc_html( $instance['sparklestore_product_short_desc'] );
         $product_type     = esc_attr( $instance['sparklestore_product_type'] );
         $product_category = intval( $instance['sparklestore_woo_category'] );
         $product_number   = intval( $instance['sparklestore_product_number'] );
@@ -118,7 +118,7 @@ class sparklestore_product_widget_area extends WP_Widget {
             );
         }
         elseif($product_type == 'latest_product'){
-            $product_label_custom = __('New', 'sparklestore');
+            $product_label_custom = esc_html__('New', 'sparklestore');
             $product_args = array(
                 'post_type' => 'product',
                 'tax_query' => array(
@@ -186,8 +186,8 @@ class sparklestore_product_widget_area extends WP_Widget {
 
                     <div class="blocktitlewrap">                        
                         <div class="blocktitle">
-                            <?php if(!empty( $title )) { ?><h2><?php echo $title; ?></h2><?php } ?>
-                            <?php if(!empty( $shot_desc )) { ?><p><?php echo $shot_desc; ?></p><?php } ?>
+                            <?php if(!empty( $title )) { ?><h2><?php echo esc_attr( $title ); ?></h2><?php } ?>
+                            <?php if(!empty( $shot_desc )) { ?><p><?php echo esc_html( $shot_desc ); ?></p><?php } ?>
                         </div>
                         <div class="SparkleStoreAction">
                             <div class="sparkle-lSPrev"></div>
@@ -202,7 +202,7 @@ class sparklestore_product_widget_area extends WP_Widget {
                         ?>
                             <?php woocommerce_get_template_part( 'content', 'product' ); ?>
                             
-                        <?php } } wp_reset_query(); ?>                    
+                        <?php } } wp_reset_postdata(); ?>                    
                     </ul>                  
                 </div>
             </div>        

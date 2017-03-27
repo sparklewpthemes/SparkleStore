@@ -27,7 +27,7 @@ if ( post_password_required() ) {
 	if ( have_comments() ) : ?>
 		<div class="comment-content wow bounceInUp animated">
 		    <div class="post-block post-comments clearfix">
-		      <h2 class="title"><?php _e( 'Comments','sparklestore' ); ?> </h2>
+		      <h2 class="title"><?php esc_html_e( 'Comments','sparklestore' ); ?> </h2>
 		      <ul class="comments">
 			      <?php
 			      	wp_list_comments('type=comment&callback=sparklestore_comment');
@@ -73,7 +73,7 @@ if ( post_password_required() ) {
 
 		$args = array(
 		  	'comment_notes_after' => '',		  	
-		  	'label_submit' =>__( 'ADD COMMENT', 'sparklestore' ),				
+		  	'label_submit' =>esc_html__( 'ADD COMMENT', 'sparklestore' ),				
 			'comment_notes_before' => '',
 		);
 		comment_form( $args );

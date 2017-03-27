@@ -34,11 +34,11 @@ function sparklestore_body_classes( $classes ) {
 		$classes[] = $post_sidebar;
 	}
 
-  	if( is_home() || is_search() || is_category() || is_tag() ){
+  	if( is_home() || is_search() || is_category() || is_tag() || is_attachment() ){
 		$classes[] = 'rightsidebar';
 	}
 
-	if ( is_woocommerce_activated() ) {
+	if ( sparklestore_is_woocommerce_activated() ) {
 	    
 	    if( is_product_category() || is_shop() ) {
 	        $woo_page_layout = esc_attr( get_theme_mod( 'sparklestore_woocommerce_products_page_layout','rightsidebar' ) );

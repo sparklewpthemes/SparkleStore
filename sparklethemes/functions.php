@@ -2,21 +2,9 @@
 /**
  * WooCommerce Section Start Here
 */
-if ( ! function_exists( 'is_woocommerce_activated' ) ) {
-    function is_woocommerce_activated() {
+if ( ! function_exists( 'sparklestore_is_woocommerce_activated' ) ) {
+    function sparklestore_is_woocommerce_activated() {
         if ( class_exists( 'woocommerce' ) ) { return true; } else { return false; }
-    }
-}
-
-/**
- * Limit word function 
-*/
-if ( ! function_exists( 'sparklestore_word_count' ) ) {
-    function sparklestore_word_count($string, $limit) {
-        $stringtags = strip_tags($string);
-        $stringtags = strip_shortcodes($stringtags);
-        $words = explode(' ', $stringtags);
-        return implode(' ', array_slice($words, 0, $limit));
     }
 }
 
@@ -26,22 +14,18 @@ if ( ! function_exists( 'sparklestore_word_count' ) ) {
 function sparklestore_html_tag_schema() {
     $schema     = 'http://schema.org/';
     $type       = 'WebPage';
-
     // Is single post
     if ( is_singular( 'post' ) ) {
         $type   = 'Article';
     }
-
     // Is author page
     elseif ( is_author() ) {
         $type   = 'ProfilePage';
     }
-
     // Is search results page
     elseif ( is_search() ) {
         $type   = 'SearchResultsPage';
     }
-
     echo 'itemscope="itemscope" itemtype="' . esc_attr( $schema ) . esc_attr( $type ) . '"';
 }
 
@@ -52,20 +36,20 @@ if(! function_exists('sparklestore_meta_options')) {
   function sparklestore_meta_options($meta_options = array()){
       if(empty($meta_options)) { ?>
       <ul class="post-meta">
-        <li><i class="fa fa-user"></i><?php _e('by','sparklestore'); ?> <?php the_author_posts_link(); ?> </li>
-        <li><i class="fa fa-comments"></i><?php comments_popup_link( '0 comments', '1 comments', '% comments' ); ?> </li>
-        <li><i class="fa fa-clock-o"></i><a href="<?php the_permalink(); ?>"><?php echo get_the_date();?></a></li>
+        <li><i class="fa fa-user"></i> <?php the_author_posts_link(); ?> </li>
+        <li><i class="fa fa-comments"></i><?php comments_popup_link( esc_html__( '0 Comment', 'sparklestore' ),  esc_html__( '1 Comment', 'sparklestore' ), esc_html__( '% Comments', 'sparklestore' ), esc_html__( 'Comments are Closed', 'sparklestore' ) ); ?></li>
+        <li><i class="fa fa-clock-o"></i><a href="<?php the_permalink(); ?>"><?php echo esc_attr( get_the_date() ); ?></a></li>
       </ul>
       <?php } else {
         echo '<ul>';
           if(in_array('author', $meta_options)){ ?>
-              <li><i class="fa fa-user"></i><?php _e('by','sparklestore'); ?> <?php the_author_posts_link(); ?> </li>
+              <li><i class="fa fa-user"></i> <?php the_author_posts_link(); ?> </li>
           <?php }        
           if(in_array('comments', $meta_options)){ ?>
-            <li><i class="fa fa-comments"></i><?php comments_popup_link( '0 comments', '1 comments', '% comments' ); ?> </li>
+            <li><i class="fa fa-comments"></i><?php comments_popup_link( esc_html__( '0 Comment', 'sparklestore' ),  esc_html__( '1 Comment', 'sparklestore' ), esc_html__( '% Comments', 'sparklestore' ), esc_html__( 'Comments are Closed', 'sparklestore' ) ); ?></li>
           <?php }
           if(in_array('time', $meta_options)){ ?>
-            <li><i class="fa fa-clock-o"></i><a href="<?php the_permalink(); ?>"><?php echo get_the_date();?></a></li>
+            <li><i class="fa fa-clock-o"></i><a href="<?php the_permalink(); ?>"><?php echo esc_attr( get_the_date() );?></a></li>
           <?php } 
         echo '</ul>';      
       }     
@@ -125,22 +109,22 @@ if ( ! function_exists( 'sparklestore_payment_logo' ) ) {
       $payment_logo_six = esc_url( get_theme_mod('paymentlogo_image_six') ); ?>
       <div class="payment-accept">
         <?php if(!empty($payment_logo_one)) { ?>
-            <img src="<?php echo esc_url($payment_logo_one)?>" alt="" />
+            <img src="<?php echo esc_url($payment_logo_one)?>" />
         <?php } ?>
         <?php if(!empty($payment_logo_two)) { ?>
-            <img src="<?php echo esc_url($payment_logo_two)?>" alt="" />
+            <img src="<?php echo esc_url($payment_logo_two)?>" />
         <?php } ?>
         <?php if(!empty($payment_logo_three)) { ?>
-            <img src="<?php echo esc_url($payment_logo_three)?>" alt="" />
+            <img src="<?php echo esc_url($payment_logo_three)?>" />
         <?php } ?>
         <?php if(!empty($payment_logo_four)) { ?>
-            <img src="<?php echo esc_url($payment_logo_four)?>" alt="" />
+            <img src="<?php echo esc_url($payment_logo_four)?>" />
         <?php } ?>
         <?php if(!empty($payment_logo_five)) { ?>
-            <img src="<?php echo esc_url($payment_logo_five)?>" alt="" />
+            <img src="<?php echo esc_url($payment_logo_five)?>" />
         <?php } ?>
         <?php if(!empty($payment_logo_six)) { ?>
-            <img src="<?php echo esc_url($payment_logo_six)?>" alt="" />
+            <img src="<?php echo esc_url($payment_logo_six)?>" />
         <?php } ?>
       </div>
       <?php
@@ -171,21 +155,21 @@ add_filter( 'sparklestore_footer_menu', 'sparklestore_footer_menu', 5 );
 if ( ! function_exists( 'sparklestore_service_section' ) ) {
   function sparklestore_service_section() {  
 
-      $services_icon_one = esc_attr( get_theme_mod( 'sparklestore_services_icon_one', 'fa-truck' ) );
-      $service_title_one = esc_attr( get_theme_mod( 'sparklestore_service_title_one','FREE SHIPPING WORLDWIDE' ) );
-      $service_desc_one = esc_attr( get_theme_mod( 'sparklestore_service_desc_one', 'Lorem ipsum dolor sit amet.' ) );
+      $services_icon_one = esc_attr( get_theme_mod( 'sparklestore_services_icon_one' ) );
+      $service_title_one = esc_attr( get_theme_mod( 'sparklestore_service_title_one' ) );
+      $service_desc_one = esc_attr( get_theme_mod( 'sparklestore_service_desc_one' ) );
 
-      $services_icon_two = esc_attr( get_theme_mod( 'sparklestore_services_icon_two', 'fa-headphones' ) );
-      $service_title_two = esc_attr( get_theme_mod( 'sparklestore_service_title_two', '24X7 CUSTOMER SUPPORT' ) );
-      $service_desc_two = esc_attr( get_theme_mod( 'sparklestore_service_desc_two', 'Lorem ipsum dolor sit amet.' ) );
+      $services_icon_two = esc_attr( get_theme_mod( 'sparklestore_services_icon_two' ) );
+      $service_title_two = esc_attr( get_theme_mod( 'sparklestore_service_title_two' ) );
+      $service_desc_two = esc_attr( get_theme_mod( 'sparklestore_service_desc_two' ) );
 
-      $services_icon_three = esc_attr( get_theme_mod( 'sparklestore_services_icon_three', 'fa-dollar' ) );
-      $service_title_three = esc_attr( get_theme_mod( 'sparklestore_service_title_three', 'MONEY BACK GUARANTEE' ) );
-      $service_desc_three = esc_attr( get_theme_mod( 'sparklestore_service_desc_three', 'Lorem ipsum dolor sit amet.' ) );
+      $services_icon_three = esc_attr( get_theme_mod( 'sparklestore_services_icon_three' ) );
+      $service_title_three = esc_attr( get_theme_mod( 'sparklestore_service_title_three' ) );
+      $service_desc_three = esc_attr( get_theme_mod( 'sparklestore_service_desc_three' ) );
 
-      $services_icon_four = esc_attr( get_theme_mod( 'sparklestore_services_icon_four', 'fa-mobile' ) );
-      $service_title_four = esc_attr( get_theme_mod( 'sparklestore_service_title_four', 'HOTLINE +(440) 984-3157' ) );
-      $service_desc_four = esc_attr( get_theme_mod( 'sparklestore_service_desc_four', 'Lorem ipsum dolor sit amet.' ) );
+      $services_icon_four = esc_attr( get_theme_mod( 'sparklestore_services_icon_four' ) );
+      $service_title_four = esc_attr( get_theme_mod( 'sparklestore_service_title_four' ) );
+      $service_desc_four = esc_attr( get_theme_mod( 'sparklestore_service_desc_four' ) );
 
       $service_area = esc_attr( get_theme_mod( 'sparklestore_services_area_settings','enable' ) );
 
@@ -196,48 +180,48 @@ if ( ! function_exists( 'sparklestore_service_section' ) ) {
               <div class="features-block">
 
                   <div class="feature-box-div">
-                    <div class="feature-box first one"> <span class="fa <?php if(!empty( $services_icon_one )) { echo $services_icon_one; } ?>">&nbsp;</span>
+                    <div class="feature-box first one"> <span class="fa <?php if(!empty( $services_icon_one )) { echo esc_attr( $services_icon_one ); } ?>">&nbsp;</span>
                       <div class="content">
                         <?php if(!empty( $service_title_one )) { ?>
-                        <h3><?php echo $service_title_one; ?></h3>
+                        <h3><?php echo esc_attr( $service_title_one ); ?></h3>
                         <?php }  if(!empty( $service_desc_one )) { ?>
-                          <p><?php echo $service_desc_one; ?></p>
+                          <p><?php echo esc_attr( $service_desc_one ); ?></p>
                         <?php } ?>
                       </div>
                     </div>
                   </div>
                   
                   <div class="feature-box-div">
-                    <div class="feature-box first two"> <span class="fa <?php if(!empty( $services_icon_two )) { echo $services_icon_two; } ?>">&nbsp;</span>
+                    <div class="feature-box first two"> <span class="fa <?php if(!empty( $services_icon_two )) { echo esc_attr( $services_icon_two ); } ?>">&nbsp;</span>
                       <div class="content">
                         <?php if(!empty( $service_title_two )) { ?>
-                        <h3><?php echo $service_title_two; ?></h3>
+                        <h3><?php echo esc_attr( $service_title_two ); ?></h3>
                         <?php }  if(!empty( $service_desc_two )) { ?>
-                          <p><?php echo $service_desc_two; ?></p>
+                          <p><?php echo esc_attr( $service_desc_two ); ?></p>
                         <?php } ?>
                       </div>
                     </div>
                   </div>
 
                   <div class="feature-box-div">
-                    <div class="feature-box first three"> <span class="fa <?php if(!empty( $services_icon_three )) { echo $services_icon_three; } ?>">&nbsp;</span>
+                    <div class="feature-box first three"> <span class="fa <?php if(!empty( $services_icon_three )) { echo esc_attr( $services_icon_three ); } ?>">&nbsp;</span>
                       <div class="content">
                         <?php if(!empty( $service_title_three )) { ?>
-                        <h3><?php echo $service_title_three; ?></h3>
+                        <h3><?php echo esc_attr( $service_title_three ); ?></h3>
                         <?php }  if(!empty( $service_desc_three )) { ?>
-                          <p><?php echo $service_desc_three; ?></p>
+                          <p><?php echo esc_attr( $service_desc_three ); ?></p>
                         <?php } ?>
                       </div>
                     </div>
                   </div>
 
                   <div class="feature-box-div">
-                    <div class="feature-box first last"> <span class="fa <?php if(!empty( $services_icon_four )) { echo $services_icon_four; } ?>">&nbsp;</span>
+                    <div class="feature-box first last"> <span class="fa <?php if(!empty( $services_icon_four )) { echo esc_attr( $services_icon_four ); } ?>">&nbsp;</span>
                       <div class="content">
                         <?php if(!empty( $service_title_four )) { ?>
-                        <h3><?php echo $service_title_four; ?></h3>
+                        <h3><?php echo esc_attr( $service_title_four ); ?></h3>
                         <?php }  if(!empty( $service_desc_four )) { ?>
-                          <p><?php echo $service_desc_four; ?></p>
+                          <p><?php echo esc_attr( $service_desc_four ); ?></p>
                         <?php } ?>
                       </div>
                     </div>
@@ -262,34 +246,29 @@ if ( ! function_exists( 'sparklestore_comment' ) ) {
     <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
         <div class="comment-body" id="comment-<?php comment_ID(); ?>">
               <div class="img-thumbnail">
-                <?php echo get_avatar($comment,$size='100'); ?>
+                <?php echo get_avatar($comment, $size='100'); ?>
               </div>             
 
               <div class="comment-block">
-
                   <div class="comment-arrow"></div>
-
                   <span class="comment-by">
-                    <?php printf(__('<strong>%s</strong>','sparklestore'), get_comment_author_link()) ?>
+                    <strong><?php echo esc_attr( get_comment_author() ); ?></strong>
                     <span class="pt-right">
                       <span> </span>
                       <span><i class="fa fa-reply"></i><?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?></span>
                     </span>
                   </span>
-
                   <div>
-
                       <?php if ($comment->comment_approved == '0') : ?>
-                           <em><?php _e('Your comment is awaiting moderation.','sparklestore') ?></em>
+                           <em><?php esc_html_e('Your comment is awaiting moderation.','sparklestore') ?></em>
                            <br />
                       <?php endif; ?>
-
                       <?php comment_text() ?>
                   </div>
                   
                   <span class="date pt-right">
                       <a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>">
-                        <?php printf(__('%1$s at %2$s','sparklestore'), get_comment_date(),  get_comment_time()) ?>
+                        <?php printf( esc_attr__('%1$s at %2$s','sparklestore'), get_comment_date(),  get_comment_time()) ?>
                       </a>
                   </span>
 
@@ -307,7 +286,7 @@ add_action('add_meta_boxes', 'sparklestore_metabox_section');
 if ( ! function_exists( 'sparklestore_metabox_section' ) ) {
     function sparklestore_metabox_section(){   
         add_meta_box('sparklestore_display_layout', 
-            __( 'Display Layout Options', 'sparklestore' ), 
+            esc_html__( 'Display Layout Options', 'sparklestore' ), 
             'sparklestore_display_layout_callback', 
             array('page','post'), 
             'normal', 
@@ -320,22 +299,22 @@ $sparklestore_page_layouts =array(
 
     'leftsidebar' => array(
         'value'     => 'leftsidebar',
-        'label'     => __( 'Left Sidebar', 'sparklestore' ),
+        'label'     => esc_html__( 'Left Sidebar', 'sparklestore' ),
         'thumbnail' => get_template_directory_uri() . '/assets/images/left-sidebar.png',
     ),
     'rightsidebar' => array(
         'value'     => 'rightsidebar',
-        'label'     => __( 'Right (Default)', 'sparklestore' ),
+        'label'     => esc_html__( 'Right (Default)', 'sparklestore' ),
         'thumbnail' => get_template_directory_uri() . '/assets/images/right-sidebar.png',
     ),
      'nosidebar' => array(
         'value'     => 'nosidebar',
-        'label'     => __( 'Full width', 'sparklestore' ),
+        'label'     => esc_html__( 'Full width', 'sparklestore' ),
         'thumbnail' => get_template_directory_uri() . '/assets/images/no-sidebar.png',
     ),
     'bothsidebar' => array(
         'value'     => 'bothsidebar',
-        'label'     => __( 'Both Sidebar', 'sparklestore' ),
+        'label'     => esc_html__( 'Both Sidebar', 'sparklestore' ),
         'thumbnail' => get_template_directory_uri() . '/assets/images/both-sidebar.png',
     )
 );
@@ -355,14 +334,14 @@ if ( ! function_exists( 'sparklestore_display_layout_callback' ) ) {
                   foreach ($sparklestore_page_layouts as $field) {  
                   $sparklestore_page_metalayouts = esc_attr( get_post_meta( $post->ID, 'sparklestore_page_layouts', true ) ); 
                 ?>            
-                  <div class="radio-image-wrapper slidercat" id="slider-<?php echo $i; ?>" style="float:left; margin-right:30px;">
+                  <div class="radio-image-wrapper slidercat" id="slider-<?php echo intval( $i ); ?>" style="float:left; margin-right:30px;">
                     <label class="description">
                         <span>
                           <img src="<?php echo esc_url( $field['thumbnail'] ); ?>" />
                         </span></br>
-                        <input type="radio" name="sparklestore_page_layouts" value="<?php echo $field['value']; ?>" <?php checked( $field['value'], 
-                            $sparklestore_page_metalayouts ); if(empty($sparklestore_page_metalayouts) && $field['value']=='rightsidebar'){ echo "checked='checked'";  } ?>/>
-                         <?php echo $field['label']; ?>
+                        <input type="radio" name="sparklestore_page_layouts" value="<?php echo esc_html( $field['value'] ); ?>" <?php checked( esc_html( $field['value'] ), 
+                            $sparklestore_page_metalayouts ); if(empty($sparklestore_page_metalayouts) && esc_html( $field['value'] )=='rightsidebar'){ echo "checked='checked'";  } ?>/>
+                         <?php echo esc_html( $field['label'] ); ?>
                     </label>
                   </div>
                 <?php  $i++; }  ?>
@@ -390,7 +369,7 @@ if ( ! function_exists( 'sparklestore_save_page_settings' ) ) {
                 return $post_id;  
         }    
         foreach ($sparklestore_page_layouts as $field) {  
-            $old = get_post_meta( $post_id, 'sparklestore_page_layouts', true); 
+            $old = esc_attr( get_post_meta( $post_id, 'sparklestore_page_layouts', true) ); 
             $new = sanitize_text_field($_POST['sparklestore_page_layouts']);
             if ($new && $new != $old) {  
                 update_post_meta($post_id, 'sparklestore_page_layouts', $new);  
@@ -415,6 +394,8 @@ if ( ! function_exists( 'sparklestore_breadcrumbs' ) ) {
                     the_archive_title( '<h1 class="entry-title">', '</h1>' );
                 }elseif( is_search() ){ ?>
                     <h1 class="entry-title"><?php printf( esc_html__( 'Search Results for : %s', 'sparklestore' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+                <?php }elseif( is_404() ){ ?>
+                    <h1 class="entry-title"><?php echo esc_html__('404','sparklestore'); ?></h1>
                 <?php }else{
                     the_title( '<h1 class="entry-title">', '</h1>' ); 
                 }
@@ -460,106 +441,115 @@ add_action( 'breadcrumb-woocommerce', 'sparklestore_breadcrumb_woocommerce' );
  * Sparklestore breadcrumbs function area
 */
 if (!function_exists('sparkle_store_breadcrumbs')) {
-
   function sparkle_store_breadcrumbs() {
-      global $post;
-        $showOnHome = 0; // 1 - show breadcrumbs on the homepage, 0 - don't show
-        $delimiter = '/';      
-        $home = __('Home', 'sparklestore'); // text for the 'Home' link
-        $showCurrent = 1; // 1 - show current post/page title in breadcrumbs, 0 - don't show
-        $before = '<span class="current">'; // tag before the current crumb
-        $after = '</span>'; // tag after the current crumb
-        $homeLink = esc_url( home_url() );
-        if ( is_home() || is_front_page() ) {
+    global $post;
+      $showOnHome = 0; // 1 - show breadcrumbs on the homepage, 0 - don't show
+      $delimiter = '/';    
+      $home = esc_html__('Home', 'sparklestore'); // text for the 'Home' link
+      $showCurrent = 1; // 1 - show current post/page title in breadcrumbs, 0 - don't show
+      $before = '<span class="current">'; // tag before the current crumb
+      $after = '</span>'; // tag after the current crumb
+      $homeLink = esc_url( home_url() );
 
-          if ($showOnHome == 1)
-            echo '<li><a href="' . $homeLink . '">' . $home . '</a></li></li>';
-        } else {
-          echo '<li><a href="' . $homeLink . '">' . $home . '</a> ' . $delimiter . ' ';
-        if ( is_category() ) {
-          $thisCat = get_category(get_query_var('cat'), false);
+      if (is_home() || is_front_page()) {
+        if ($showOnHome == 1)
+          echo '<div id="sparklestore-breadcrumb"><a href="' . esc_url($homeLink) . '">' . esc_attr($home) . '</a></div></div>';
+      } else {
+          echo '<div id="sparklestore-breadcrumb"><a href="' . esc_url($homeLink) . '">' . esc_attr($home) . '</a> ' . esc_attr($delimiter) . ' ';
+        if (is_category()) {
+          $thisCat = get_category( get_query_var('cat') , false);
           if ($thisCat->parent != 0)
-            echo get_category_parents($thisCat->parent, TRUE, ' ' . $delimiter . ' ');
-          echo $before . __('Archive by category','sparklestore').' "' . single_cat_title('', false) . '"' . $after;
+            echo get_category_parents($thisCat->parent, TRUE, ' ' . esc_attr($delimiter) . ' ');
+          echo esc_html__('Archive by category','sparklestore').' "' . single_cat_title('', false) . '" ';
         } elseif (is_search()) {
-          echo $before . __('Search results for','sparklestore'). '"' . get_search_query() . '"' . $after;
+          echo esc_html__('Search results for','sparklestore'). '"' . get_search_query() . '"';
         } elseif (is_day()) {
-          echo '<a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a> ' . $delimiter . ' ';
-          echo '<a href="' . get_month_link(get_the_time('Y'), get_the_time('m')) . '">' . get_the_time('F') . '</a> ' . $delimiter . ' ';
-          echo $before . get_the_time('d') . $after;
+          echo '<a href="' . esc_url(get_year_link(get_the_time('Y'))) . '">' . esc_attr(get_the_time('Y')) . '</a> ' . esc_attr($delimiter) . ' ';
+          echo '<a href="' . esc_url(get_month_link(get_the_time('Y')), esc_attr(get_the_time('m'))) . '">' . esc_attr(get_the_time('F')) . '</a> ' . esc_attr($delimiter) . ' ';
+          echo esc_attr(get_the_time('d'));
         } elseif (is_month()) {
-          echo '<a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a> ' . $delimiter . ' ';
-          echo $before . get_the_time('F') . $after;
+          echo '<a href="' . esc_url(get_year_link(get_the_time('Y'))) . '">' . esc_attr(get_the_time('Y')) . '</a> ' . esc_attr($delimiter) . ' ';
+          echo esc_attr(get_the_time('F'));
         } elseif (is_year()) {
-          echo $before . get_the_time('Y') . $after;
+          echo esc_attr(get_the_time('Y'));
         } elseif (is_single() && !is_attachment()) {
+          
           if (get_post_type() != 'post') {
             $post_type = get_post_type_object(get_post_type());
             $slug = $post_type->rewrite;
-            echo '<a href="' . $homeLink . '/' . $slug['slug'] . '/">' . $post_type->labels->singular_name . '</a>';
+            echo '<a href="' . esc_url($homeLink) . '/' . esc_attr($slug['slug']) . '/">' . $post_type->labels->singular_name . '</a>';
             if ($showCurrent == 1)
-              echo ' ' . $delimiter . ' ' . $before . get_the_title() . $after;
+              echo ' ' . esc_attr($delimiter) . ' ' . $before . esc_attr(get_the_title()) . $after;
           } else {
             $cat = get_the_category();
             $cat = $cat[0];
-            $cats = get_category_parents($cat, TRUE, ' ' . $delimiter . ' ');
+            $cats = get_category_parents($cat, TRUE, ' ' . esc_attr($delimiter) . ' ');
             if ($showCurrent == 0)
               $cats = preg_replace("#^(.+)\s$delimiter\s$#", "$1", $cats);
-            echo $cats;
+            echo wp_kses_post( $cats );
             if ($showCurrent == 1)
-              echo $before . get_the_title() . $after;
+              echo esc_attr(get_the_title());
           }
+
         } elseif (!is_single() && !is_page() && get_post_type() != 'post' && !is_404()) {
           $post_type = get_post_type_object(get_post_type());
-          echo $before . $post_type->labels->singular_name . $after;
-        } elseif (is_attachment()) {
-          $parent = get_post($post->post_parent);
-          $cat = get_the_category($parent->ID);
-          $cat = $cat[0];
-          echo get_category_parents($cat, TRUE, ' ' . $delimiter . ' ');
-          echo '<a href="' . esc_url( get_permalink( $parent ) ) . '">' . $parent->post_title . '</a>';
-          if ($showCurrent == 1)
-            echo ' ' . $delimiter . ' ' . $before . get_the_title() . $after;
+          echo esc_attr($post_type->labels->singular_name);
+        } elseif ( is_attachment() ) {
+            $parent = get_post($post->post_parent);
+            $cat    = get_the_category($parent->ID);
+            if ( isset($cat) && !empty($cat)) {
+                $cat    = $cat[0];
+                echo get_category_parents($cat, TRUE, ' ' . esc_attr( $delimiter ) . ' ');
+                echo '<li><a href="' . esc_url( get_permalink($parent) ) . '">' . esc_attr( $parent->post_title ) . '</a></li>';
+            }
+            if ($showCurrent == 1)
+                echo $before . get_the_title() . $after;
         } elseif (is_page() && !$post->post_parent) {
-          if ($showCurrent == 1)
-            echo $before . get_the_title() . $after;
+          if ($showCurrent == 1){
+            echo esc_attr(get_the_title());
+          }
         } elseif (is_page() && $post->post_parent) {
           $parent_id = $post->post_parent;
           $breadcrumbs = array();
           while ($parent_id) {
-            $page = get_page($parent_id);
-            $breadcrumbs[] = '<a href="' . esc_url( get_permalink($page->ID) ) . '">' . get_the_title($page->ID) . '</a>';
-            $parent_id = $page->post_parent;
+            if(!empty($parent_id)){
+              $page = (object) get_posts($parent_id)[0];
+              $breadcrumbs[] = '<a href="' . esc_url( get_permalink($page->ID) ) . '">' . esc_attr(get_the_title($page->ID)) . '</a>';
+              $parent_id = $page->post_parent;
+            }
           }
           $breadcrumbs = array_reverse($breadcrumbs);
           for ($i = 0; $i < count($breadcrumbs); $i++) {
-            echo $breadcrumbs[$i];
+            echo sprintf( $breadcrumbs[$i] );
             if ($i != count($breadcrumbs) - 1)
               echo ' ' . $delimiter . ' ';
           }
-          if ($showCurrent == 1)
-            echo ' ' . $delimiter . ' ' . $before . get_the_title() . $after;
+          if ($showCurrent == 1){
+            echo ' ' . esc_attr($delimiter) . ' ' . $before . esc_attr(get_the_title()) . $after;
+          }
         } elseif (is_tag()) {
-          echo $before . __('Posts tagged','sparklestore').' "' . single_tag_title('', false) . '"' . $after;
+          echo esc_html__('Posts tagged','sparklestore').' "' . single_tag_title('', false) . '"';
         } elseif (is_author()) {
           global $author;
           $userdata = get_userdata($author);
-          echo $before . __('Articles posted by ','sparklestore'). $userdata->display_name . $after;
+          echo esc_html__('Articles posted by ','sparklestore'). esc_attr($userdata->display_name);
         } elseif (is_404()) {
-          echo $before . 'Error 404' . $after;
+          echo esc_html__('Error 404','sparklestore');
         }
 
         if (get_query_var('paged')) {
-          if (is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author())
+          if (is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author()){
             echo ' (';
-              echo __('Page', 'sparklestore') . ' ' . get_query_var('paged');
-              if (is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author())
-                    echo ')';
+            echo esc_html__('Page', 'sparklestore') . ' ' . get_query_var('paged');
+          }
+          if (is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author()){
+                echo ')';
+        }
       }
-      echo '</li>';
+
+      echo '</div>';
     }
   }
-
 }
 
 /**
@@ -577,12 +567,12 @@ if (!function_exists('sparklestore_pagination')) {
            if(!$pages){
                $pages = 1;
            }
-       }   
+       }
    
       if(1 != $pages){
-         echo "<div class=\"pagination\"><span>".__('Page','sparklestore')." ".$paged." ".__('of','sparklestore')." ".$pages."</span>";
-         if($paged > 2 && $paged > $range+1 && $showitems < $pages) echo "<a href='".get_pagenum_link(1)."'>&laquo; ".__('First','sparklestore')."</a>";
-          if($paged > 1 && $showitems < $pages) echo "<a href='".esc_url( get_pagenum_link($paged - 1) )."'>&lsaquo; ".__('Previous','sparklestore')."</a>";
+         echo "<div class=\"pagination\"><span>".__('Page','sparklestore')." ".$paged." ".esc_html__('of','sparklestore')." ".$pages."</span>";
+         if($paged > 2 && $paged > $range+1 && $showitems < $pages) echo "<a href='".get_pagenum_link(1)."'>&laquo; ".esc_html__('First','sparklestore')."</a>";
+          if($paged > 1 && $showitems < $pages) echo "<a href='".esc_url( get_pagenum_link($paged - 1) )."'>&lsaquo; ".esc_html__('Previous','sparklestore')."</a>";
   
           for ($i=1; $i <= $pages; $i++){
               if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems ))
@@ -590,8 +580,8 @@ if (!function_exists('sparklestore_pagination')) {
                   echo ($paged == $i)? "<span class=\"current\">".$i."</span>":"<a href='".get_pagenum_link($i)."' class=\"inactive\">".$i."</a>";
               }
           }    
-          if ($paged < $pages && $showitems < $pages) echo "<a href=\"".get_pagenum_link($paged + 1)."\">".__('Next','sparklestore')." &rsaquo;</a>";  
-          if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) echo "<a href='".get_pagenum_link($pages)."'>".__('Last','sparklestore')." &raquo;</a>";
+          if ($paged < $pages && $showitems < $pages) echo "<a href=\"".get_pagenum_link($paged + 1)."\">".esc_html__('Next','sparklestore')." &rsaquo;</a>";  
+          if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) echo "<a href='".get_pagenum_link($pages)."'>".esc_html__('Last','sparklestore')." &raquo;</a>";
           echo "</div>\n";
       }
   }
@@ -611,7 +601,6 @@ if ( ! function_exists( 'sparklestore_root_register_required_plugins' ) ) {
               'slug' => 'woocommerce',
               'required' => false,
           ),
-
           array(
               'name' => 'YITH WooCommerce Quick View',
               'slug' => 'yith-woocommerce-quick-view',

@@ -21,107 +21,107 @@ function sparklestore_customize_register( $wp_customize ) {
   $wp_customize->add_section( 'sparklestore_header_quickinfo', array(
       'priority'       => 25,
       'capability'     => 'edit_theme_options',
-      'title'          => __( 'Quick Contact Info', 'sparklestore' )
+      'title'          => esc_html__( 'Quick Contact Info', 'sparklestore' )
   ) );
 
       $wp_customize->add_setting('sparklestore_email_icon', array(
-          'default' => 'fa fa-envelope',
+          'default' => '',
           'sanitize_callback' => 'sparklestore_text_sanitize', // done
       ));
       
       $wp_customize->add_control('sparklestore_email_icon',array(
           'type' => 'text',
-          'description' => sprintf( __( 'Use font awesome icon: Eg: %s. %sSee more here%s', 'sparklestore' ), 'fa fa-truck','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
-          'label' => __('Enter Email Icon', 'sparklestore'),
+          'description' => sprintf( esc_html__( 'Use font awesome icon: Eg: %s. %sSee more here%s', 'sparklestore' ), 'fa fa-truck','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
+          'label' => esc_html__('Enter Email Icon', 'sparklestore'),
           'section' => 'sparklestore_header_quickinfo',
           'setting' => 'sparklestore_email_icon',
       ));
       
       $wp_customize->add_setting('sparklestore_email_title', array(
-          'default' => 'sparklewpthemes@gmail.com',
-          'sanitize_callback' => 'sparklestore_text_sanitize',  // done
+          'default' => '',
+          'sanitize_callback' => 'sanitize_email',  // done
       ));
       
       $wp_customize->add_control('sparklestore_email_title',array(
           'type' => 'text',
-          'label' => __('Email Address', 'sparklestore'),
+          'label' => esc_html__('Email Address', 'sparklestore'),
           'section' => 'sparklestore_header_quickinfo',
           'setting' => 'sparklestore_email_title',
       ));
       
       
       $wp_customize->add_setting('sparklestore_phone_icon', array(
-          'default' => 'fa fa-phone',
+          'default' => '',
           'sanitize_callback' => 'sparklestore_text_sanitize', // done
       ));
       
       $wp_customize->add_control('sparklestore_phone_icon',array(
           'type' => 'text',
-          'description' => sprintf( __( 'Use font awesome icon: Eg: %s. %sSee more here%s', 'sparklestore' ), 'fa fa-truck','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
-          'label' => __('Phone Icon', 'sparklestore'),
+          'description' => sprintf( esc_html__( 'Use font awesome icon: Eg: %s. %sSee more here%s', 'sparklestore' ), 'fa fa-truck','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
+          'label' => esc_html__('Phone Icon', 'sparklestore'),
           'section' => 'sparklestore_header_quickinfo',
           'setting' => 'sparklestore_phone_icon',
       ));
       
       $wp_customize->add_setting('sparklestore_phone_number', array(
-          'default' => '+1 800 467 1980',
+          'default' => '',
           'sanitize_callback' => 'sparklestore_text_sanitize',  // done
       ));
       
       $wp_customize->add_control('sparklestore_phone_number',array(
           'type' => 'text',
-          'label' => __('Phone Number', 'sparklestore'),
+          'label' => esc_html__('Phone Number', 'sparklestore'),
           'section' => 'sparklestore_header_quickinfo',
           'setting' => 'sparklestore_phone_number',
       ));
 
       $wp_customize->add_setting('sparklestore_address_icon', array(
-          'default' => 'fa fa-map-marker',
+          'default' => '',
           'sanitize_callback' => 'sparklestore_text_sanitize', // done
       ));
       
       $wp_customize->add_control('sparklestore_address_icon',array(
           'type' => 'text',
-          'description' => sprintf( __( 'Use font awesome icon: Eg: %s. %sSee more here%s', 'sparklestore' ), 'fa fa-truck','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
-          'label' => __('Address Icon', 'sparklestore'),
+          'description' => sprintf( esc_html__( 'Use font awesome icon: Eg: %s. %sSee more here%s', 'sparklestore' ), 'fa fa-truck','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
+          'label' => esc_html__('Address Icon', 'sparklestore'),
           'section' => 'sparklestore_header_quickinfo',
           'setting' => 'sparklestore_address_icon',
       ));
       
       $wp_customize->add_setting('sparklestore_map_address', array(
-          'default' => '123 Main Street, Anytown, CA 78564 USA',
+          'default' => '',
           'sanitize_callback' => 'sparklestore_text_sanitize',  // done
       ));
       
       $wp_customize->add_control('sparklestore_map_address',array(
           'type' => 'text',
-          'label' => __('Address', 'sparklestore'),
+          'label' => esc_html__('Address', 'sparklestore'),
           'section' => 'sparklestore_header_quickinfo',
           'setting' => 'sparklestore_map_address',
       ));    
       
       
       $wp_customize->add_setting('sparklestore_start_open_icon', array(
-          'default' => 'fa fa-clock-o',
+          'default' => '',
           'sanitize_callback' => 'sparklestore_text_sanitize', // done
       ));
       
       $wp_customize->add_control('sparklestore_start_open_icon',array(
           'type' => 'text',
-          'description' => sprintf( __( 'Use font awesome icon: Eg: %s. %sSee more here%s', 'sparklestore' ), 'fa fa-truck','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
-          'label' => __('Start Time Icon', 'sparklestore'),
+          'description' => sprintf( esc_html__( 'Use font awesome icon: Eg: %s. %sSee more here%s', 'sparklestore' ), 'fa fa-truck','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
+          'label' => esc_html__('Start Time Icon', 'sparklestore'),
           'section' => 'sparklestore_header_quickinfo',
           'setting' => 'sparklestore_start_open_icon',
       ));
       
       $wp_customize->add_setting('sparklestore_start_open_time', array(
-          'default' => 'Mon - Fri : 08:00 - 17:00',
+          'default' => '',
           'sanitize_callback' => 'sparklestore_text_sanitize',  // done
       ));
       
       $wp_customize->add_control('sparklestore_start_open_time',array(
           'type' => 'text',
-          'label' => __('Opening Time', 'sparklestore'),
+          'label' => esc_html__('Opening Time', 'sparklestore'),
           'section' => 'sparklestore_header_quickinfo',
           'setting' => 'sparklestore_start_open_time',
       ));
@@ -132,7 +132,7 @@ function sparklestore_customize_register( $wp_customize ) {
 $wp_customize->add_panel('sparklestore_general_settings', array(
    'capabitity' => 'edit_theme_options',
    'priority' => 25,
-   'title' => __('General Settings', 'sparklestore')
+   'title' => esc_html__('General Settings', 'sparklestore')
 ));
 
     $wp_customize->get_section('title_tagline')->panel = 'sparklestore_general_settings';
@@ -141,7 +141,7 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
     $wp_customize->get_section('header_image')->panel = 'sparklestore_general_settings';
     $wp_customize->get_section('header_image' )->priority = 2;
 
-    $wp_customize->get_section('colors')->title = __( 'Themes Colors', 'sparklestore' );
+    $wp_customize->get_section('colors')->title = esc_html__( 'Themes Colors', 'sparklestore' );
     $wp_customize->get_section('colors')->panel = 'sparklestore_general_settings';
     $wp_customize->get_section('header_image' )->priority = 3;
 
@@ -152,8 +152,8 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
      * Web Page Layout Section
     */
     $wp_customize->add_section( 'sparklestore_web_page_layout', array(
-        'title'           =>      __('WebLayout Options', 'sparklestore'),
-        'panel'           =>     'sparklestore_general_settings'
+        'title'           => esc_html__('WebLayout Options', 'sparklestore'),
+        'panel'           => 'sparklestore_general_settings'
     ));
 
       $wp_customize->add_setting('sparklestore_web_page_layout_options', array(
@@ -165,12 +165,12 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
 
       $wp_customize->add_control('sparklestore_web_page_layout_options', array(
           'type' => 'radio',
-          'label' => __('Enable / Disable Top Header', 'sparklestore'),
+          'label' => esc_html__('Enable / Disable Top Header', 'sparklestore'),
           'section' => 'sparklestore_web_page_layout',
           'settings' => 'sparklestore_web_page_layout_options',
           'choices' => array(
-            'enable' => __('Boxed Layout', 'sparklestore'),
-            'disable' => __('Full Width Layout', 'sparklestore')
+            'enable' => esc_html__('Boxed Layout', 'sparklestore'),
+            'disable' => esc_html__('Full Width Layout', 'sparklestore')
           )
       ));
 
@@ -178,8 +178,8 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
  * Services Section
 */
 	$wp_customize->add_section( 'sparklestore_services_area', array(
-		'title'           =>      __('Services Area Settings', 'sparklestore'),
-		'priority'        =>      '61',
+		'title'           => esc_html__('Services Area Settings', 'sparklestore'),
+		'priority'        => '61',
   ));
 
       $wp_customize->add_setting('sparklestore_services_area_settings', array(
@@ -191,12 +191,12 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
 
     	$wp_customize->add_control('sparklestore_services_area_settings', array(
     		'type' => 'radio',
-    		'label' => __('Enable/Disable Section', 'sparklestore'),
+    		'label' => esc_html__('Enable/Disable Section', 'sparklestore'),
     		'section' => 'sparklestore_services_area',
     		'settings' => 'sparklestore_services_area_settings',
     		'choices' => array(
-             'enable' => __('Enable', 'sparklestore'),
-             'disable' => __('Disable', 'sparklestore')
+             'enable' => esc_html__('Enable', 'sparklestore'),
+             'disable' => esc_html__('Disable', 'sparklestore')
             )
     	));
 
@@ -208,13 +208,13 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
 
     	$wp_customize->add_control('sparklestore_services_section', array(
     		'type' => 'radio',
-    		'label' => __('Manage Services Area Location', 'sparklestore'),
+    		'label' => esc_html__('Manage Services Area Location', 'sparklestore'),
     		'section' => 'sparklestore_services_area',
     		'settings' => 'sparklestore_services_section',
-    		'description' => __('Options to Manage Service Area Below the Header or Abote the Footer Area', 'sparklestore'),
+    		'description' => esc_html__('Options to Manage Service Area Below the Header or Abote the Footer Area', 'sparklestore'),
     		'choices' => array(
-             'enable' => __('Below the Header', 'sparklestore'),
-             'disable' => __('Abover the Footer', 'sparklestore')
+             'enable' => esc_html__('Below the Header', 'sparklestore'),
+             'disable' => esc_html__('Abover the Footer', 'sparklestore')
             )
     	));
 
@@ -227,8 +227,8 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
         
         $wp_customize->add_control('sparklestore_services_icon_one',array(
             'type' => 'text',
-            'description' => sprintf( __( 'Use font awesome icon: Eg: %s. %sSee more here%s', 'sparklestore' ), 'fa fa-truck','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
-            'label' => __('Service Icon One', 'sparklestore'),
+            'description' => sprintf( esc_html__( 'Use font awesome icon: Eg: %s. %sSee more here%s', 'sparklestore' ), 'fa fa-truck','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
+            'label' => esc_html__('Service Icon One', 'sparklestore'),
             'section' => 'sparklestore_services_area',
             'setting' => 'sparklestore_services_icon_one',
         ));
@@ -241,20 +241,20 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
         
         $wp_customize->add_control('sparklestore_service_title_one',array(
             'type' => 'text',
-            'label' => __('Service One Title', 'sparklestore'),
+            'label' => esc_html__('Service One Title', 'sparklestore'),
             'section' => 'sparklestore_services_area',
             'setting' => 'sparklestore_service_title_one',
         ));
 
         $wp_customize->add_setting('sparklestore_service_desc_one', array(
             'default' => 'Lorem ipsum dolor sit amet.',
-           	'sanitize_callback' => 'esc_textarea',
+           	'sanitize_callback' => 'sparklestore_text_sanitize',
             'transport' => 'postMessage'
         ));
         
         $wp_customize->add_control('sparklestore_service_desc_one',array(
-            'type' => 'textarea',
-            'label' => __('Service Area Description', 'sparklestore'),
+            'type' => 'text',
+            'label' => esc_html__('Service Area Description', 'sparklestore'),
             'section' => 'sparklestore_services_area',
             'setting' => 'sparklestore_service_desc_one',
         ));
@@ -268,8 +268,8 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
         
         $wp_customize->add_control('sparklestore_services_icon_two',array(
             'type' => 'text',
-            'description' => sprintf( __( 'Use font awesome icon: Eg: %s. %sSee more here%s', 'sparklestore' ), 'fa fa-headphones','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
-           'label' => __('Service Icon Two', 'sparklestore'),
+            'description' => sprintf( esc_html__( 'Use font awesome icon: Eg: %s. %sSee more here%s', 'sparklestore' ), 'fa fa-headphones','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
+           'label' => esc_html__('Service Icon Two', 'sparklestore'),
             'section' => 'sparklestore_services_area',
             'setting' => 'sparklestore_services_icon_two',
         ));
@@ -282,20 +282,20 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
         
         $wp_customize->add_control('sparklestore_service_title_two',array(
             'type' => 'text',
-            'label' => __('Service Two Title', 'sparklestore'),
+            'label' => esc_html__('Service Two Title', 'sparklestore'),
             'section' => 'sparklestore_services_area',
             'setting' => 'sparklestore_service_title_two',
         ));
 
         $wp_customize->add_setting('sparklestore_service_desc_two', array(
             'default' => 'Lorem ipsum dolor sit amet.',
-           	'sanitize_callback' => 'esc_textarea',
+           	'sanitize_callback' => 'sparklestore_text_sanitize',
             'transport' => 'postMessage'
         ));
         
         $wp_customize->add_control('sparklestore_service_desc_two',array(
-            'type' => 'textarea',
-            'label' => __('Service Area Description', 'sparklestore'),
+            'type' => 'text',
+            'label' => esc_html__('Service Area Description', 'sparklestore'),
             'section' => 'sparklestore_services_area',
             'setting' => 'sparklestore_service_desc_two',
         ));
@@ -309,8 +309,8 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
         
         $wp_customize->add_control('sparklestore_services_icon_three',array(
             'type' => 'text',
-            'description' => sprintf( __( 'Use font awesome icon: Eg: %s. %sSee more here%s', 'sparklestore' ), 'fa fa-dollar','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
-            'label' => __('Service Icon Three', 'sparklestore'),
+            'description' => sprintf( esc_html__( 'Use font awesome icon: Eg: %s. %sSee more here%s', 'sparklestore' ), 'fa fa-dollar','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
+            'label' => esc_html__('Service Icon Three', 'sparklestore'),
             'section' => 'sparklestore_services_area',
             'setting' => 'sparklestore_services_icon_three',
         ));
@@ -323,20 +323,20 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
         
         $wp_customize->add_control('sparklestore_service_title_three',array(
             'type' => 'text',
-            'label' => __('Service Three Title', 'sparklestore'),
+            'label' => esc_html__('Service Three Title', 'sparklestore'),
             'section' => 'sparklestore_services_area',
             'setting' => 'sparklestore_service_title_three',
         ));
 
         $wp_customize->add_setting('sparklestore_service_desc_three', array(
             'default' => 'Lorem ipsum dolor sit amet.',
-           	'sanitize_callback' => 'esc_textarea',
+           	'sanitize_callback' => 'sparklestore_text_sanitize',
             'transport' => 'postMessage'
         ));
         
         $wp_customize->add_control('sparklestore_service_desc_three',array(
-            'type' => 'textarea',
-            'label' => __('Service Area Description', 'sparklestore'),
+            'type' => 'text',
+            'label' => esc_html__('Service Area Description', 'sparklestore'),
             'section' => 'sparklestore_services_area',
             'setting' => 'sparklestore_service_desc_three',
         ));
@@ -350,8 +350,8 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
         
         $wp_customize->add_control('sparklestore_services_icon_four',array(
             'type' => 'text',
-            'description' => sprintf( __( 'Use font awesome icon: Eg: %s. %sSee more here%s', 'sparklestore' ), 'fa fa-mobile','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
-            'label' => __('Service Icon Four', 'sparklestore'),
+            'description' => sprintf( esc_html__( 'Use font awesome icon: Eg: %s. %sSee more here%s', 'sparklestore' ), 'fa fa-mobile','<a href="'.esc_url('http://fontawesome.io/cheatsheet/').'" target="_blank">','</a>' ),
+            'label' => esc_html__('Service Icon Four', 'sparklestore'),
             'section' => 'sparklestore_services_area',
             'setting' => 'sparklestore_services_icon_four',
         ));
@@ -364,20 +364,20 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
         
         $wp_customize->add_control('sparklestore_service_title_four',array(
             'type' => 'text',
-            'label' => __('Service Four Title', 'sparklestore'),
+            'label' => esc_html__('Service Four Title', 'sparklestore'),
             'section' => 'sparklestore_services_area',
             'setting' => 'sparklestore_service_title_four',
         ));
 
         $wp_customize->add_setting('sparklestore_service_desc_four', array(
             'default' => 'Lorem ipsum dolor sit amet.',
-           	'sanitize_callback' => 'esc_textarea',
+           	'sanitize_callback' => 'sparklestore_text_sanitize',
             'transport' => 'postMessage'
         ));
         
         $wp_customize->add_control('sparklestore_service_desc_four',array(
-            'type' => 'textarea',
-            'label' => __('Service Area Description', 'sparklestore'),
+            'type' => 'text',
+            'label' => esc_html__('Service Area Description', 'sparklestore'),
             'section' => 'sparklestore_services_area',
             'setting' => 'sparklestore_service_desc_four',
         ));
@@ -398,7 +398,7 @@ class sparklestore_Image_Radio_Control extends WP_Customize_Control {
                 <li style="display: inline;">
                 <label>
                     <input <?php $this->link(); ?>style = 'display:none' type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" <?php $this->link(); checked( $this->value(), $value ); ?> />
-                    <img src = '<?php echo esc_html( $label ); ?>' class = '<?php echo $class; ?>' />
+                    <img src = '<?php echo esc_html( $label ); ?>' class = '<?php echo esc_attr( $class ); ?>' />
                 </label>
                 </li>
                 <?php
@@ -423,15 +423,15 @@ class sparklestore_Image_Radio_Control extends WP_Customize_Control {
 */
 $wp_customize->add_panel('sparklestore_woocommerce_design_options', array(
   'capabitity' => 'edit_theme_options',
-  'description' => __('Mange products and singel product page settings', 'sparklestore'),
+  'description' => esc_html__('Mange products and singel product page settings', 'sparklestore'),
   'priority' => 62,
-  'title' => __('WooCommerce Settings', 'sparklestore')
+  'title' => esc_html__('WooCommerce Settings', 'sparklestore')
 ));
      
         // Site archive layout setting
         $wp_customize->add_section('sparklestore_woocommerce_products_settings', array(
           'priority' => 2,
-          'title' => __('Products Pages Settings', 'sparklestore'),
+          'title' => esc_html__('Products Pages Settings', 'sparklestore'),
           'panel' => 'sparklestore_woocommerce_design_options'
         ));
 
@@ -443,7 +443,7 @@ $wp_customize->add_panel('sparklestore_woocommerce_design_options', array(
 
             $wp_customize->add_control(new sparklestore_Image_Radio_Control($wp_customize, 'sparklestore_woocommerce_products_page_layout', array(
               'type' => 'radio',
-              'label' => __('Select Products pages Layout', 'sparklestore'),
+              'label' => esc_html__('Select Products pages Layout', 'sparklestore'),
               'section' => 'sparklestore_woocommerce_products_settings',
               'settings' => 'sparklestore_woocommerce_products_page_layout',
               'choices' => array( 
@@ -461,7 +461,7 @@ $wp_customize->add_panel('sparklestore_woocommerce_design_options', array(
 
             $wp_customize->add_control('sparklestore_woocommerce_product_row', array(
               'type' => 'select',
-              'label' => __('Select Products Pages Row', 'sparklestore'),
+              'label' => esc_html__('Select Products Pages Row', 'sparklestore'),
               'section' => 'sparklestore_woocommerce_products_settings',
               'settings' => 'sparklestore_woocommerce_product_row',
               'choices' => array( 
@@ -478,7 +478,7 @@ $wp_customize->add_panel('sparklestore_woocommerce_design_options', array(
 
             $wp_customize->add_control('sparklestore_woocommerce_display_product_number', array(
               'type' => 'number',
-              'label' => __('Enter Products Display Per Page', 'sparklestore'),
+              'label' => esc_html__('Enter Products Display Per Page', 'sparklestore'),
               'section' => 'sparklestore_woocommerce_products_settings',
               'settings' => 'sparklestore_woocommerce_display_product_number'
             ));
@@ -488,7 +488,7 @@ $wp_customize->add_panel('sparklestore_woocommerce_design_options', array(
         // WooCommerce Singel Product Page Settings
         $wp_customize->add_section('sparklestore_woocommerce_single_products_page_settings', array(
           'priority' => 2,
-          'title' => __('Single Products Page Settings', 'sparklestore'),
+          'title' => esc_html__('Single Products Page Settings', 'sparklestore'),
           'panel' => 'sparklestore_woocommerce_design_options'
         ));
 
@@ -500,7 +500,7 @@ $wp_customize->add_panel('sparklestore_woocommerce_design_options', array(
 
         $wp_customize->add_control(new sparklestore_Image_Radio_Control($wp_customize, 'sparklestore_woocommerce_single_products_page_layout', array(
           'type' => 'radio',
-          'label' => __('Select Single Products Page Layout', 'sparklestore'),
+          'label' => esc_html__('Select Single Products Page Layout', 'sparklestore'),
           'section' => 'sparklestore_woocommerce_single_products_page_settings',
           'settings' => 'sparklestore_woocommerce_single_products_page_layout',
           'choices' => array( 
@@ -516,13 +516,13 @@ $wp_customize->add_panel('sparklestore_woocommerce_design_options', array(
 $wp_customize->add_panel('sparklestore_footer_settings', array(
    'capabitity' => 'edit_theme_options',
    'priority' => 63,
-   'title' => __('Footer Settings', 'sparklestore')
+   'title' => esc_html__('Footer Settings', 'sparklestore')
 ));
 
         // Start of the Social Link Options
         $wp_customize->add_section('sparklestore_social_link_activate_settings', array(
             'priority' => '1',
-            'title'    => __('Social Media Options', 'sparklestore'),
+            'title'    => esc_html__('Social Media Options', 'sparklestore'),
             'panel'    => 'sparklestore_footer_settings'
         ));
 
@@ -534,7 +534,7 @@ $wp_customize->add_panel('sparklestore_footer_settings', array(
 
             $wp_customize->add_control('sparklestore_social_link_activate', array(
                 'type' => 'checkbox',
-                'label' => __('Check to activate social links area', 'sparklestore'),
+                'label' => esc_html__('Check to activate social links area', 'sparklestore'),
                 'section' => 'sparklestore_social_link_activate_settings',
                 'settings' => 'sparklestore_social_link_activate'
             ));
@@ -542,32 +542,32 @@ $wp_customize->add_panel('sparklestore_footer_settings', array(
             $sparklestore_social_links = array( 
                 'sparklestore_social_facebook' => array(
                     'id' => 'sparklestore_social_facebook',
-                    'title' => __('Facebook', 'sparklestore'),
+                    'title' => esc_html__('Facebook', 'sparklestore'),
                     'default' => esc_url( home_url( '/' ) ).'#facebook',
                 ),
                 'sparklestore_social_twitter' => array(
                     'id' => 'sparklestore_social_twitter',
-                    'title' => __('Twitter', 'sparklestore'),
+                    'title' => esc_html__('Twitter', 'sparklestore'),
                     'default' => esc_url( home_url( '/' ) ).'#twitter',
                 ),
                 'sparklestore_social_googleplus' => array(
                     'id' => 'sparklestore_social_googleplus',
-                    'title' => __('Google-Plus', 'sparklestore'),
+                    'title' => esc_html__('Google-Plus', 'sparklestore'),
                     'default' => esc_url( home_url( '/' ) ).'#googleplus',
                 ),
                 'sparklestore_social_pinterest' => array(
                     'id' => 'sparklestore_social_pinterest',
-                    'title' => __('Pinterest', 'sparklestore'),
+                    'title' => esc_html__('Pinterest', 'sparklestore'),
                     'default' => esc_url( home_url( '/' ) ).'#pinterest',
                 ),
                 'sparklestore_social_linkedin' => array(
                     'id' => 'sparklestore_social_linkedin',
-                    'title' => __('Linkedin', 'sparklestore'),
+                    'title' => esc_html__('Linkedin', 'sparklestore'),
                     'default' => esc_url( home_url( '/' ) ).'#linkedin',
                 ),
                 'sparklestore_social_youtube' => array(
                     'id' => 'sparklestore_social_youtube',
-                    'title' => __('YouTube', 'sparklestore'),
+                    'title' => esc_html__('YouTube', 'sparklestore'),
                     'default' => esc_url( home_url( '/' ) ).'#youtube',
                 )
             );
@@ -594,7 +594,7 @@ $wp_customize->add_panel('sparklestore_footer_settings', array(
                 ));
                 $wp_customize->add_control($sparklestore_social_link['id'].'_checkbox', array(
                     'type' => 'checkbox',
-                    'label' => __('Check to show in new tab', 'sparklestore'),
+                    'label' => esc_html__('Check to show in new tab', 'sparklestore'),
                     'section'=> 'sparklestore_social_link_activate_settings',
                     'settings'=> $sparklestore_social_link['id'].'_checkbox',
                     'priority' => $i
@@ -605,9 +605,9 @@ $wp_customize->add_panel('sparklestore_footer_settings', array(
         
         // Payment Logo Section    
         $wp_customize->add_section( 'paymentlogo_images', array(
-            'title'           =>      __('Payment Logo Images', 'sparklestore'),
-            'priority'        =>      '2',
-            'panel'           =>      'sparklestore_footer_settings'
+            'title'           => esc_html__('Payment Logo Images', 'sparklestore'),
+            'priority'        => '2',
+            'panel'           => 'sparklestore_footer_settings'
         ));
         
             $wp_customize->add_setting( 'paymentlogo_image_one', array(
@@ -616,9 +616,9 @@ $wp_customize->add_panel('sparklestore_footer_settings', array(
             ));
            
             $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'paymentlogo_image_one', array(
-                'section'       =>      'paymentlogo_images',
-                'label'         =>      __('Upload Payment Logo Image', 'sparklestore'),
-                'type'          =>      'image',
+                'section'       => 'paymentlogo_images',
+                'label'         => esc_html__('Upload Payment Logo Image', 'sparklestore'),
+                'type'          => 'image',
             )));
 
             $wp_customize->add_setting( 'paymentlogo_image_two', array(
@@ -627,9 +627,9 @@ $wp_customize->add_panel('sparklestore_footer_settings', array(
             ));
            
             $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'paymentlogo_image_two', array(
-                'section'       =>      'paymentlogo_images',
-                'label'         =>      __('Upload Payment Logo Image', 'sparklestore'),
-                'type'          =>      'image',
+                'section'       => 'paymentlogo_images',
+                'label'         => esc_html__('Upload Payment Logo Image', 'sparklestore'),
+                'type'          => 'image',
             )));
 
             $wp_customize->add_setting( 'paymentlogo_image_three', array(
@@ -639,7 +639,7 @@ $wp_customize->add_panel('sparklestore_footer_settings', array(
            
             $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'paymentlogo_image_three', array(
                 'section'       =>      'paymentlogo_images',
-                'label'         =>      __('Upload Payment Logo Image', 'sparklestore'),
+                'label'         =>      esc_html__('Upload Payment Logo Image', 'sparklestore'),
                 'type'          =>      'image',
             )));
 
@@ -650,7 +650,7 @@ $wp_customize->add_panel('sparklestore_footer_settings', array(
            
             $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'paymentlogo_image_four', array(
                 'section'       =>      'paymentlogo_images',
-                'label'         =>      __('Upload Payment Logo Image', 'sparklestore'),
+                'label'         =>      esc_html__('Upload Payment Logo Image', 'sparklestore'),
                 'type'          =>      'image',
             )));
 
@@ -661,7 +661,7 @@ $wp_customize->add_panel('sparklestore_footer_settings', array(
            
             $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'paymentlogo_image_five', array(
                 'section'       =>      'paymentlogo_images',
-                'label'         =>      __('Upload Payment Logo Image', 'sparklestore'),
+                'label'         =>      esc_html__('Upload Payment Logo Image', 'sparklestore'),
                 'type'          =>      'image',
             )));
 
@@ -672,12 +672,12 @@ $wp_customize->add_panel('sparklestore_footer_settings', array(
            
             $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'paymentlogo_image_six', array(
                 'section'       =>      'paymentlogo_images',
-                'label'         =>      __('Upload Payment Logo Image', 'sparklestore'),
+                'label'         =>      esc_html__('Upload Payment Logo Image', 'sparklestore'),
                 'type'          =>      'image',
             )));
 
         $wp_customize->add_section( 'sparklestore_copyright', array(
-            'title'           =>      __('Copyright Message Area', 'sparklestore'),
+            'title'           =>      esc_html__('Copyright Message Area', 'sparklestore'),
             'priority'        =>      '3',
             'panel'           =>      'sparklestore_footer_settings'
         ));
@@ -685,37 +685,16 @@ $wp_customize->add_panel('sparklestore_footer_settings', array(
             $wp_customize->add_setting('sparklestore_footer_copyright', array(
                  'default' => '',
                  'capability' => 'edit_theme_options',
-                 'sanitize_callback' => 'esc_textarea'  //done
+                 'sanitize_callback' => 'sparklestore_text_sanitize'  //done
             ));
 
             $wp_customize->add_control('sparklestore_footer_copyright', array(
              'type' => 'textarea',
-             'label' => __('Copyright', 'sparklestore'),
+             'label' => esc_html__('Copyright', 'sparklestore'),
              'section' => 'sparklestore_copyright',
              'settings' => 'sparklestore_footer_copyright'
             ));
-
-
-/**
-  * Custom Css Panel
-*/
-$wp_customize->add_section('sparklestore_custom_css_setting', array(
-   'priority' => 64,
-   'title' => __('Custom CSS', 'sparklestore'),
-));
-
-        $wp_customize->add_setting('sparklestore_custom_css', array(
-           'default' => '',
-           'capability' => 'edit_theme_options',
-           'sanitize_callback' => 'wp_filter_nohtml_kses',
-        ));
-
-        $wp_customize->add_control('sparklestore_custom_css', array(
-            'type' => 'textarea',
-           'label' => __('Write your custom css', 'sparklestore'),
-           'section' => 'sparklestore_custom_css_setting',
-           'settings' => 'sparklestore_custom_css'
-        ));
+            
 
     function sparklestore_checkbox_sanitize($input) {
       if ( $input == 1 ) {
@@ -727,8 +706,8 @@ $wp_customize->add_section('sparklestore_custom_css_setting', array(
 
     function sparklestore_radio_enable_disable_sanitize($input) {
        $valid_keys = array(
-         'enable' => __('Enable', 'sparklestore'),
-         'disable' => __('Disable', 'sparklestore')
+         'enable' => esc_html__('Enable', 'sparklestore'),
+         'disable' => esc_html__('Disable', 'sparklestore')
        );
        if ( array_key_exists( $input, $valid_keys ) ) {
           return $input;

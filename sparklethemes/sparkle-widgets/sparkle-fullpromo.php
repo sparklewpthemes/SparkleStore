@@ -14,8 +14,8 @@ class sparklestore_full_promo_area extends WP_Widget {
     **/
     public function __construct() {
         parent::__construct(
-            'sparklestore_full_promo_area', __('SP: Full Promo Widget','sparklestore'), array(
-            'description' => __('A widget that promote you busincess', 'sparklestore')
+            'sparklestore_full_promo_area', esc_html__('SP: Full Promo Widget','sparklestore'), array(
+            'description' => esc_html__('A widget that promote you busincess', 'sparklestore')
         ));
     }
     
@@ -25,32 +25,32 @@ class sparklestore_full_promo_area extends WP_Widget {
 
             'sparklestore_full_promo_bg_image' => array(
                 'sparklestore_widgets_name' => 'sparklestore_full_promo_bg_image',
-                'sparklestore_widgets_title' => __('Uplaod Promo Background Image', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Uplaod Promo Background Image', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'upload',
             ),
             
             'sparklestore_full_promo_title' => array(
                 'sparklestore_widgets_name' => 'sparklestore_full_promo_title',
-                'sparklestore_widgets_title' => __('Title', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Title', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'title',
             ),
 
             'sparklestore_full_promo_desc' => array(
                 'sparklestore_widgets_name' => 'sparklestore_full_promo_desc',
-                'sparklestore_widgets_title' => __('Short Description', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Short Description', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'textarea',
                 'sparklestore_widgets_row'    => 4,
             ),
 
             'sparklestore_full_promo_button_link' => array(
                 'sparklestore_widgets_name' => 'sparklestore_full_promo_button_link',
-                'sparklestore_widgets_title' => __('Promo Button Link', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Promo Button Link', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'url',
             ),
 
             'sparklestore_full_promo_button_text' => array(
                 'sparklestore_widgets_name' => 'sparklestore_full_promo_button_text',
-                'sparklestore_widgets_title' => __('Promo Button Text', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Promo Button Text', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'text',
             ),
         );
@@ -73,17 +73,17 @@ class sparklestore_full_promo_area extends WP_Widget {
     <div class="fullpromowrap">
         <div class="container">
             <div class="row">
-                   <div class="promoimage" <?php if ( !empty( $promo_bg_image ) ) { ?>style="background-image:url(<?php echo $promo_bg_image; ?>); background-size:cover;"<?php } ?>>
+                   <div class="promoimage" <?php if ( !empty( $promo_bg_image ) ) { ?>style="background-image:url(<?php echo esc_url( $promo_bg_image ); ?>); background-size:cover;"<?php } ?>>
                         <div class="fullwrap">                            
-                            <?php if ( !empty( esc_attr( $title ) ) ) { ?>
+                            <?php if ( !empty( $title ) ) { ?>
                                 <h4><?php echo esc_attr( $title ); ?></h4>
                             <?php } ?>
 
-                            <?php if ( !empty( esc_attr( $short_desc ) ) ) { ?>
-                                <span><?php echo $short_desc; ?></span>
+                            <?php if ( !empty( $short_desc ) ) { ?>
+                                <span><?php echo esc_attr( $short_desc ); ?></span>
                             <?php } ?> 
 
-                            <?php if ( !empty( esc_attr( $button_text ) ) ) { ?>
+                            <?php if ( !empty( $button_text ) ) { ?>
                                 <a href="<?php echo esc_url($button_link); ?>">
                                   <button class="btn promolink"><?php echo esc_attr( $button_text ); ?></button>
                                 </a>

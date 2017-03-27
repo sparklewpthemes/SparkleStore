@@ -4,12 +4,6 @@
  *
  * You can add an optional custom header image to header.php like so ...
  *
-	<?php if ( get_header_image() ) : ?>
-	<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-		<img src="<?php header_image(); ?>" width="<?php echo esc_attr( get_custom_header()->width ); ?>" height="<?php echo esc_attr( get_custom_header()->height ); ?>" alt="">
-	</a>
-	<?php endif; // End header image check. ?>
- *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
  * @package Sparkle_Store
@@ -23,11 +17,11 @@
 function sparklestore_custom_header_setup() {
 	add_theme_support( 'custom-header', apply_filters( 'sparklestore_custom_header_args', array(
 		'default-image'          => '',
-		'default-text-color'     => '000000',
-		'width'                  => 150,
-		'height'                 => 35,
+		'default-text-color'     => '033772',
+		'width'                  => 1420,
+		'height'                 => 180,
 		'flex-height'            => true,
-		'flex-width'            => true,
+		'flex-width'             => true,
 		'wp-head-callback'       => 'sparklestore_header_style',
 	) ) );
 }
@@ -37,7 +31,7 @@ if ( ! function_exists( 'sparklestore_header_style' ) ) :
 /**
  * Styles the header image and text displayed on the blog.
  *
- * @see sparklestore_custom_header_setup().
+ * @see sparklethemes_custom_header_setup().
  */
 function sparklestore_header_style() {
 	$header_text_color = get_header_textcolor();

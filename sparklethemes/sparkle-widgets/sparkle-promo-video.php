@@ -14,8 +14,8 @@ class sparklestore_video_section_area extends WP_Widget {
     **/
     public function __construct() {
         parent::__construct(
-            'sparklestore_video_section_area', __('SP: Promo Video Section','sparklestore'), array(
-            'description' => __('A widget that promote you busincess video', 'sparklestore')
+            'sparklestore_video_section_area', esc_html__('SP: Promo Video Section','sparklestore'), array(
+            'description' => esc_html__('A widget that promote you busincess video', 'sparklestore')
         ));
     }
     
@@ -26,14 +26,14 @@ class sparklestore_video_section_area extends WP_Widget {
                       
             'sparklestore_promo_video' => array(
                 'sparklestore_widgets_name' => 'sparklestore_promo_video',
-                'sparklestore_widgets_title' => __('Enter Very Short Description', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Enter Very Short Description', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'textarea',
                 'sparklestore_widgets_row' => 3,
             ),
           
             'sparklestore_promo_video_url' => array(
                 'sparklestore_widgets_name' => 'sparklestore_promo_video_url',
-                'sparklestore_widgets_title' => __('Enter Youtube Video Url', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Enter Youtube Video Url', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'url'
             )
         );
@@ -56,14 +56,14 @@ class sparklestore_video_section_area extends WP_Widget {
                   $vidarr = explode('?v=', $video_url); 
                   $vid_id = $vidarr[1];
                 ?>
-                    <div vid="<?php echo $vid_id; ?>"  class="background-video"></div>
+                    <div vid="<?php echo esc_attr( $vid_id ); ?>"  class="background-video"></div>
                 <?php } ?>
             </div>            
             <div class="promovideoinfo">
                 <div class="container">
                     <div class="row"> 
                         <?php if(!empty( $desc )) { ?>
-                            <p class="promovidoedesc"><?php echo $desc; ?></p>
+                            <p class="promovidoedesc"><?php echo esc_attr( $desc ); ?></p>
                         <?php } ?>
                         <a class="play-bnt"><i class="fa fa-play-circle"></i> </a>
                     </div>               

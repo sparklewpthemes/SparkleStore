@@ -88,7 +88,7 @@ if ( ! function_exists( 'sparklestore_bottom_footer_before' ) ) {
 						<?php echo esc_html( apply_filters( 'sparklestore_copyright_text', $content = '&copy; ' . date( 'Y' ) . ' ' . get_bloginfo( 'name' ) .' - ' ) ); ?>
 					<?php } ?>
 					<?php if ( apply_filters( 'sparklsestore_credit_link', true ) ) { 
-						printf( __( '%1$s By %2$s', 'sparklestore' ), ' WordPress Theme : SparkleStore ', '<a href=" ' . esc_url('http://sparklewpthemes.com/') . ' " alt="Premium WordPress Themes & Plugins by Sparkle Themes" title="Premium WordPress Themes & Plugins by Sparkle Themes" rel="designer" target="_blank">'.__('Sparkle Themes','sparklestore').'</a>' ); ?>
+						printf( esc_html__( '%1$s By %2$s', 'sparklestore' ), ' WordPress Theme : SparkleStore ', '<a href=" ' . esc_url('http://sparklewpthemes.com/') . ' " rel="designer" target="_blank">'.esc_html__('Sparkle Themes','sparklestore').'</a>' ); ?>
 					<?php } ?>
 				</div><!-- .site-info -->
 

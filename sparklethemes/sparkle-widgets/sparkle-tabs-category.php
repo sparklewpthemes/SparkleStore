@@ -14,8 +14,8 @@ class sparklestore_cat_collection_tabs_widget_area extends WP_Widget {
    **/
    public function __construct() {
        parent::__construct(
-           'sparklestore_cat_collection_tabs_widget_area', __('SP: Woo Category Tabs','sparklestore'), array(
-           'description' => __('A widget that shows WooCommerce category in multiple tabs', 'sparklestore')
+           'sparklestore_cat_collection_tabs_widget_area', esc_html__('SP: Woo Category Tabs','sparklestore'), array(
+           'description' => esc_html__('A widget that shows WooCommerce category in multiple tabs with category related products', 'sparklestore')
        ));
    }
    
@@ -48,14 +48,14 @@ class sparklestore_cat_collection_tabs_widget_area extends WP_Widget {
 
            'sparklestore_select_category' => array(
                'sparklestore_widgets_name' => 'sparklestore_select_category',
-               'sparklestore_mulicheckbox_title' => __('Select Category Tabs', 'sparklestore'),
+               'sparklestore_mulicheckbox_title' => esc_html__('Select Category Tabs', 'sparklestore'),
                'sparklestore_widgets_field_type' => 'multicheckboxes',
                'sparklestore_widgets_field_options' => $woocommerce_categories
             ),
 
            'sparklestore_pro_number_products' => array(
                'sparklestore_widgets_name' => 'sparklestore_pro_number_products',
-               'sparklestore_widgets_title' => __('Enter the Number Products Display', 'sparklestore'),
+               'sparklestore_widgets_title' => esc_html__('Enter the Number Products Display', 'sparklestore'),
                'sparklestore_widgets_field_type' => 'number',
             )        
            
@@ -122,7 +122,7 @@ class sparklestore_cat_collection_tabs_widget_area extends WP_Widget {
                                ?>
                                    <?php woocommerce_get_template_part( 'content', 'product' ); ?>
                                    
-                               <?php } } wp_reset_query(); ?>
+                               <?php } } wp_reset_postdata(); ?>
                            </ul>
                        </div>
                    </div>

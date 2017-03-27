@@ -14,16 +14,16 @@ class sparklestore_cat_with_product_widget_area extends WP_Widget {
     **/
     public function __construct() {
         parent::__construct(
-            'sparklestore_cat_with_product_widget_area', __('SP: Woo Category With Product','sparklestore'), array(
-            'description' => __('A widget that shows woocommerce category feature image with selected category products', 'sparklestore')
+            'sparklestore_cat_with_product_widget_area', esc_html__('SP: Woo Category With Product','sparklestore'), array(
+            'description' => esc_html__('A widget that shows woocommerce category feature image with selected category products', 'sparklestore')
         ));
     }
     
     private function widget_fields() {
         
           $prod_type = array(
-            'rightalign' => __('Right Align Category Image', 'sparklestore'),
-            'leftalign' => __('Left Align Category Image', 'sparklestore'),
+            'rightalign' => esc_html__('Right Align Category Image', 'sparklestore'),
+            'leftalign' => esc_html__('Left Align Category Image', 'sparklestore'),
           );
 
           $taxonomy     = 'product_cat';
@@ -46,7 +46,7 @@ class sparklestore_cat_with_product_widget_area extends WP_Widget {
 
           $woocommerce_categories = array();
           $woocommerce_categories_obj = get_categories($args);
-          $woocommerce_categories[''] = 'Select Product Category';
+          $woocommerce_categories[''] = esc_html__('Select Product Category','sparklestore');
           foreach ($woocommerce_categories_obj as $category) {
             $woocommerce_categories[$category->term_id] = $category->name;
           }
@@ -56,35 +56,35 @@ class sparklestore_cat_with_product_widget_area extends WP_Widget {
             
             'sparklestore_cat_product_title' => array(
                 'sparklestore_widgets_name' => 'sparklestore_cat_product_title',
-                'sparklestore_widgets_title' => __('Title', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Title', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'title',
             ),
             'sparklestore_cat_product_short_desc' => array(
                 'sparklestore_widgets_name' => 'sparklestore_cat_product_short_desc',
-                'sparklestore_widgets_title' => __('Very Short Description', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Very Short Description', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'textarea',
                 'sparklestore_widgets_row'    => 4,
             ),
             'sparklestore_cat_image_aligment' => array(
                 'sparklestore_widgets_name' => 'sparklestore_cat_image_aligment',
-                'sparklestore_widgets_title' => __('Select Display Style (Image Alignment)', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Select Display Style (Image Alignment)', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'select',
                 'sparklestore_widgets_field_options' => $prod_type
             ),
             'sparklestore_woo_category' => array(
                 'sparklestore_widgets_name' => 'sparklestore_woo_category',
-                'sparklestore_widgets_title' => __('Select Product Category', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Select Product Category', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'select',
                 'sparklestore_widgets_field_options' => $woocommerce_categories
             ),
             'sparklestore_cat_product_number' => array(
                 'sparklestore_widgets_name' => 'sparklestore_cat_product_number',
-                'sparklestore_widgets_title' => __('Enter Number of Products Show', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Enter Number of Products Show', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'number',
             ),
             'sparklestore_cat_cat_product_info' => array(
                 'sparklestore_widgets_name' => 'sparklestore_cat_cat_product_info',
-                'sparklestore_widgets_title' => __('Checked to Display Category Info', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Checked to Display Category Info', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'checkbox',
             ),                                 
         );
@@ -120,7 +120,7 @@ class sparklestore_cat_with_product_widget_area extends WP_Widget {
         <div class="categorproducts">
             <div class="container">                
             <div class="row">                
-                <div id="categoryproductslider" class="categoryproductslider <?php echo $cat_aligment; ?>">
+                <div id="categoryproductslider" class="categoryproductslider <?php echo esc_attr( $cat_aligment ); ?>">
                     
                     <div class="blocktitlewrap">
                         <div class="blocktitle">
@@ -151,8 +151,8 @@ class sparklestore_cat_with_product_widget_area extends WP_Widget {
                         <div class="table-outer">
                         <div class="table-inner">
                                 <h2><a href="<?php echo esc_url($category_link); ?>"><?php echo esc_attr( $terms_name->name ); ?></a></h2>
-                                <?php echo $terms; ?>
-                                <a href="<?php echo esc_url($category_link); ?>" class="view-bnt"><?php _e('Shop Now','sparklestore'); ?></a>
+                                <?php echo esc_attr( $terms ); ?>
+                                <a href="<?php echo esc_url($category_link); ?>" class="view-bnt"><?php esc_html_e('Shop Now','sparklestore'); ?></a>
                             </div>
                         </div>                        
                         </div>                        
@@ -177,7 +177,7 @@ class sparklestore_cat_with_product_widget_area extends WP_Widget {
                         ?>
                             <?php woocommerce_get_template_part( 'content', 'product' ); ?>
                             
-                        <?php } } wp_reset_query(); ?>                          
+                        <?php } } wp_reset_postdata(); ?>                          
                     </ul>                    
                 </div>
                 </div>

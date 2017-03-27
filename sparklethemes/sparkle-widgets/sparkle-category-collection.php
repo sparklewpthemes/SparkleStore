@@ -14,8 +14,8 @@ class sparklestore_cat_widget_area extends WP_Widget {
     **/
     public function __construct() {
         parent::__construct(
-            'sparklestore_cat_widget_area', __('SP: Woo Category Collection','sparklestore'), array(
-            'description' => __('A widget that shows WooCommerce category', 'sparklestore')
+            'sparklestore_cat_widget_area', esc_html__('SP: Woo Category Collection','sparklestore'), array(
+            'description' => esc_html__('A widget that shows WooCommerce category', 'sparklestore')
         ));
     }
     
@@ -50,20 +50,20 @@ class sparklestore_cat_widget_area extends WP_Widget {
 
             'sparklestore_main_cat_title' => array(
                 'sparklestore_widgets_name' => 'sparklestore_main_cat_title',
-                'sparklestore_widgets_title' => __('Main Title', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Main Title', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'title',
             ),
 
             'sparklestore_cat_short_desc' => array(
                 'sparklestore_widgets_name' => 'sparklestore_cat_short_desc',
-                'sparklestore_widgets_title' => __('Category Section Very Short Description', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Category Section Very Short Description', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'textarea',
                 'sparklestore_widgets_row'    => 4,
             ),
             
             'sparklestore_select_category' => array(
                 'sparklestore_widgets_name' => 'sparklestore_select_category',
-                'sparklestore_mulicheckbox_title' => __('Select Category', 'sparklestore'),
+                'sparklestore_mulicheckbox_title' => esc_html__('Select Category', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'multicheckboxes',
                 'sparklestore_widgets_field_options' => $woocommerce_categories
             ),
@@ -81,7 +81,7 @@ class sparklestore_cat_widget_area extends WP_Widget {
         ** wp query for first block
         **/  
         $main_title = esc_textarea( $instance['sparklestore_main_cat_title'] );
-        $shot_desc = esc_textarea( $instance['sparklestore_cat_short_desc'] );
+        $shot_desc = esc_html( $instance['sparklestore_cat_short_desc'] );
         $sparklestore_cat_id = $instance['sparklestore_select_category'];
         
         echo $before_widget;            
@@ -92,7 +92,7 @@ class sparklestore_cat_widget_area extends WP_Widget {
                     <div class="blocktitlewrap">
                         <div class="blocktitle">
                             <?php if( !empty( $main_title ) ) { ?><h2><?php echo esc_attr( $main_title ); ?></h2> <?php } ?>
-                            <?php if(!empty( $shot_desc )) { ?><p><?php echo $shot_desc; ?></p><?php } ?>
+                            <?php if(!empty( $shot_desc )) { ?><p><?php echo esc_html( $shot_desc ); ?></p><?php } ?>
                         </div>
                         <div class="SparkleStoreAction">
                             <div class="sparkle-lSPrev"></div>
@@ -113,11 +113,11 @@ class sparklestore_cat_widget_area extends WP_Widget {
                                 if ( $term && ! is_wp_error( $term ) ) {
                                     $term_link = get_term_link($term);
                                     $term_name = $term->name;
-                                    $sub_count =  apply_filters( 'woocommerce_subcategory_count_html', ' ' . $term->count . ' '.__('Products','sparklestore').'', $term);
+                                    $sub_count =  apply_filters( 'woocommerce_subcategory_count_html', ' ' . $term->count . ' '.esc_html__('Products','sparklestore').'', $term);
                                 }else{
                                     $term_link = '#';
-                                    $term_name = __('Category','sparklestore');
-                                    $sub_count = '0 '.__('Products','sparklestore');
+                                    $term_name = esc_html__('Category','sparklestore');
+                                    $sub_count = '0 '.esc_html__('Products','sparklestore');
                                 }
                                 
                             $no_img = 'https://placeholdit.imgix.net/~text?txtsize=33&txt=285%C3%97370&w=285&h=370';

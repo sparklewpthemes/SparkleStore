@@ -8,7 +8,7 @@ function sparklestore_widgets_show_widget_field($instance = '', $widget_field = 
     //list category list in array
     $sparklestore_category_list[0] = array(
         'value' => 0,
-        'label' => 'Select Categories'
+        'label' => esc_html__('Select Categories','sparklestore')
     );
     $sparklestore_posts = get_categories();
     foreach ($sparklestore_posts as $sparklestore_post) :
@@ -221,16 +221,16 @@ function sparklestore_widgets_show_widget_field($instance = '', $widget_field = 
             }
             $output .= '<div class="sub-option section widget-upload">';
             $output .= '<label for="'.$instance->get_field_id($sparklestore_widgets_name).'">'.$sparklestore_widgets_title.'</label><br/>';
-            $output .= '<input id="' . $id . '" class="upload' . $class . '" type="text" name="' . $name . '" value="' . $value . '" placeholder="' . __('No file chosen', 'sparklestore') . '" />' . "\n";
+            $output .= '<input id="' . $id . '" class="upload' . $class . '" type="text" name="' . $name . '" value="' . $value . '" placeholder="' . esc_html__('No file chosen', 'sparklestore') . '" />' . "\n";
             
             if (function_exists('wp_enqueue_media')) {
                 if (( $value == '')) {
-                    $output .= '<input id="upload-' . $id . '" class="upload-button-wdgt button" type="button" value="' . __('Upload', 'sparklestore') . '" />' . "\n";
+                    $output .= '<input id="upload-' . $id . '" class="upload-button-wdgt button" type="button" value="' . esc_html__('Upload', 'sparklestore') . '" />' . "\n";
                 } else {
-                    $output .= '<input id="remove-' . $id . '" class="remove-file button" type="button" value="' . __('Remove', 'sparklestore') . '" />' . "\n";
+                    $output .= '<input id="remove-' . $id . '" class="remove-file button" type="button" value="' . esc_html__('Remove', 'sparklestore') . '" />' . "\n";
                 }
             } else {
-                $output .= '<p><i>' . __('Upgrade your version of WordPress for full media support.', 'sparklestore') . '</i></p>';
+                $output .= '<p><i>' . esc_html__('Upgrade your version of WordPress for full media support.', 'sparklestore') . '</i></p>';
             }
 
             $output .= '<div class="screenshot team-thumb" id="' . $id . '-image">' . "\n";
@@ -245,7 +245,7 @@ function sparklestore_widgets_show_widget_field($instance = '', $widget_field = 
                         $title = $parts[$i];
                     }
                     $output .= '';
-                    $title = __('View File', 'sparklestore');
+                    $title = esc_html__('View File', 'sparklestore');
                     $output .= '<div class="no-image"><span class="file_link"><a href="' . $value . '" target="_blank" rel="external">' . $title . '</a></span></div>';
                 }
             }
@@ -269,7 +269,7 @@ function sparklestore_widgets_updated_field_value($widget_field, $new_field_valu
             $sparklestore_widgets_allowed_tags = '<p><strong><em><a><br>';
         }
 
-        return strip_tags($new_field_value, $sparklestore_widgets_allowed_tags);
+        return wp_kses_post($new_field_value, $sparklestore_widgets_allowed_tags);
     } 
     elseif ($sparklestore_widgets_field_type == 'url') {
         return esc_url_raw($new_field_value);
@@ -281,7 +281,7 @@ function sparklestore_widgets_updated_field_value($widget_field, $new_field_valu
         return wp_kses_post($new_field_value);
     }
     else {
-        return strip_tags($new_field_value);
+        return wp_kses_post($new_field_value);
     }
 }
 
@@ -318,13 +318,7 @@ require sparklestore_file_directory('sparklethemes/sparkle-widgets/contact-info.
 
 
 
-if (is_woocommerce_activated()) {
-
-    /**
-     * Load default tabs widget area file.
-    */
-    require sparklestore_file_directory('sparklethemes/sparkle-widgets/tabs-defaults.php');
-
+if (sparklestore_is_woocommerce_activated()) {
     /**
      * Load products widget area file.
     */

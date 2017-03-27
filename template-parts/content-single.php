@@ -39,9 +39,9 @@
 					</h2>										
 			</div>
 			<ul class="list-info">
-				<li><i class="fa fa-user"></i> <?php _e('By','sparklestore'); ?>  <?php the_author(); ?></li>
+				<li><i class="fa fa-user"></i>  <?php the_author(); ?></li>
 				<li><i class="fa fa-folder-open"></i> <?php the_category(', '); ?></li>
-				<li><i class="fa fa-comment"></i> <?php comments_popup_link( '0 Comments', '1 Comments', '% Comments' );?></li>
+				<li><i class="fa fa-comment"></i> <?php comments_popup_link( esc_html__( '0 Comment', 'sparklestore' ),  esc_html__( '1 Comment', 'sparklestore' ), esc_html__( '% Comments', 'sparklestore' ), esc_html__( 'Comments are Closed', 'sparklestore' ) ); ?></li>
 				<li><i class="fa fa-tag"></i> <?php the_tags( ' ' ); ?></li>							
 			</ul>
 

@@ -45,7 +45,7 @@
         <div class="category-menu-main">
             <div class="category-menu-title">
                <i class="fa fa-navicon"></i>
-               <?php _e('All Categories', 'sparklestore'); ?>
+               <?php esc_html_e('All Categories', 'sparklestore'); ?>
             </div>
             <div class="menu-category">
                 <?php wp_nav_menu(array('theme_location' => 'sparklecategory')); ?>
@@ -56,7 +56,7 @@
             <div class="toggle-wrap">
                 <div class="toggle">
                     <i class="fa fa-align-justify"></i>
-                    <span class="label"><?php _e('Menu', 'sparklestore'); ?></span> 
+                    <span class="label"><?php esc_html_e('Menu', 'sparklestore'); ?></span> 
                 </div>
             </div>
             <div class="main-menu-links">

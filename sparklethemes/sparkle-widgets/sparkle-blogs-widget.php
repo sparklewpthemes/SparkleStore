@@ -14,8 +14,8 @@ class sparklestore_blog_widget_area extends WP_Widget {
     **/
     public function __construct() {
         parent::__construct(
-            'sparklestore_blog_widget_area', __('SP: Blogs Widget Section','sparklestore'), array(
-            'description' => __('A widget that shows blogs posts', 'sparklestore')
+            'sparklestore_blog_widget_area', esc_html__('SP: Blogs Widget Section','sparklestore'), array(
+            'description' => esc_html__('A widget that shows blogs posts', 'sparklestore')
         ));
     }
     
@@ -39,27 +39,27 @@ class sparklestore_blog_widget_area extends WP_Widget {
           
             'sparklestore_blogs_top_title' => array(
                 'sparklestore_widgets_name' => 'sparklestore_blogs_top_title',
-                'sparklestore_widgets_title' => __('Blogs Main Title', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Blogs Main Title', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'title',
             ),
 
             'sparklestore_blogs_short_desc' => array(
                 'sparklestore_widgets_name' => 'sparklestore_blogs_short_desc',
-                'sparklestore_widgets_title' => __('Blogs Very Short Description', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Blogs Very Short Description', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'textarea',
                 'sparklestore_widgets_row'    => 4,
             ),
 
             'blogs_category_list' => array(
               'sparklestore_widgets_name' => 'blogs_category_list',
-              'sparklestore_mulicheckbox_title' => __('Select Blogs Category', 'sparklestore'),
+              'sparklestore_mulicheckbox_title' => esc_html__('Select Blogs Category', 'sparklestore'),
               'sparklestore_widgets_field_type' => 'multicheckboxes',
               'sparklestore_widgets_field_options' => $cat_lists
             ),
 
             'sparklestore_number_blogs_posts' => array(
                 'sparklestore_widgets_name' => 'sparklestore_number_blogs_posts',
-                'sparklestore_widgets_title' => __('Enter Display Numebr of Posts', 'sparklestore'),
+                'sparklestore_widgets_title' => esc_html__('Enter Display Numebr of Posts', 'sparklestore'),
                 'sparklestore_widgets_field_type' => 'number',
             )
             
@@ -76,7 +76,7 @@ class sparklestore_blog_widget_area extends WP_Widget {
         **/
         $blog_main_title        = esc_attr( $instance['sparklestore_blogs_top_title'] );
         $blogs_category_list    = $instance['blogs_category_list'];
-        $shot_desc              = esc_textarea( $instance['sparklestore_blogs_short_desc'] );
+        $shot_desc              = esc_html( $instance['sparklestore_blogs_short_desc'] );
         $number_blogs_posts     = intval( $instance['sparklestore_number_blogs_posts'] );
     
         $blogs_cat_id = array();
@@ -103,7 +103,7 @@ class sparklestore_blog_widget_area extends WP_Widget {
                             <?php if( !empty( $blog_main_title ) ) { ?>
                                     <h2><?php echo esc_attr( $blog_main_title ); ?></h2>
                             <?php if(!empty( $shot_desc )) { ?>
-                                <p><?php echo $shot_desc; ?></p>
+                                <p><?php echo esc_html( $shot_desc ); ?></p>
                             <?php } } ?>
                         </div>
                         <div class="SparkleStoreAction">
@@ -138,21 +138,21 @@ class sparklestore_blog_widget_area extends WP_Widget {
                                         <div class="blogmeta sp-clearfix">                                     
                                             <div class="blogcreated">
                                                 <span class="created-date">
-                                                    <?php echo date_i18n( 'd' ); ?>
+                                                    <?php echo the_time( 'd' ); ?>
                                                 </span>
                                                 <span class="created-month">
-                                                    <?php echo date_i18n( 'M Y' ); ?>
+                                                    <?php echo the_time( 'M Y' ); ?>
                                                 </span>                                                    
                                             </div>
                                             <div class="blogcomment">
-                                                <i class="icon icon-comments"></i><?php comments_popup_link('comment 0', 'Comment 1', 'Comments %'); ?> 
+                                                <i class="icon icon-comments"></i><?php comments_popup_link( esc_html__( '0 Comment', 'sparklestore' ),  esc_html__( '1 Comment', 'sparklestore' ), esc_html__( '% Comments', 'sparklestore' ), esc_html__( 'Comments are Closed', 'sparklestore' ) ); ?> 
                                             </div>
                                         </div>
                                     </div>
                                 </div>                                
                             </li>                         
                             
-                        <?php endwhile; endif; wp_reset_query(); ?>
+                        <?php endwhile; endif; wp_reset_postdata(); ?>
                     </ul>
             
                 </div>

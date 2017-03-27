@@ -14,13 +14,12 @@
 	<div class="post-container">
 		<?php 
 			if ( has_post_thumbnail() ) { 
-			$image = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), 'sparklestore-blogs', true);
 		?>
 			<div class="post-img  has-img ">
 
 				<a title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">
 					 <figure>
-						<img src="<?php echo esc_url( $image[0] ); ?>" class="img-responsive" alt="<?php the_title(); ?>">											 
+					 	<?php the_post_thumbnail() ?>					
 					</figure>
 				</a>
 				<div class="blogdate">
@@ -40,9 +39,9 @@
 					</h2>										
 			</div>
 			<ul class="list-info">
-				<li><i class="fa fa-user"></i> <?php _e('By','sparklestore'); ?>  <?php the_author(); ?></li>
+				<li><i class="fa fa-user"></i> <?php the_author(); ?></li>
 				<li><i class="fa fa-folder-open"></i> <?php the_category(', '); ?></li>
-				<li><i class="fa fa-comment"></i> <?php comments_popup_link( '0 Comments', '1 Comments', '% Comments' );?></li>
+				<li><i class="fa fa-comment"></i> <?php comments_popup_link( esc_html__( '0 Comment', 'sparklestore' ),  esc_html__( '1 Comment', 'sparklestore' ), esc_html__( '% Comments', 'sparklestore' ), esc_html__( 'Comments are Closed', 'sparklestore' ) ); ?></li>
 				<li><i class="fa fa-tag"></i> <?php the_tags( ' ' ); ?></li>							
 			</ul>
 
@@ -51,7 +50,7 @@
 		  	</div>
 		  	<div class="blog-readmore">
 				<a href="<?php the_permalink(); ?>">
-                	<?php _e('Read More','sparklestore'); ?>
+                	<?php esc_html_e('Read More','sparklestore'); ?>
             	</a>
             </div>
 				
