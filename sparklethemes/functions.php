@@ -9,6 +9,48 @@ if ( ! function_exists( 'sparklestore_is_woocommerce_activated' ) ) {
 }
 
 /**
+ * Header Main Banner Function Area
+*/
+if ( ! function_exists( 'sparklestore_banner_slider' ) ) {   
+  function sparklestore_banner_slider() { ?>
+    <div id="home" class="home-section banner-height">
+        <div class="sparklestore-slider">
+            <ul class="slides">
+                <?php
+                  $all_slider = wp_kses_post( get_theme_mod('sparklestore_banner_all_sliders') );
+                  if(!empty( $all_slider )) {
+                  $banner_slider = json_decode( $all_slider );
+                  foreach($banner_slider as $slider){ 
+                    $slider_page_id = $slider->selectpage;
+                    if( !empty( $slider_page_id ) ) {
+                    $slider_page = new WP_Query( 'page_id='.$slider_page_id );
+                    if( $slider_page->have_posts() ) { while( $slider_page->have_posts() ) { $slider_page->the_post();
+                    $image_path = wp_get_attachment_image_src( get_post_thumbnail_id(), 'sparklestore-slider', true );
+                ?>
+                  <li class="bg-dark" style="background-image: url('<?php echo esc_url($image_path[0]); ?>');">
+                      <div class="home-slider-overlay"></div>
+                      <div class="sparklestore-caption">
+                          <div class="caption-content">
+                              <div class="sparklestore-title"><?php the_title(); ?></div>
+                              <div class="sparklestore-desc"><?php echo wp_kses_post( wp_trim_words( get_the_content(), 20 ) ); ?></div>
+                              <?php if($slider->button_text): ?>
+                                <a class="sparklestore-button" href="<?php echo esc_url($slider->button_url); ?>">
+                                  <?php echo esc_attr($slider->button_text); ?>
+                                </a>
+                              <?php endif; ?>
+                          </div>                          
+                      </div>
+                  </li>
+                <?php } } wp_reset_query(); } } } ?>                    
+            </ul>
+        </div>
+    </div>     
+    <?php
+  }
+}
+add_action( 'sparklestore-slider', 'sparklestore_banner_slider', 30 );
+
+/**
  * Schema type
 */
 function sparklestore_html_tag_schema() {
@@ -280,6 +322,148 @@ if ( ! function_exists( 'sparklestore_comment' ) ) {
 
 
 /**
+ * Custom Control for Customizer Page Layout Settings
+*/
+if( class_exists( 'WP_Customize_control') ) {
+    
+    class Sparklestore_Image_Radio_Control extends WP_Customize_Control {
+        public $type = 'radioimage';
+        public function render_content() {
+            $name = '_customize-radio-' . $this->id;
+            ?>
+            <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+            <div id="input_<?php echo $this->id; ?>" class="sparklestoreimage">
+                <?php foreach ( $this->choices as $value => $label ) : ?>                
+                        <label for="<?php echo $this->id . $value; ?>">
+                            <input class="image-select" type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" id="<?php echo esc_attr( $this->id . $value ); ?>" <?php $this->link(); checked( $this->value(), $value ); ?>>
+                            <img src="<?php echo esc_html( $label ); ?>"/>
+                        </label>
+                <?php endforeach; ?>
+            </div>
+            <?php 
+        }
+    }
+
+
+    class Sparklestore_Repeater_Controler extends WP_Customize_Control {
+      /**
+       * The control type.
+       *
+       * @access public
+       * @var string
+      */
+      public $type = 'repeater';
+
+      public $sparklestore_box_label = '';
+
+      public $sparklestore_box_add_control = '';
+
+      private $cats = '';
+
+      /**
+       * The fields that each container row will contain.
+       *
+       * @access public
+       * @var array
+      */
+      public $fields = array();
+
+      /**
+       * Repeater drag and drop controler
+       *
+       * @since  1.0.0
+      */
+      public function __construct( $manager, $id, $args = array(), $fields = array() ) {
+        $this->fields = $fields;
+        $this->sparklestore_box_label = $args['sparklestore_box_label'] ;
+        $this->sparklestore_box_add_control = $args['sparklestore_box_add_control'];
+        $this->cats = get_categories(array( 'hide_empty' => false ));
+        parent::__construct( $manager, $id, $args );
+      }
+
+      public function render_content() {
+        $values = json_decode($this->value());
+        ?>
+        <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+        <?php if($this->description){ ?>
+          <span class="description customize-control-description">
+          <?php echo wp_kses_post($this->description); ?>
+          </span>
+        <?php } ?>
+
+        <ul class="sparklestore-repeater-field-control-wrap">
+          <?php $this->sparklestore_get_fields(); ?>
+        </ul>
+        <input type="hidden" <?php esc_attr( $this->link() ); ?> class="sparklestore-repeater-collector" value="<?php echo esc_attr( $this->value() ); ?>" />
+        <button type="button" class="button sparklestore-add-control-field"><?php echo esc_html( $this->sparklestore_box_add_control ); ?></button>
+        <?php
+      }
+
+      private function sparklestore_get_fields(){
+        $fields = $this->fields;
+        $values = json_decode($this->value());
+        if(is_array($values)){
+        foreach($values as $value){    ?>
+          <li class="sparklestore-repeater-field-control">
+            <h3 class="sparklestore-repeater-field-title accordion-section-title"><?php echo esc_html( $this->sparklestore_box_label ); ?></h3>
+            <div class="sparklestore-repeater-fields">
+              <?php
+                foreach ($fields as $key => $field) {
+                $class = isset($field['class']) ? $field['class'] : '';
+              ?>
+                <div class="sparklestore-fields sparklestore-type-<?php echo esc_attr($field['type']).' '.$class; ?>">
+                  <?php 
+                    $label = isset($field['label']) ? $field['label'] : '';
+                    $description = isset($field['description']) ? $field['description'] : '';
+                    if($field['type'] != 'checkbox'){ ?>
+                      <span class="customize-control-title"><?php echo esc_html( $label ); ?></span>
+                      <span class="description customize-control-description"><?php echo esc_html( $description ); ?></span>
+                  <?php }
+
+                    $new_value = isset($value->$key) ? $value->$key : '';
+                    $default = isset($field['default']) ? $field['default'] : '';
+
+                    switch ($field['type']) {
+                      case 'text':
+                        echo '<input data-default="'.esc_attr($default).'" data-name="'.esc_attr($key).'" type="text" value="'.esc_attr($new_value).'"/>';
+                        break;
+
+                      case 'textarea':
+                        echo '<textarea data-default="'.esc_attr($default).'"  data-name="'.esc_attr($key).'">'.esc_textarea($new_value).'</textarea>';
+                        break;
+
+                      case 'select':
+                        $options = $field['options'];
+                        echo '<select  data-default="'.esc_attr($default).'"  data-name="'.esc_attr($key).'">';
+                              foreach ( $options as $option => $val )
+                              {
+                                  printf('<option value="%s" %s>%s</option>', esc_attr($option), selected($new_value, $option, false), esc_html($val));
+                              }
+                        echo '</select>';
+                        break;
+
+                      default:
+                        break;
+                    }
+                  ?>
+                </div>
+              <?php } ?>
+              <div class="clearfix sparklestore-repeater-footer">
+                <div class="alignright">
+                  <a class="sparklestore-repeater-field-remove" href="#remove"><?php _e('Delete', 'sparklestore') ?></a> |
+                  <a class="sparklestore-repeater-field-close" href="#close"><?php _e('Close', 'sparklestore') ?></a>
+                </div>
+              </div>
+            </div>
+          </li>
+        <?php }
+        }
+      }
+
+    }
+}
+
+/**
  * Page and Post Page Display Layout Metabox function
 */
 add_action('add_meta_boxes', 'sparklestore_metabox_section');
@@ -358,8 +542,7 @@ if ( ! function_exists( 'sparklestore_display_layout_callback' ) ) {
 if ( ! function_exists( 'sparklestore_save_page_settings' ) ) {
     function sparklestore_save_page_settings( $post_id ) { 
         global $sparklestore_page_layouts, $post; 
-        $sparklestore_nonce = wp_unslash( $_POST[ 'sparklestore_settings_nonce' ] );
-        if ( !isset( $sparklestore_nonce ) || !wp_verify_nonce( $sparklestore_nonce , basename( __FILE__ ) ) )
+        if ( !isset( $_POST[ 'sparklestore_settings_nonce' ] ) || !wp_verify_nonce( wp_unslash( $_POST[ 'sparklestore_settings_nonce' ] ) , basename( __FILE__ ) ) )
             return;
         if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE)  
             return;        
@@ -552,6 +735,7 @@ if (!function_exists('sparkle_store_breadcrumbs')) {
     }
   }
 }
+
 
 /**
  * Themes required Plugins Install Section

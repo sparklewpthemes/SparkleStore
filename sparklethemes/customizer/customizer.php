@@ -15,6 +15,16 @@ function sparklestore_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
+  /**
+   * List All Pages
+  */
+  $slider_pages = array();
+  $slider_pages_obj = get_pages();
+  $slider_pages[''] = esc_html__('Select Slider Page','sparklestore');
+  foreach ($slider_pages_obj as $page) {
+    $slider_pages[$page->ID] = $page->post_title;
+  }
+
 /**
  * Top Header Quick Contact Information Options 
 */
@@ -173,6 +183,70 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
             'disable' => esc_html__('Full Width Layout', 'sparklestore')
           )
       ));
+
+/**
+ * Banner Slider
+*/
+  $wp_customize->add_section( 'sparklestore_banner_slider', array(
+    'title'           => esc_html__('Slider Settings Options', 'sparklestore'),
+    'priority'        => '61',
+  ));
+
+      $wp_customize->add_setting('sparklestore_slider_options', array(
+          'default' => 'enable',
+          'capability' => 'edit_theme_options',
+          'sanitize_callback' => 'sparklestore_radio_enable_disable_sanitize',
+      ));
+
+      $wp_customize->add_control('sparklestore_slider_options', array(
+        'type' => 'radio',
+        'label' => esc_html__('Enable/Disable Section', 'sparklestore'),
+        'section' => 'sparklestore_banner_slider',
+        'settings' => 'sparklestore_slider_options',
+        'choices' => array(
+             'enable' => esc_html__('Enable', 'sparklestore'),
+             'disable' => esc_html__('Disable', 'sparklestore')
+            )
+      ));
+
+      $wp_customize->add_setting( 'sparklestore_banner_all_sliders', array(
+        'sanitize_callback' => 'sparklestore_sanitize_repeater',
+        'default' => json_encode( array(
+          array(
+                'selectpage' => '' ,
+                'button_text' => '',
+                'button_url' => ''
+              )
+          ) )        
+        ) );
+
+      $wp_customize->add_control( new Sparklestore_Repeater_Controler( $wp_customize, 'sparklestore_banner_all_sliders', array(
+        'label'   => __('Slider Settings Area','sparklestore'),
+        'section' => 'sparklestore_banner_slider',
+        'settings' => 'sparklestore_banner_all_sliders',
+        'sparklestore_box_label' => __('Slider Settings Options','sparklestore'),
+        'sparklestore_box_add_control' => __('Add New Slider','sparklestore'),
+      ),
+      array(
+        'selectpage' => array(
+          'type'        => 'select',
+          'label'       => __( 'Select Slider Page', 'sparklestore' ),
+          'options'   => $slider_pages
+        ),
+        'button_text' => array(
+          'type'        => 'text',
+          'label'       => __( 'Enter Button Text', 'sparklestore' ),
+          'default'   => ''
+        ),
+        'button_url' => array(
+          'type'        => 'text',
+          'label'       => __( 'Enter Button Url', 'sparklestore' ),
+          'default'   => ''
+        )
+      )
+    ) 
+  );
+
 
 /**
  * Services Section
@@ -382,40 +456,6 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
         ));
 
 $imagepath =  get_template_directory_uri() . '/assets/images/';
-class sparklestore_Image_Radio_Control extends WP_Customize_Control {
-    public function render_content() {
-        if ( empty( $this->choices ) )
-            return;
-        $name = '_customize-radio-' . $this->id;
-    ?>
-    <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-    <ul class="controls" id = 'sparklestore-img-container'>
-        <?php
-            foreach ( $this->choices as $value => $label ) :
-                $class = ($this->value() == $value)?'sparklestore-radio-img-selected sparklestore-radio-img-img':'sparklestore-radio-img-img';
-                ?>
-                <li style="display: inline;">
-                <label>
-                    <input <?php $this->link(); ?>style = 'display:none' type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" <?php $this->link(); checked( $this->value(), $value ); ?> />
-                    <img src = '<?php echo esc_html( $label ); ?>' class = '<?php echo esc_attr( $class ); ?>' />
-                </label>
-                </li>
-                <?php
-            endforeach;
-        ?>
-    </ul>
-    <script type="text/javascript">
-        jQuery(document).ready(function($) {
-            $('.controls#sparklestore-img-container li img').click(function(){
-                $('.controls#sparklestore-img-container li').each(function(){
-                    $(this).find('img').removeClass ('sparklestore-radio-img-selected') ;
-                });
-                $(this).addClass ('sparklestore-radio-img-selected') ;
-            });
-        });
-    </script>
-    <?php }
-}
 
 /**
  * Start of the WooCommerce Design panel
@@ -440,7 +480,7 @@ $wp_customize->add_panel('sparklestore_woocommerce_design_options', array(
               'sanitize_callback' => 'sparklestore_page_layout_sanitize'  //done
             ));
 
-            $wp_customize->add_control(new sparklestore_Image_Radio_Control($wp_customize, 'sparklestore_woocommerce_products_page_layout', array(
+            $wp_customize->add_control(new Sparklestore_Image_Radio_Control($wp_customize, 'sparklestore_woocommerce_products_page_layout', array(
               'type' => 'radio',
               'label' => esc_html__('Select Products pages Layout', 'sparklestore'),
               'section' => 'sparklestore_woocommerce_products_settings',
@@ -497,7 +537,7 @@ $wp_customize->add_panel('sparklestore_woocommerce_design_options', array(
           'sanitize_callback' => 'sparklestore_page_layout_sanitize'  //done
         ));
 
-        $wp_customize->add_control(new sparklestore_Image_Radio_Control($wp_customize, 'sparklestore_woocommerce_single_products_page_layout', array(
+        $wp_customize->add_control(new Sparklestore_Image_Radio_Control($wp_customize, 'sparklestore_woocommerce_single_products_page_layout', array(
           'type' => 'radio',
           'label' => esc_html__('Select Single Products Page Layout', 'sparklestore'),
           'section' => 'sparklestore_woocommerce_single_products_page_settings',
@@ -748,7 +788,36 @@ $wp_customize->add_panel('sparklestore_footer_settings', array(
 
     function sparklestore_number_sanitize( $int ) {
         return absint( $int );
-    } 
+    }
+
+    function sparklestore_sanitize_repeater($input){        
+      $input_decoded = json_decode( $input, true );
+      $allowed_html = array(
+        'br' => array(),
+        'em' => array(),
+        'strong' => array(),
+        'a' => array(
+          'href' => array(),
+          'class' => array(),
+          'id' => array(),
+          'target' => array()
+        ),
+        'button' => array(
+          'class' => array(),
+          'id' => array()
+        )
+      ); 
+
+      if(!empty($input_decoded)) {
+        foreach ($input_decoded as $boxes => $box ){
+          foreach ($box as $key => $value){
+            $input_decoded[$boxes][$key] = sanitize_text_field( $value );
+          }
+        }
+        return json_encode($input_decoded);
+      }      
+      return $input;
+    }
 
 }
 add_action( 'customize_register', 'sparklestore_customize_register' );

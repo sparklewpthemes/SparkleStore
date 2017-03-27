@@ -44,7 +44,7 @@ The exceptions to license are as follows:
 
 * lightslider https://github.com/sachinchoolur/lightslider [MIT](http://opensource.org/licenses/MIT) Copyright (c) 2015 Sachin N;
 
-* YoutubeBackground https://github.com/rochestb/jQuery.YoutubeBackground [Licensed under the MIT license] http://www.opensource.org/licenses/mit-license.php
+* jQuery FlexSlider v2.2.2 https://github.com/woocommerce/FlexSlider [GPLV2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html) yright 2012 WooThemes, Contributing Author: Tyler Smith
 
 
 Image used in screenshot
@@ -68,6 +68,10 @@ https://pixabay.com/en/woman-portrait-face-model-canon-659352/ License CC0 Publi
 Sparklestore includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 1.0.5 9rd Jan 2017 =
+
+** Add banner slider.
 
 = 1.0.4 4rd Jan 2017 =
 

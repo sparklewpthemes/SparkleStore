@@ -19,7 +19,6 @@ get_header();
       do_action( 'sparklestore_services_area', 5 );
   }
 
-
   if ( is_active_sidebar( 'sparklemainwidgetarea' ) ) {  
       dynamic_sidebar( 'sparklemainwidgetarea' );  
   } 

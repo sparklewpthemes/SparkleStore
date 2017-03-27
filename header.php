@@ -39,30 +39,35 @@
 
         ?>
         
-<nav class="main_menu_category_menu">
-    <div class="container">
-
-        <div class="category-menu-main">
-            <div class="category-menu-title">
-               <i class="fa fa-navicon"></i>
-               <?php esc_html_e('All Categories', 'sparklestore'); ?>
-            </div>
-            <div class="menu-category">
-                <?php wp_nav_menu(array('theme_location' => 'sparklecategory')); ?>
-            </div>
-        </div>
-
-        <div class="main-menu">
-            <div class="toggle-wrap">
-                <div class="toggle">
-                    <i class="fa fa-align-justify"></i>
-                    <span class="label"><?php esc_html_e('Menu', 'sparklestore'); ?></span> 
+        <nav class="main_menu_category_menu">
+            <div class="container">
+                <div class="category-menu-main">
+                    <div class="category-menu-title">
+                       <i class="fa fa-navicon"></i>
+                       <?php esc_html_e('All Categories', 'sparklestore'); ?>
+                    </div>
+                    <div class="menu-category">
+                        <?php wp_nav_menu(array('theme_location' => 'sparklecategory')); ?>
+                    </div>
+                </div>
+                <div class="main-menu">
+                    <div class="toggle-wrap">
+                        <div class="toggle">
+                            <i class="fa fa-align-justify"></i>
+                            <span class="label"><?php esc_html_e('Menu', 'sparklestore'); ?></span> 
+                        </div>
+                    </div>
+                    <div class="main-menu-links">
+                        <?php wp_nav_menu( array( 'theme_location' => 'sparkleprimary' ) ); ?>
+                    </div>
                 </div>
             </div>
-            <div class="main-menu-links">
-                <?php wp_nav_menu( array( 'theme_location' => 'sparkleprimary' ) ); ?>
-            </div>
-        </div>
+        </nav>
 
-    </div>
-</nav>
+        <?php    
+        if( is_front_page() ){ 
+            $slider_options = esc_attr( get_theme_mod( 'sparklestore_slider_options', 'enable' ) );
+            if( $slider_options == 'enable' ){ 
+                do_action('sparklestore-slider');
+            }
+        }

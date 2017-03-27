@@ -11,6 +11,28 @@ jQuery(document).ready(function($) {
     });
 
     /**
+     * sparklestore pro banner slider
+    */
+    if( $('.sparklestore-slider').length > 0 ) {
+        $('.sparklestore-slider').flexslider({
+            animation: "fade",
+            animationSpeed: 500,
+            animationLoop: true,
+            prevText: '',
+            nextText: '',
+            before: function(slider) {
+                $('.sparklestore-caption').fadeOut().animate({top:'35%'},{queue:false, easing: 'swing', duration: 700});
+                slider.slides.eq(slider.currentSlide).delay(500);
+                slider.slides.eq(slider.animatingTo).delay(500);
+            },
+            after: function(slider) {
+                $('.sparklestore-caption').fadeIn().animate({top:'50%'},{queue:false, easing: 'swing', duration: 700});
+            },
+            useCSS: true
+        });
+    }
+
+    /**
      * Sparkle Store MobileMenu 
     */
     jQuery('.category-menu-title').click(function(){

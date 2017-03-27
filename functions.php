@@ -55,6 +55,7 @@ function sparklestore_setup() {
 	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 	 */
 	add_theme_support( 'post-thumbnails' );
+	add_image_size('sparklestore-slider', 1350, 520, true);
 	add_image_size('sparklestore-home-blog', 350, 230, true);	
 	add_image_size('sparklestore-cat-collection-image', 285, 370, true);	
 	add_image_size('sparklestore-cat-image', 300, 470, true);	
@@ -211,8 +212,11 @@ function sparklestore_scripts() {
     );
     wp_enqueue_style('sparklestore-google-fonts', add_query_arg( $sparklestore_font_args, "//fonts.googleapis.com/css" ) );
 
-   /* Sparkle Store Font Awesome */
+    /* Sparkle Store Font Awesome */
     wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/assets/library/font-awesome/css/font-awesome.min.css', esc_attr( $theme_version ) );
+
+    /* flexslider Slider */
+	wp_enqueue_style( 'flexslider', get_template_directory_uri() . '/assets/library/flexslider/css/flexslider.css', esc_attr( $theme_version ) );
 
     /* Sparkle Store Lightslider CSS */
     wp_enqueue_style( 'lightslider', get_template_directory_uri() . '/assets/library/lightslider/css/lightslider.css' );
@@ -232,6 +236,9 @@ function sparklestore_scripts() {
     /* Sparkle Store Respond */
     wp_enqueue_script('respond', get_template_directory_uri() . '/assets/library/respond/respond.min.js', array('jquery'), esc_attr( $theme_version ), false);
     wp_script_add_data( 'respond', 'conditional', 'lt IE 9' );
+
+    /* flexslider Slider Js */
+	wp_enqueue_script('flexslider', get_template_directory_uri() . '/assets/library/flexslider/js/jquery.flexslider-min.js', array('jquery'), esc_attr( $theme_version ), true);
 
     /* Sparkle Store Lightslider */
     wp_enqueue_script('lightslider', get_template_directory_uri() . '/assets/library/lightslider/js/lightslider.js', array('jquery'), esc_attr( $theme_version ), true);
@@ -256,12 +263,9 @@ add_action( 'wp_enqueue_scripts', 'sparklestore_scripts' );
  * Admin Enqueue scripts and styles.
 */
 if ( ! function_exists( 'sparklestore_admin_scripts' ) ) {
-
     function sparklestore_admin_scripts($hook) {
-
     	if( 'widgets.php' != $hook )
-        return;
-    
+        return;    
         if (function_exists('wp_enqueue_media')){
           wp_enqueue_media();
         }
@@ -272,7 +276,6 @@ if ( ! function_exists( 'sparklestore_admin_scripts' ) ) {
 		));
         wp_enqueue_style( 'sparklestore-style-admin', get_template_directory_uri() . '/assets/css/sparklestore-admin.css');   
     }
-
 }
 add_action('admin_enqueue_scripts', 'sparklestore_admin_scripts');
 

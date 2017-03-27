@@ -55,8 +55,6 @@ jQuery(document).ready(function($){
 		selector.find('.of-background-properties').hide();
 		selector.find('.screenshot').slideUp();
 		selector.find('.remove-file').unbind().addClass('upload-button-wdgt').removeClass('remove-file').val(sparklestore_remove.upload);
-		// We don't display the upload button if .upload-notice is present
-		// This means the user doesn't have the WordPress 3.5 Media Library Support
 		if ( $('.section-upload .upload-notice').length > 0 ) {
 			$('.upload-button-wdgt').remove();
 		}
@@ -73,5 +71,87 @@ jQuery(document).ready(function($){
     $(document).on('click', '.upload-button-wdgt', function( event ) {
     	sparklestore_add_file(event, $(this).parents('.section'));
     });
+
+    /**
+     * Repeater Fields
+    */
+	function sparklestore_refresh_repeater_values(){
+		$(".sparklestore-repeater-field-control-wrap").each(function(){			
+			var values = []; 
+			var $this = $(this);			
+			$this.find(".sparklestore-repeater-field-control").each(function(){
+			var valueToPush = {};
+			$(this).find('[data-name]').each(function(){
+				var dataName = $(this).attr('data-name');
+				var dataValue = $(this).val();
+				valueToPush[dataName] = dataValue;
+			});
+			values.push(valueToPush);
+			});
+			$this.next('.sparklestore-repeater-collector').val(JSON.stringify(values)).trigger('change');
+		});
+	}
+
+    $('#customize-theme-controls').on('click','.sparklestore-repeater-field-title',function(){
+        $(this).next().slideToggle();
+        $(this).closest('.sparklestore-repeater-field-control').toggleClass('expanded');
+    });
+    $('#customize-theme-controls').on('click', '.sparklestore-repeater-field-close', function(){
+    	$(this).closest('.sparklestore-repeater-fields').slideUp();;
+    	$(this).closest('.sparklestore-repeater-field-control').toggleClass('expanded');
+    });
+    $("body").on("click",'.sparklestore-add-control-field', function(){
+		var $this = $(this).parent();
+		if(typeof $this != 'undefined') {
+            var field = $this.find(".sparklestore-repeater-field-control:first").clone();
+            if(typeof field != 'undefined'){                
+                field.find("input[type='text'][data-name]").each(function(){
+                	var defaultValue = $(this).attr('data-default');
+                	$(this).val(defaultValue);
+                });
+                field.find("textarea[data-name]").each(function(){
+                	var defaultValue = $(this).attr('data-default');
+                	$(this).val(defaultValue);
+                });
+                field.find("select[data-name]").each(function(){
+                	var defaultValue = $(this).attr('data-default');
+                	$(this).val(defaultValue);
+                });
+
+				field.find('.sparklestore-fields').show();
+
+				$this.find('.sparklestore-repeater-field-control-wrap').append(field);
+
+                field.addClass('expanded').find('.sparklestore-repeater-fields').show(); 
+                $('.accordion-section-content').animate({ scrollTop: $this.height() }, 1000);
+                sparklestore_refresh_repeater_values();
+            }
+
+		}
+		return false;
+	 });
+	
+	$("#customize-theme-controls").on("click", ".sparklestore-repeater-field-remove",function(){
+		if( typeof	$(this).parent() != 'undefined'){
+			$(this).closest('.sparklestore-repeater-field-control').slideUp('normal', function(){
+				$(this).remove();
+				sparklestore_refresh_repeater_values();
+			});			
+		}
+		return false;
+	});
+
+	$("#customize-theme-controls").on('keyup change', '[data-name]',function(){
+		 sparklestore_refresh_repeater_values();
+		 return false;
+	});
+
+	/*Drag and drop to change order*/
+	$(".sparklestore-repeater-field-control-wrap").sortable({
+		orientation: "vertical",
+		update: function( event, ui ) {
+			sparklestore_refresh_repeater_values();
+		}
+	});
 
 });

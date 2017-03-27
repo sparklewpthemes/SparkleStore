@@ -69,7 +69,6 @@ require sparklestore_file_directory('sparklethemes/hooks/header.php');
 */
 require sparklestore_file_directory('sparklethemes/hooks/footer.php');
 
-
 /**
  * Load woocommerce hooks file.
 */

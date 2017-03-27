@@ -4,7 +4,7 @@ Theme URI: http://sparklewpthemes.com/wordpress-themes/sparklestore
 Author: sparklewpthemes
 Author URI: http://sparklewpthemes.com/
 Description: Sparkle Store is a clean, beautiful and fully customizable responsive WooCommerce WordPress theme. This theme is packed with lots of exciting feature that enhances the ecommerce experience. Theme is fully compatible with WooCommerce and YITH WooCommerce Wishlist, YITH WooCommerce Quick View plugins. This theme packs many premium features and several custom widgets which helps making your online store professional and well organized.
-Version: 1.0.4
+Version: 1.0.5
 License: GNU General Public License, version 3 (GPLv3)
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
 Text Domain: sparklestore
@@ -886,6 +886,195 @@ a:hover {
     background: rgba(0,0,0,0.3);
     transition: all 300ms ease-in-out 0s;
     -webkit-transition: all 300ms ease-in-out 0s;
+}
+
+/*--------------------------------------------------------------
+# Banner Slider
+--------------------------------------------------------------*/
+.home-slider-overlay{
+    position:absolute;
+    background-color:rgba(0,0,0,0.4);
+    width:100%;
+    height:100%;
+}
+.banner-height{
+    height: 520px;
+}
+.sparklestore-slider {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin: 0;
+}
+.sparklestore-slider .slides {
+    height: 100% !important;
+    -webkit-transition-delay: 1s;
+    -moz-transition-delay: 1s;
+    transition-delay: 1s;
+}
+.sparklestore-slider .slides li {
+    position: relative;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100% !important;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+.sparklestore-slider .slides > li {
+    display: none;
+    -webkit-backface-visibility: hidden;
+}
+.sparklestore-caption {
+    position:absolute;
+    color: #fff;
+    top:50%;
+    left:0;
+    right:0;
+    transform:translateY(-50%);
+    -webkit-transform:translateY(-50%);
+    -moz-transform:translateY(-50%);
+    z-index: 99;
+    text-align:center;
+}
+.sparklestore-slider .sparklestore-title {
+    text-transform: uppercase;
+    margin: 0 0 40px;
+    line-height: 1.5;
+    letter-spacing: 15px;
+    font-weight: 400;
+    font-size: 48px;
+}
+.sparklestore-slider .sparklestore-desc {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.8;
+    max-width: 60%;
+    margin: 0 auto;
+    letter-spacing: 4px;
+}
+.sparklestore-slider .flex-direction-nav a {
+    width: 15%;
+}
+.flex-direction-nav a,
+.flex-control-nav > li > a {
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    -moz-transition: all 0.3s ease-in-out 0s;
+    -ms-transition: all 0.3s ease-in-out 0s;
+    -o-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
+.flex-direction-nav a {
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 50%;
+    top: 0;
+    z-index: 10;
+    overflow: hidden;
+    opacity: 0;
+    margin:0;
+}
+.flex-direction-nav .flex-prev {
+    opacity: 0;
+    left: 0;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    cursor: url(assets/images/prev-light.png), url(assets/images/prev-light.cur), e-resize; /* standard: note the different path for the .cur file */
+    cursor: url(assets/images/prev-light.cur), n-resize\9; /* IE 8 and below */
+    *cursor: url(assets/images/prev-light.cur), n-resize; /* IE 7 and below */
+    _cursor: url(assets/images/prev-light.cur), n-resize; /* IE 6 */
+}
+
+.flex-direction-nav .flex-next {
+    opacity: 0;
+    right: 0;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    cursor: url(assets/images/next-light.png), url(assets/images/next-light.cur), e-resize; /* standard: note the different path for the .cur file */
+    cursor: url(assets/images/next-light.cur), n-resize\9; /* IE 8 and below */
+    *cursor: url(assets/images/next-light.cur), n-resize; /* IE 7 and below */
+    _cursor: url(assets/images/next-light.cur), n-resize; /* IE 6 */
+}
+
+.flex-control-nav {
+    position: absolute;
+    width: auto;
+    left: 50%;
+    bottom: 20px;
+    z-index: 11;
+    text-align: center;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+.flex-control-nav > li {
+    display: inline-block;
+    margin: 5px 3px;
+}
+.flex-control-nav > li > a {
+    background: #dddddd;
+    border: 2px solid #dddddd;
+    display: block;
+    height: 8px;
+    width: 8px;
+    position: relative;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+.flex-control-nav > li > a:before{
+    content:'';
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background-color:#dddddd;
+    -webkit-transition:all 0.3s ease-in-out;
+    -moz-transition:all 0.3s ease-in-out;
+    transition:all 0.3s ease-in-out;
+}
+.flex-control-nav > li > a:hover,
+.flex-control-nav > li > a.flex-active {
+    background: transparent;
+    border-color:#033772;
+}
+
+.sparklestore-slider .sparklestore-button {
+    margin:40px 0 0 ;
+}
+.sparklestore-slider a.sparklestore-button  {
+    display: inline-block;
+    padding:8px 20px;
+    color:#fff;
+    border-radius: 100px;
+    font-size: 14px;
+    border:1px solid #fff;
+    margin-right: 5px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    transition:all 0.3s ease-in-out;
+    -webkit-transition:all 0.3s ease-in-out;
+    -moz-transition:all 0.3s ease-in-out;   
+}
+.sparklestore-slider a.sparklestore-button:hover  {
+    background-color:#ffffff;
+    color:#033772;
+    border-color:#ffffff;
 }
 
 /*--------------------------------------------------------------
