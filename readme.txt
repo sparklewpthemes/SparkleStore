@@ -48,10 +48,11 @@ The exceptions to license are as follows:
 
 
 Image used in screenshot
-https://pixabay.com/en/woman-beach-female-jeans-blue-1031306/  License CC0 Public Domain
-https://www.pexels.com/photo/women-tanning-hay-model-26379/    License CC0 Public Domain
-https://pixabay.com/en/barn-old-weathered-girl-country-946699/ License CC0 Public Domain
-https://pixabay.com/en/woman-portrait-face-model-canon-659352/ License CC0 Public Domain
+https://unsplash.com/photos/98Elr-LIvD8                        License CC0 Public Domain
+https://pixabay.com/en/watch-corsair-vostok-europe-a7-1687073/ License CC0 Public Domain
+https://pixabay.com/en/wristwatch-watch-silver-time-474426/    License CC0 Public Domain
+https://pixabay.com/en/smart-watch-smartwatch-fitness-889639/  License CC0 Public Domain
+https://pixabay.com/en/watch-silver-time-clock-minute-932940/  License CC0 Public Domain
 
 
 == Installation ==
@@ -68,6 +69,10 @@ https://pixabay.com/en/woman-portrait-face-model-canon-659352/ License CC0 Publi
 Sparklestore includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 1.0.7 23th February 2017 =
+
+** Change screenshout with gpl image with full image url.
 
 = 1.0.6 20th February 2017 =
 
