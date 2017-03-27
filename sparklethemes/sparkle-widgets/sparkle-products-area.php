@@ -6,7 +6,6 @@ add_action('widgets_init', 'sparklestore_product_widget');
 function sparklestore_product_widget() {
     register_widget('sparklestore_product_widget_area');
 }
-
 class sparklestore_product_widget_area extends WP_Widget {
 
     /**
@@ -23,6 +22,7 @@ class sparklestore_product_widget_area extends WP_Widget {
         
 
         $prod_type = array(
+            ''                => esc_html__('Select Product Type', 'sparklestore'),
             'category'        => esc_html__('Category', 'sparklestore'),
             'latest_product'  => esc_html__('Latest Product', 'sparklestore'),
             'upsell_product'  => esc_html__('UpSell Product', 'sparklestore'),
@@ -97,11 +97,11 @@ class sparklestore_product_widget_area extends WP_Widget {
         /**
         ** wp query for first block
         **/  
-        $title            = esc_attr( $instance['sparklestore_product_title'] ); 
-        $shot_desc        = esc_html( $instance['sparklestore_product_short_desc'] );
-        $product_type     = esc_attr( $instance['sparklestore_product_type'] );
-        $product_category = intval( $instance['sparklestore_woo_category'] );
-        $product_number   = intval( $instance['sparklestore_product_number'] );
+        $title            = empty( $instance['sparklestore_product_title'] ) ? '' : $instance['sparklestore_product_title']; 
+        $shot_desc        = empty( $instance['sparklestore_product_short_desc'] ) ? '' : $instance['sparklestore_product_short_desc'];
+        $product_type     = empty( $instance['sparklestore_product_type'] ) ? '' : $instance['sparklestore_product_type'];
+        $product_category = empty( $instance['sparklestore_woo_category'] ) ? '' : $instance['sparklestore_woo_category'];
+        $product_number   = empty( $instance['sparklestore_product_number'] ) ? 5 : $instance['sparklestore_product_number'];
 
         $product_args       =   '';
         global $product_label_custom;

@@ -6,7 +6,6 @@ add_action('widgets_init', 'sparklestore_cat_with_product_widget');
 function sparklestore_cat_with_product_widget() {
     register_widget('sparklestore_cat_with_product_widget_area');
 }
-
 class sparklestore_cat_with_product_widget_area extends WP_Widget {
 
     /**
@@ -98,14 +97,14 @@ class sparklestore_cat_with_product_widget_area extends WP_Widget {
         /**
          * wp query for first block
         */  
-        $title            = esc_attr( $instance['sparklestore_cat_product_title'] ); 
-        $shot_desc        = esc_textarea( $instance['sparklestore_cat_product_short_desc'] );
-        $cat_aligment     = esc_attr( $instance['sparklestore_cat_image_aligment'] );
-        $product_category = intval( $instance['sparklestore_woo_category'] );
-        $product_number   = intval( $instance['sparklestore_cat_product_number'] );
-        $cat_info         = intval( $instance['sparklestore_cat_cat_product_info'] );
+        $title            = empty( $instance['sparklestore_cat_product_title'] ) ? '' : $instance['sparklestore_cat_product_title']; 
+        $shot_desc        = empty( $instance['sparklestore_cat_product_short_desc'] ) ? '' : $instance['sparklestore_cat_product_short_desc'];
+        $cat_aligment     = empty( $instance['sparklestore_cat_image_aligment'] ) ? 'rightalign' : $instance['sparklestore_cat_image_aligment'];
+        $product_category = empty( $instance['sparklestore_woo_category'] ) ? '' : $instance['sparklestore_woo_category'];
+        $product_number   = empty( $instance['sparklestore_cat_product_number'] ) ? 5 : $instance['sparklestore_cat_product_number'];
+        $cat_info         = empty( $instance['sparklestore_cat_cat_product_info'] ) ? '' : $instance['sparklestore_cat_cat_product_info'];
 
-        if(!empty($product_category)){
+        if( !empty( $product_category ) ){
           $cat_id = get_term($product_category,'product_cat');
           $category_id = $cat_id->term_id;
           $category_link = get_term_link( $category_id,'product_cat' );
@@ -124,8 +123,8 @@ class sparklestore_cat_with_product_widget_area extends WP_Widget {
                     
                     <div class="blocktitlewrap">
                         <div class="blocktitle">
-                          <?php if(!empty( $title )) { ?><h2><?php echo $title; ?></h2><?php } ?>
-                          <?php if(!empty( $shot_desc )) { ?><p><?php echo $shot_desc; ?></p><?php } ?>
+                          <?php if(!empty( $title )) { ?><h2><?php echo esc_attr( $title ); ?></h2><?php } ?>
+                          <?php if(!empty( $shot_desc )) { ?><p><?php echo esc_html( $shot_desc ); ?></p><?php } ?>
                         </div>
                         <div class="SparkleStoreAction">
                             <div class="sparkle-lSPrev"></div>
@@ -138,8 +137,8 @@ class sparklestore_cat_with_product_widget_area extends WP_Widget {
                             $taxonomy = 'product_cat';                                
                             $terms = term_description( $product_category, $taxonomy );
                             $terms_name = get_term( $product_category, $taxonomy );
-                            $thumbnail_id = get_woocommerce_term_meta($product_category, 'thumbnail_id', true);
-                            if (!empty($thumbnail_id)) {
+                            $thumbnail_id = get_woocommerce_term_meta( $product_category, 'thumbnail_id', true);
+                            if ( !empty( $thumbnail_id ) ) {
                               $image = wp_get_attachment_image_src($thumbnail_id, 'sparklestore-cat-image');
                             } else{ 
                                 $no_image = 'https://placeholdit.imgix.net/~text?txtsize=33&txt=285%C3%97370&w=285&h=370';
@@ -148,14 +147,14 @@ class sparklestore_cat_with_product_widget_area extends WP_Widget {
                         <div class="catblockwrap" <?php if (!empty($thumbnail_id)) {  ?>style="background-image:url(<?php echo esc_url($image[0]); ?>);"<?php } else{ ?>style="background-image:url(<?php echo esc_url($no_image); ?>);"<?php } ?>>
                             <a href="<?php echo esc_url($category_link); ?>" class="sparkle-overlay"></a>
                             <div class="block-title-desc">                                
-                        <div class="table-outer">
-                        <div class="table-inner">
-                                <h2><a href="<?php echo esc_url($category_link); ?>"><?php echo esc_attr( $terms_name->name ); ?></a></h2>
-                                <?php echo esc_attr( $terms ); ?>
-                                <a href="<?php echo esc_url($category_link); ?>" class="view-bnt"><?php esc_html_e('Shop Now','sparklestore'); ?></a>
-                            </div>
-                        </div>                        
-                        </div>                        
+                                <div class="table-outer">
+                                    <div class="table-inner">
+                                        <?php if( !empty( $terms_name->name ) ) { ?><h2><a href="<?php echo esc_url( $category_link ); ?>"><?php echo esc_attr( $terms_name->name ); ?></a></h2></div><?php } ?>
+                                        <?php echo esc_attr( $terms ); ?>
+                                        <a href="<?php echo esc_url($category_link); ?>" class="view-bnt"><?php esc_html_e('Shop Now','sparklestore'); ?></a>
+                                    </div>
+                                </div>                        
+                            </div>                        
                         </div>                        
                     </div>
                     

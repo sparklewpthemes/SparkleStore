@@ -44,8 +44,8 @@ class sparklestore_video_section_area extends WP_Widget {
     public function widget($args, $instance) {
         extract($args);
         extract($instance);
-        $desc             = esc_textarea( $instance['sparklestore_promo_video'] );
-        $video_url        = esc_url( $instance['sparklestore_promo_video_url'] );
+        $desc             = empty( $instance['sparklestore_promo_video'] ) ? '' : $instance['sparklestore_promo_video'];
+        $video_url        = empty( $instance['sparklestore_promo_video_url'] ) ? '' : $instance['sparklestore_promo_video_url'];
        
         echo $before_widget; 
     ?>

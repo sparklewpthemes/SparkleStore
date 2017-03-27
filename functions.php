@@ -104,6 +104,9 @@ function sparklestore_setup() {
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
+
+	// Indicate widget sidebars can use selective refresh in the Customizer.
+	add_theme_support( 'customize-selective-refresh-widgets' );
 }
 endif;
 add_action( 'after_setup_theme', 'sparklestore_setup' );
@@ -127,7 +130,7 @@ add_action( 'after_setup_theme', 'sparklestore_content_width', 0 );
  */
 function sparklestore_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Left Sidebar Widget Area', 'sparklestore' ),
+		'name'          => esc_html__( 'Right Sidebar Widget Area', 'sparklestore' ),
 		'id'            => 'sparklesidebarone',
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
@@ -137,7 +140,7 @@ function sparklestore_widgets_init() {
 	));
 
 	register_sidebar( array(
-		'name'          => esc_html__( 'Right Sidebar Widget Area', 'sparklestore' ),
+		'name'          => esc_html__( 'Left Sidebar Widget Area', 'sparklestore' ),
 		'id'            => 'sparklesidebartwo',
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
@@ -280,3 +283,48 @@ add_action('admin_enqueue_scripts', 'sparklestore_admin_scripts');
  * Require init.
 */
 require  trailingslashit( get_template_directory() ).'sparklethemes/init.php';
+
+
+if ( isset( $wp_customize->selective_refresh ) ) {
+	
+	$wp_customize->selective_refresh->add_partial( 'blogname', array(
+		'selector' => '.site-title',
+		'container_inclusive' => false,
+		'render_callback' => 'sparklestore_customize_partial_blogname',
+	) );
+
+	$wp_customize->selective_refresh->add_partial( 'blogdescription', array(
+		'selector' => '.site-description',
+		'container_inclusive' => false,
+		'render_callback' => 'sparklestore_customize_partial_blogdescription',
+	) );
+
+	$wp_customize->selective_refresh->add_partial( 'sparklestore_email_icon', array(
+		'selector' => '.quickinfowrap',
+		'container_inclusive' => false,
+	) );
+
+	$wp_customize->selective_refresh->add_partial( 'sparklestore_social_facebook', array(
+		'selector' => '.social',
+		'container_inclusive' => false,
+	) );
+
+	$wp_customize->selective_refresh->add_partial( 'paymentlogo_image_one', array(
+		'selector' => '.payment-accept',
+		'container_inclusive' => false,
+	) );
+
+	
+	$wp_customize->selective_refresh->add_partial( 'sparklestore_footer_copyright', array(
+		'selector' => '.coppyright',
+		'container_inclusive' => false,
+	) );
+
+}
+
+function sparklestore_customize_partial_blogname() {
+	bloginfo( 'name' );
+}
+function sparklestore_customize_partial_blogdescription() {
+	bloginfo( 'description' );
+}

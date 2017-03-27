@@ -69,8 +69,9 @@ Sparklestore includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
-= 1.0.3 22th Nov 1016 =
+= 1.0.3 27th Dec 1016 =
 
+** Fixed reviewer feedback issue.
 ** Fixed the default widget area style issue.
 ** Fixed the WooCommerce related and up sale products slider issue.
 ** Fixed responsive issue.

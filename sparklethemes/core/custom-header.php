@@ -17,7 +17,7 @@
 function sparklestore_custom_header_setup() {
 	add_theme_support( 'custom-header', apply_filters( 'sparklestore_custom_header_args', array(
 		'default-image'          => '',
-		'default-text-color'     => '033772',
+		'default-text-color'     => '000000',
 		'width'                  => 1420,
 		'height'                 => 180,
 		'flex-height'            => true,

@@ -363,7 +363,7 @@ html {
 }
 
 body {
-    background: #fff; /* Fallback for when there is no custom background color defined. */
+    background: #f8f8f8; /* Fallback for when there is no custom background color defined. */
 }
 
 blockquote:before,
@@ -389,7 +389,7 @@ body {
     font-weight:300;
     line-height: 1.5;
     font-size:14px;
-    background-color: #ffffff;
+    background-color: #f8f8f8;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
 }
@@ -2187,6 +2187,9 @@ object {
 .sparklelogo{
     float: left;
     width: 250px;    
+}
+.site-branding {
+    color: #033772;
 }
 .site-branding .site-title{
     margin: 0;
@@ -4209,10 +4212,6 @@ ul.products.list li.product .gridlist-buttonwrap {
 /*--------------------------------------------------------------
 ## Footer section start 
 --------------------------------------------------------------*/
-.footer {
-    background: none repeat scroll 0 0 #f4f4f4;
-}
-
 .footer-middle,
 .footer-top,
 .footer-bottom{
@@ -4864,7 +4863,7 @@ ul.products.list li.product .gridlist-buttonwrap {
 }
 .inner_page{
     padding:30px 0px;
-    background: #f8f8f8;
+    /*background: #f8f8f8;*/
 }
 .widget-area .widget{
     margin:0;

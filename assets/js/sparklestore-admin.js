@@ -36,7 +36,7 @@ jQuery(document).ready(function($){
 				sparklestore_upload.close();
                 sparklestore_selector.find('.upload').val(attachment.attributes.url);
 				if ( attachment.attributes.type == 'image' ) {
-					sparklestore_selector.find('.screenshot').empty().hide().append('<img src="' + attachment.attributes.url + '"><a class="remove-image">Remove</a>').slideDown('fast');
+					sparklestore_selector.find('.screenshot').empty().hide().append('<img src="' + attachment.attributes.url + '"><a class="remove-image">'+ sparklestore_remove.remove +'</a>').slideDown('fast');
 				}
 				sparklestore_selector.find('.upload-button-wdgt').unbind().addClass('remove-file').removeClass('upload-button-wdgt').val(sparklestore_remove.remove);
 				sparklestore_selector.find('.of-background-properties').slideDown();

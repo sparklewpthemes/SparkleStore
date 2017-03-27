@@ -171,7 +171,7 @@ if ( ! function_exists( 'sparklestore_service_section' ) ) {
       $service_title_four = esc_attr( get_theme_mod( 'sparklestore_service_title_four' ) );
       $service_desc_four = esc_attr( get_theme_mod( 'sparklestore_service_desc_four' ) );
 
-      $service_area = esc_attr( get_theme_mod( 'sparklestore_services_area_settings','enable' ) );
+      $service_area = esc_attr( get_theme_mod( 'sparklestore_services_area_settings', 'disable' ) );
 
       if(!empty($service_area) && $service_area == 'enable') { ?>
         <div class="our-features-box">
@@ -551,42 +551,6 @@ if (!function_exists('sparkle_store_breadcrumbs')) {
     }
   }
 }
-
-/**
- * Sparklestore pagination function area
-*/
-if (!function_exists('sparklestore_pagination')) {
-
-  function sparklestore_pagination($pages = '', $range = 1){  
-       $showitems = ($range * 2)+1;
-       global $paged;
-       if(empty($paged)) $paged = 1;   
-       if($pages == ''){
-           global $wp_query;
-           $pages = $wp_query->max_num_pages;
-           if(!$pages){
-               $pages = 1;
-           }
-       }
-   
-      if(1 != $pages){
-         echo "<div class=\"pagination\"><span>".__('Page','sparklestore')." ".$paged." ".esc_html__('of','sparklestore')." ".$pages."</span>";
-         if($paged > 2 && $paged > $range+1 && $showitems < $pages) echo "<a href='".get_pagenum_link(1)."'>&laquo; ".esc_html__('First','sparklestore')."</a>";
-          if($paged > 1 && $showitems < $pages) echo "<a href='".esc_url( get_pagenum_link($paged - 1) )."'>&lsaquo; ".esc_html__('Previous','sparklestore')."</a>";
-  
-          for ($i=1; $i <= $pages; $i++){
-              if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems ))
-              {
-                  echo ($paged == $i)? "<span class=\"current\">".$i."</span>":"<a href='".get_pagenum_link($i)."' class=\"inactive\">".$i."</a>";
-              }
-          }    
-          if ($paged < $pages && $showitems < $pages) echo "<a href=\"".get_pagenum_link($paged + 1)."\">".esc_html__('Next','sparklestore')." &rsaquo;</a>";  
-          if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) echo "<a href='".get_pagenum_link($pages)."'>".esc_html__('Last','sparklestore')." &raquo;</a>";
-          echo "</div>\n";
-      }
-  }
-}
-
 
 /**
  * Themes required Plugins Install Section

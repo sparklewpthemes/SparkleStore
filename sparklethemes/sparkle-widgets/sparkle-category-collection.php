@@ -21,15 +21,15 @@ class sparklestore_cat_widget_area extends WP_Widget {
     
     private function widget_fields() {
 
-          $taxonomy     = 'product_cat';
-          $empty        = 1;
-          $orderby      = 'name';  
-          $show_count   = 0;      // 1 for yes, 0 for no
-          $pad_counts   = 0;      // 1 for yes, 0 for no
-          $hierarchical = 1;      // 1 for yes, 0 for no  
-          $title        = '';  
-          $empty        = 0;
-          $args = array(
+        $taxonomy     = 'product_cat';
+        $empty        = 1;
+        $orderby      = 'name';  
+        $show_count   = 0;      // 1 for yes, 0 for no
+        $pad_counts   = 0;      // 1 for yes, 0 for no
+        $hierarchical = 1;      // 1 for yes, 0 for no  
+        $title        = '';  
+        $empty        = 0;
+        $args = array(
             'taxonomy'     => $taxonomy,
             'orderby'      => $orderby,
             'show_count'   => $show_count,
@@ -37,13 +37,13 @@ class sparklestore_cat_widget_area extends WP_Widget {
             'hierarchical' => $hierarchical,
             'title_li'     => $title,
             'hide_empty'   => $empty
-          );
+        );
 
-          $woocommerce_categories = array();
-          $woocommerce_categories_obj = get_categories($args);
-          foreach ($woocommerce_categories_obj as $category) {
+        $woocommerce_categories = array();
+        $woocommerce_categories_obj = get_categories( $args );
+        foreach( $woocommerce_categories_obj as $category ) {
             $woocommerce_categories[$category->term_id] = $category->name;
-          }
+        }
 
 
         $fields = array(
@@ -76,13 +76,12 @@ class sparklestore_cat_widget_area extends WP_Widget {
     public function widget($args, $instance) {
         extract($args);
         extract($instance);
-        
         /**
         ** wp query for first block
         **/  
-        $main_title = esc_textarea( $instance['sparklestore_main_cat_title'] );
-        $shot_desc = esc_html( $instance['sparklestore_cat_short_desc'] );
-        $sparklestore_cat_id = $instance['sparklestore_select_category'];
+        $main_title          = empty( $instance['sparklestore_main_cat_title'] ) ?  '' : $instance['sparklestore_main_cat_title'];
+        $shot_desc           = empty( $instance['sparklestore_cat_short_desc'] ) ?  '' : $instance['sparklestore_cat_short_desc'];
+        $sparklestore_cat_id = empty( $instance['sparklestore_select_category'] ) ? '' : $instance['sparklestore_select_category'];
         
         echo $before_widget;            
     ?>
@@ -103,7 +102,7 @@ class sparklestore_cat_widget_area extends WP_Widget {
                     <ul class="categoryslider cS-hidden">
                         <?php
                             $count = 0; 
-                            if(!empty($sparklestore_cat_id)){
+                            if(!empty( $sparklestore_cat_id ) ){
                                 
                                 foreach ($sparklestore_cat_id as $key => $store_cat_id) {          
                                     $thumbnail_id = get_woocommerce_term_meta( $key, 'thumbnail_id', true );

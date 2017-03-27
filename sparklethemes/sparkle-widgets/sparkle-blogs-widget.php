@@ -68,16 +68,16 @@ class sparklestore_blog_widget_area extends WP_Widget {
         return $fields;
     }
 
-    public function widget($args, $instance) {
+    public function widget($args, $instance) {        
         extract($args);
         extract($instance);
         /**
-        ** wp query for first block
+         ** wp query for first block
         **/
-        $blog_main_title        = esc_attr( $instance['sparklestore_blogs_top_title'] );
-        $blogs_category_list    = $instance['blogs_category_list'];
-        $shot_desc              = esc_html( $instance['sparklestore_blogs_short_desc'] );
-        $number_blogs_posts     = intval( $instance['sparklestore_number_blogs_posts'] );
+        $blog_main_title        = empty( $instance['sparklestore_blogs_top_title'] ) ? '' : $instance['sparklestore_blogs_top_title'];
+        $blogs_category_list    = empty( $instance['blogs_category_list'] ) ? '' : $instance['blogs_category_list'];
+        $shot_desc              = empty( $instance['sparklestore_blogs_short_desc'] ) ? '' : $instance['sparklestore_blogs_short_desc'];
+        $number_blogs_posts     = empty( $instance['sparklestore_number_blogs_posts'] ) ? 5 : $instance['sparklestore_number_blogs_posts'];
     
         $blogs_cat_id = array();
         if(!empty($blogs_category_list)){
@@ -115,7 +115,7 @@ class sparklestore_blog_widget_area extends WP_Widget {
                     <ul class="blogspostarea cS-hidden">                        
                         <?php 
                             if( $blogs_posts->have_posts() ) : while( $blogs_posts->have_posts() ) : $blogs_posts->the_post();
-                            $image = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), 'sparklestore-home-blog', true);
+                            $image = wp_get_attachment_image_src(get_post_thumbnail_id( get_the_ID() ), 'sparklestore-home-blog', true);
                         ?>
                             <li>
                                 <div class="blogcontainer grid">  

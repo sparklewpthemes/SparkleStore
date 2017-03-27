@@ -6,7 +6,6 @@ add_action('widgets_init', 'sparklestore_promo_pages');
 function sparklestore_promo_pages() {
     register_widget('sparklestore_promo_pages_area');
 }
-
 class sparklestore_promo_pages_area extends WP_Widget {
     /**
      * Register widget with WordPress.
@@ -145,80 +144,74 @@ class sparklestore_promo_pages_area extends WP_Widget {
         extract($args);
         extract($instance);
         
-        $promo_one_title          = esc_attr( $instance['sparklestore_promo_one_title'] );
-        $promo_one_desc           = esc_textarea( $instance['sparklestore_promo_one_desc'] );
-        $promo_one_image          = esc_url( $instance['sparklestore_promo_one_image'] );
-        $promo_one_button_link    = esc_url( $instance['sparklestore_promo_one_button_link'] );
+        $promo_one_title          = empty( $instance['sparklestore_promo_one_title'] ) ? '' : $instance['sparklestore_promo_one_title'];
+        $promo_one_desc           = empty( $instance['sparklestore_promo_one_desc'] ) ? '' : $instance['sparklestore_promo_one_desc'];
+        $promo_one_image          = empty( $instance['sparklestore_promo_one_image'] ) ? '' : $instance['sparklestore_promo_one_image'];
+        $promo_one_button_link    = empty( $instance['sparklestore_promo_one_button_link'] ) ? '' : $instance['sparklestore_promo_one_button_link'];
         
-        $promo_two_title          = esc_attr( $instance['sparklestore_promo_two_title'] );
-        $promo_two_desc           = esc_textarea( $instance['sparklestore_promo_two_desc'] );
-        $promo_two_image          = esc_url( $instance['sparklestore_promo_two_image'] );
-        $promo_two_button_link    = esc_url( $instance['sparklestore_promo_two_button_link'] );
+        $promo_two_title          = empty( $instance['sparklestore_promo_two_title'] ) ? '' : $instance['sparklestore_promo_two_title'];
+        $promo_two_desc           = empty( $instance['sparklestore_promo_two_desc'] ) ? '' : $instance['sparklestore_promo_two_desc'];
+        $promo_two_image          = empty( $instance['sparklestore_promo_two_image'] ) ? '' : $instance['sparklestore_promo_two_image'];
+        $promo_two_button_link    = empty( $instance['sparklestore_promo_two_button_link'] ) ? '' : $instance['sparklestore_promo_two_button_link'];
         
-        $promo_three_title        = esc_attr( $instance['sparklestore_promo_three_title'] );
-        $promo_three_desc         = esc_textarea( $instance['sparklestore_promo_three_desc'] );
-        $promo_three_image        = esc_url( $instance['sparklestore_promo_three_image'] );
-        $promo_three_button_link  = esc_url( $instance['sparklestore_promo_three_button_link'] );
+        $promo_three_title        = empty( $instance['sparklestore_promo_three_title'] ) ? '' : $instance['sparklestore_promo_three_title'];
+        $promo_three_desc         = empty( $instance['sparklestore_promo_three_desc'] ) ? '' : $instance['sparklestore_promo_three_desc'];
+        $promo_three_image        = empty( $instance['sparklestore_promo_three_image'] ) ? '' : $instance['sparklestore_promo_three_image'];
+        $promo_three_button_link  = empty( $instance['sparklestore_promo_three_button_link'] ) ? '' : $instance['sparklestore_promo_three_button_link'];
 
         echo $before_widget; 
     ?>
         <div class="promosection">            
             <div class="container">
-            <div class="row">
-                  <div class="promoarea-div">
-                  <div class="promoarea">
-
-                      <?php if(!empty( $promo_one_image )) { ?>
-                          <a href="<?php echo esc_url($promo_one_button_link ); ?>">
-                              <figure class="promoimage">
-                                  <img src="<?php echo esc_url( $promo_one_image ); ?>"/>
-                              </figure>
-                          </a>
-                      <?php } ?>
-                      <div class="textwrap">
-                          <?php if(!empty( $promo_one_desc )) { ?><span><?php echo esc_attr( $promo_one_desc ); ?></span><?php } ?>
-                          <?php if(!empty( $promo_one_title )) { ?><h2><?php echo esc_attr( $promo_one_title ); ?></h2><?php } ?>
+              <div class="row">
+                    <div class="promoarea-div">
+                      <div class="promoarea">
+                          <?php if(!empty( $promo_one_image )) { ?>
+                              <a href="<?php echo esc_url($promo_one_button_link ); ?>">
+                                  <figure class="promoimage">
+                                      <img src="<?php echo esc_url( $promo_one_image ); ?>"/>
+                                  </figure>
+                              </a>
+                          <?php } ?>
+                          <div class="textwrap">
+                              <?php if(!empty( $promo_one_desc )) { ?><span><?php echo esc_attr( $promo_one_desc ); ?></span><?php } ?>
+                              <?php if(!empty( $promo_one_title )) { ?><h2><?php echo esc_attr( $promo_one_title ); ?></h2><?php } ?>
+                          </div>
                       </div>
-
-                  </div>
-                  </div>
-                  
-                  <div class="promoarea-div">
-                  <div class="promoarea">
-                       
-                      <?php if(!empty( $promo_two_image )) { ?>
-                          <a href="<?php echo esc_url($promo_two_button_link ); ?>">
-                              <figure class="promoimage">
-                                  <img src="<?php echo esc_url( $promo_two_image ); ?>"/>
-                              </figure>
-                          </a>
-                      <?php } ?>                      
-                      <div class="textwrap">
-                           <?php if(!empty( $promo_two_desc )) { ?><span><?php echo esc_attr( $promo_two_desc ); ?></span><?php } ?>
-                          <?php if(!empty( $promo_two_title )) { ?><h2><?php echo esc_attr( $promo_two_title ); ?></h2><?php } ?>
+                    </div>
+                    
+                    <div class="promoarea-div">
+                      <div class="promoarea">                       
+                          <?php if(!empty( $promo_two_image )) { ?>
+                              <a href="<?php echo esc_url($promo_two_button_link ); ?>">
+                                  <figure class="promoimage">
+                                      <img src="<?php echo esc_url( $promo_two_image ); ?>"/>
+                                  </figure>
+                              </a>
+                          <?php } ?>                      
+                          <div class="textwrap">
+                               <?php if(!empty( $promo_two_desc )) { ?><span><?php echo esc_attr( $promo_two_desc ); ?></span><?php } ?>
+                              <?php if(!empty( $promo_two_title )) { ?><h2><?php echo esc_attr( $promo_two_title ); ?></h2><?php } ?>
+                          </div>
+                      </div>            
+                    </div>            
+                    
+                    <div class="promoarea-div">
+                      <div class="promoarea">
+                          <?php if(!empty( $promo_three_image )) { ?>
+                              <a href="<?php echo esc_url($promo_three_button_link ); ?>">
+                                  <figure class="promoimage">
+                                      <img src="<?php echo esc_url( $promo_three_image ); ?>"/>
+                                  </figure>
+                              </a>
+                          <?php } ?>
+                          <div class="textwrap">
+                              <?php if(!empty( $promo_three_desc )) { ?><span><?php echo esc_attr( $promo_three_desc ); ?></span><?php } ?>
+                              <?php if(!empty( $promo_three_title )) { ?><h2><?php echo esc_attr( $promo_three_title ); ?></h2><?php } ?>
+                          </div>                     
                       </div>
-
-                  </div>            
-                  </div>            
-                  
-                  <div class="promoarea-div">
-                  <div class="promoarea">
-
-                      <?php if(!empty( $promo_three_image )) { ?>
-                          <a href="<?php echo esc_url($promo_three_button_link ); ?>">
-                              <figure class="promoimage">
-                                  <img src="<?php echo esc_url( $promo_three_image ); ?>"/>
-                              </figure>
-                          </a>
-                      <?php } ?>
-                      <div class="textwrap">
-                          <?php if(!empty( $promo_three_desc )) { ?><span><?php echo esc_attr( $promo_three_desc ); ?></span><?php } ?>
-                          <?php if(!empty( $promo_three_title )) { ?><h2><?php echo esc_attr( $promo_three_title ); ?></h2><?php } ?>
-                      </div>
-                     
-                  </div>
-                  </div>
-            </div>
+                    </div>
+              </div>
             </div>
         </div>
 

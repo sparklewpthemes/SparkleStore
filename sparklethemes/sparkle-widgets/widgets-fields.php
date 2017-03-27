@@ -235,7 +235,7 @@ function sparklestore_widgets_show_widget_field($instance = '', $widget_field = 
 
             $output .= '<div class="screenshot team-thumb" id="' . $id . '-image">' . "\n";
             if ($value != '') {
-                $remove = '<a class="remove-image">Remove</a>';
+                $remove = '<a class="remove-image">' . esc_html__('Remove', 'sparklestore') . '</a>';
                 $image = preg_match('/(^.*\.jpg|jpeg|png|gif|ico*)/i', $value);
                 if ($image) {
                     $output .= '<img src="' . $value . '" alt="" />' . $remove;

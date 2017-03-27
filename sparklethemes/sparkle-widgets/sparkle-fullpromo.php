@@ -6,7 +6,6 @@ add_action('widgets_init', 'sparklestore_full_promo');
 function sparklestore_full_promo() {
     register_widget('sparklestore_full_promo_area');
 }
-
 class sparklestore_full_promo_area extends WP_Widget {
 
     /**
@@ -62,34 +61,34 @@ class sparklestore_full_promo_area extends WP_Widget {
         extract($args);
         extract($instance);
         
-        $promo_bg_image  = esc_url( $instance['sparklestore_full_promo_bg_image'] );
-        $title           = esc_attr( $instance['sparklestore_full_promo_title'] );
-        $short_desc      = esc_textarea( $instance['sparklestore_full_promo_desc'] );
-        $button_link     = esc_url( $instance['sparklestore_full_promo_button_link'] );
-        $button_text     = esc_attr( $instance['sparklestore_full_promo_button_text'] );
+        $promo_bg_image  = empty( $instance['sparklestore_full_promo_bg_image'] ) ? '' : $instance['sparklestore_full_promo_bg_image'];
+        $title           = empty( $instance['sparklestore_full_promo_title'] ) ? '' : $instance['sparklestore_full_promo_title'];
+        $short_desc      = empty( $instance['sparklestore_full_promo_desc'] ) ? '' : $instance['sparklestore_full_promo_desc'];
+        $button_link     = empty( $instance['sparklestore_full_promo_button_link'] ) ? '' : $instance['sparklestore_full_promo_button_link'];
+        $button_text     = empty( $instance['sparklestore_full_promo_button_text'] ) ? '' : $instance['sparklestore_full_promo_button_text'];
 
         echo $before_widget; 
     ?>
     <div class="fullpromowrap">
         <div class="container">
             <div class="row">
-                   <div class="promoimage" <?php if ( !empty( $promo_bg_image ) ) { ?>style="background-image:url(<?php echo esc_url( $promo_bg_image ); ?>); background-size:cover;"<?php } ?>>
-                        <div class="fullwrap">                            
-                            <?php if ( !empty( $title ) ) { ?>
-                                <h4><?php echo esc_attr( $title ); ?></h4>
-                            <?php } ?>
+                <div class="promoimage" <?php if ( !empty( $promo_bg_image ) ) { ?>style="background-image:url(<?php echo esc_url( $promo_bg_image ); ?>); background-size:cover;"<?php } ?>>
+                    <div class="fullwrap">                            
+                        <?php if ( !empty( $title ) ) { ?>
+                            <h4><?php echo esc_attr( $title ); ?></h4>
+                        <?php } ?>
 
-                            <?php if ( !empty( $short_desc ) ) { ?>
-                                <span><?php echo esc_attr( $short_desc ); ?></span>
-                            <?php } ?> 
+                        <?php if ( !empty( $short_desc ) ) { ?>
+                            <span><?php echo esc_html( $short_desc ); ?></span>
+                        <?php } ?> 
 
-                            <?php if ( !empty( $button_text ) ) { ?>
-                                <a href="<?php echo esc_url($button_link); ?>">
-                                  <button class="btn promolink"><?php echo esc_attr( $button_text ); ?></button>
-                                </a>
-                            <?php } ?>
-                        </div> 
-                   </div>
+                        <?php if ( !empty( $button_text ) ) { ?>
+                            <a href="<?php echo esc_url( $button_link ); ?>">
+                              <button class="btn promolink"><?php echo esc_attr( $button_text ); ?></button>
+                            </a>
+                        <?php } ?>
+                    </div> 
+                </div>
             </div>
         </div>
     </div> 

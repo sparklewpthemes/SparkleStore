@@ -183,10 +183,9 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
   ));
 
       $wp_customize->add_setting('sparklestore_services_area_settings', array(
-          'default' => 'enable',
+          'default' => 'disable',
           'capability' => 'edit_theme_options',
           'sanitize_callback' => 'sparklestore_radio_enable_disable_sanitize',
-          'transport' => 'postMessage'
     	));
 
     	$wp_customize->add_control('sparklestore_services_area_settings', array(
@@ -201,7 +200,7 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
     	));
 
     	$wp_customize->add_setting('sparklestore_services_section', array(
-            'default' => 'enable',
+            'default' => 'disable',
             'capability' => 'edit_theme_options',
             'sanitize_callback' => 'sparklestore_radio_enable_disable_sanitize'  //done
     	));
@@ -220,7 +219,7 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
 
 	 // Services Area One
     	$wp_customize->add_setting('sparklestore_services_icon_one', array(
-            'default' => 'fa-truck',
+            'default' => '',
             'sanitize_callback' => 'sparklestore_text_sanitize', 
             'transport' => 'postMessage'
         ));
@@ -234,7 +233,7 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
         ));
     	
     	  $wp_customize->add_setting('sparklestore_service_title_one', array(
-            'default' => 'FREE SHIPPING WORLDWIDE',
+            'default' => '',
             'sanitize_callback' => 'sparklestore_text_sanitize',
             'transport' => 'postMessage'
         ));
@@ -247,7 +246,7 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
         ));
 
         $wp_customize->add_setting('sparklestore_service_desc_one', array(
-            'default' => 'Lorem ipsum dolor sit amet.',
+            'default' => '',
            	'sanitize_callback' => 'sparklestore_text_sanitize',
             'transport' => 'postMessage'
         ));
@@ -261,7 +260,7 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
 
     // Services Area Two
         $wp_customize->add_setting('sparklestore_services_icon_two', array(
-            'default' => 'fa-headphones',
+            'default' => '',
             'sanitize_callback' => 'sparklestore_text_sanitize',
             'transport' => 'postMessage'
         ));
@@ -275,7 +274,7 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
         ));
     	
     	  $wp_customize->add_setting('sparklestore_service_title_two', array(
-            'default' => '24X7 CUSTOMER SUPPORT',
+            'default' => '',
             'sanitize_callback' => 'sparklestore_text_sanitize',
             'transport' => 'postMessage'
         ));
@@ -288,7 +287,7 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
         ));
 
         $wp_customize->add_setting('sparklestore_service_desc_two', array(
-            'default' => 'Lorem ipsum dolor sit amet.',
+            'default' => '',
            	'sanitize_callback' => 'sparklestore_text_sanitize',
             'transport' => 'postMessage'
         ));
@@ -302,7 +301,7 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
 
     // Services Area Three
         $wp_customize->add_setting('sparklestore_services_icon_three', array(
-            'default' => 'fa-dollar',
+            'default' => '',
             'sanitize_callback' => 'sparklestore_text_sanitize',
             'transport' => 'postMessage'
         ));
@@ -316,7 +315,7 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
         ));
     	
     	  $wp_customize->add_setting('sparklestore_service_title_three', array(
-            'default' => 'MONEY BACK GUARANTEE',
+            'default' => '',
             'sanitize_callback' => 'sparklestore_text_sanitize',
             'transport' => 'postMessage'
         ));
@@ -329,7 +328,7 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
         ));
 
         $wp_customize->add_setting('sparklestore_service_desc_three', array(
-            'default' => 'Lorem ipsum dolor sit amet.',
+            'default' => '',
            	'sanitize_callback' => 'sparklestore_text_sanitize',
             'transport' => 'postMessage'
         ));
@@ -343,7 +342,7 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
 
      // Services Area Four
         $wp_customize->add_setting('sparklestore_services_icon_four', array(
-            'default' => 'fa-mobile',
+            'default' => '',
             'sanitize_callback' => 'sparklestore_text_sanitize',
             'transport' => 'postMessage'
         ));
@@ -357,7 +356,7 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
         ));
     	
     	  $wp_customize->add_setting('sparklestore_service_title_four', array(
-            'default' => 'HOTLINE +(888) 123-4567',
+            'default' => '',
             'sanitize_callback' => 'sparklestore_text_sanitize',
             'transport' => 'postMessage'
         ));
@@ -370,7 +369,7 @@ $wp_customize->add_panel('sparklestore_general_settings', array(
         ));
 
         $wp_customize->add_setting('sparklestore_service_desc_four', array(
-            'default' => 'Lorem ipsum dolor sit amet.',
+            'default' => '',
            	'sanitize_callback' => 'sparklestore_text_sanitize',
             'transport' => 'postMessage'
         ));
@@ -543,32 +542,32 @@ $wp_customize->add_panel('sparklestore_footer_settings', array(
                 'sparklestore_social_facebook' => array(
                     'id' => 'sparklestore_social_facebook',
                     'title' => esc_html__('Facebook', 'sparklestore'),
-                    'default' => esc_url( home_url( '/' ) ).'#facebook',
+                    'default' => '',
                 ),
                 'sparklestore_social_twitter' => array(
                     'id' => 'sparklestore_social_twitter',
                     'title' => esc_html__('Twitter', 'sparklestore'),
-                    'default' => esc_url( home_url( '/' ) ).'#twitter',
+                    'default' => '',
                 ),
                 'sparklestore_social_googleplus' => array(
                     'id' => 'sparklestore_social_googleplus',
                     'title' => esc_html__('Google-Plus', 'sparklestore'),
-                    'default' => esc_url( home_url( '/' ) ).'#googleplus',
+                    'default' => '',
                 ),
                 'sparklestore_social_pinterest' => array(
                     'id' => 'sparklestore_social_pinterest',
                     'title' => esc_html__('Pinterest', 'sparklestore'),
-                    'default' => esc_url( home_url( '/' ) ).'#pinterest',
+                    'default' => '',
                 ),
                 'sparklestore_social_linkedin' => array(
                     'id' => 'sparklestore_social_linkedin',
                     'title' => esc_html__('Linkedin', 'sparklestore'),
-                    'default' => esc_url( home_url( '/' ) ).'#linkedin',
+                    'default' => '',
                 ),
                 'sparklestore_social_youtube' => array(
                     'id' => 'sparklestore_social_youtube',
                     'title' => esc_html__('YouTube', 'sparklestore'),
-                    'default' => esc_url( home_url( '/' ) ).'#youtube',
+                    'default' => '',
                 )
             );
 
@@ -761,12 +760,3 @@ function sparklestore_customize_preview_js() {
 	wp_enqueue_script( 'sparklestore_customizer', get_template_directory_uri() . '/assets/js/customizer.js', array( 'customize-preview' ), '20151215', true );
 }
 add_action( 'customize_preview_init', 'sparklestore_customize_preview_js' );
-
-/**
- * Binds JS handlers to load Theme Customizerjs
-*/
-function sparklestore_registers_customizer() {
-
-    wp_enqueue_script( 'sparklestore-customizer', get_template_directory_uri() . '/assets/js/sparklestore-customizer.js', array("jquery"), '20151215', true  );
-}
-add_action( 'customize_controls_enqueue_scripts', 'sparklestore_registers_customizer' );

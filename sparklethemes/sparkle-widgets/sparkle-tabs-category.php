@@ -74,7 +74,7 @@ class sparklestore_cat_collection_tabs_widget_area extends WP_Widget {
        if(!empty( $sparklestore_cat_id )) {
            $first_cat_id =  key( $sparklestore_cat_id );
        }
-       $product_number = intval( $instance['sparklestore_pro_number_products'] );
+       $product_number = empty( $instance['sparklestore_pro_number_products'] ) ? 5 : $instance['sparklestore_pro_number_products'];
        
        echo $before_widget;            
    ?>

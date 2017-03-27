@@ -53,25 +53,27 @@ class sparklestore_contact_info_area extends WP_Widget {
         extract($args);
         extract($instance);
         
-        $title           = esc_attr( $instance['sparklestore_quick_contact_title'] );
-        $contact_address = esc_textarea( $instance['sparklestore_quick_address'] );
-        $contact_number  = esc_attr( $instance['sparklestore_quick_phone'] );
-        $contact_email   = sanitize_email( $instance['sparklestore_quick_email'] );
+        $title           =  empty( $instance['sparklestore_quick_contact_title'] ) ? '' : $instance['sparklestore_quick_contact_title'];
+        $contact_address =  empty( $instance['sparklestore_quick_address'] ) ? '' : $instance['sparklestore_quick_address'];
+        $contact_number  =  empty( $instance['sparklestore_quick_phone'] ) ? '' : $instance['sparklestore_quick_phone'];
+        $phone_number    = preg_replace("/[^0-9]/","", $contact_number);
+        $contact_email   =  empty( $instance['sparklestore_quick_email'] ) ? '' : $instance['sparklestore_quick_email'] ;
         
         echo $before_widget; 
         
         if(!empty($title)) {
-          echo '<h4 class="quick-store spstore widget-title">'.$title.'</h4>';
+          echo '<h4 class="quick-store spstore widget-title">'. esc_attr( $title ) .'</h4>';
         }
     ?>
       <div class="contacts-info">
         <?php if(!empty( $contact_address )) { ?>
           <address>
-          <i class="add-icon">&nbsp;</i> <?php echo $contact_address; ?>
+          <i class="add-icon">&nbsp;</i> <?php echo esc_attr( $contact_address ); ?>
           </address>
         <?php }  if(!empty( $contact_number )) { ?>
           <div class="phone-footer">
-            <i class="phone-icon">&nbsp;</i> <?php echo esc_attr( $contact_number ); ?>
+            <i class="phone-icon">&nbsp;</i> 
+            <a href="tel:<?php echo esc_attr( $phone_number ); ?>"><?php echo esc_attr( $contact_number ); ?></a>
           </div>
         <?php }  if(!empty( $contact_email )) { ?>
           <div class="email-footer">
