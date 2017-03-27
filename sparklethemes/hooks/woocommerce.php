@@ -232,7 +232,6 @@ add_action('wp_ajax_nopriv_sparklestore_tabs_ajax_action', 'sparklestore_tabs_aj
 function sparklestore_woocommerce_breadcrumb() {
     do_action('breadcrumb-woocommerce');
 }
-
 add_action('woocommerce_before_main_content', 'sparklestore_woocommerce_breadcrumb', 9);
 
 remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);

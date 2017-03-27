@@ -602,17 +602,16 @@ if ( ! function_exists( 'sparklestore_breadcrumb_woocommerce' ) ) {
     function sparklestore_breadcrumb_woocommerce(){ ?>
       <div class="breadcrumbs">
         <div class="container">
-          <?php if( is_product() ) {
+            <?php if( is_product() ) {
                   the_title( '<h1 class="entry-title">', '</h1>' ); 
               }elseif( is_search() ){ ?>
                     <h1 class="entry-title"><?php printf( esc_html__( 'Search Results for : %s', 'sparklestore' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-              <?php }else{
-                  the_archive_title( '<h1 class="entry-title">', '</h1>' );
-              }
-          ?>
-          <ul>
-            <?php woocommerce_breadcrumb(); ?>
-          </ul>
+            <?php }else{ ?>
+                <h1 class="page-title"><?php woocommerce_page_title(); ?></h1>
+            <?php  } ?>
+            <ul>
+              <?php woocommerce_breadcrumb(); ?>
+            </ul>
         </div>
       </div>
     <?php 
@@ -709,7 +708,7 @@ if (!function_exists('sparkle_store_breadcrumbs')) {
               echo ' ' . esc_attr($delimiter) . ' ';
           }
           if ($showCurrent == 1){
-            echo ' ' . esc_attr($delimiter) . ' ' . esc_attr($before) . esc_attr(get_the_title()) . esc_attr($after);
+            echo ' ' . esc_attr($delimiter) . ' ' . esc_attr(get_the_title());
           }
         } elseif (is_tag()) {
           echo esc_html__('Posts tagged','sparklestore').' "' . single_tag_title('', false) . '"';
@@ -724,7 +723,7 @@ if (!function_exists('sparkle_store_breadcrumbs')) {
         if (get_query_var('paged')) {
           if (is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author()){
             echo ' (';
-            echo esc_html__('Page', 'sparklestore') . ' ' . esc_attr(get_query_var('paged'));
+            echo esc_html__('Page', 'sparklestore') . ' ' . esc_attr( get_query_var('paged') );
           }
           if (is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author()){
                 echo ')';

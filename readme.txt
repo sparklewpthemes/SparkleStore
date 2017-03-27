@@ -70,6 +70,10 @@ Sparklestore includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
+= 1.0.9 1st March 2017 =
+
+** Fixed the breadcrumb title issue in WooCommerce shop & Category pages.
+
 = 1.0.8 24th February 2017 =
 
 ** Remove custom image size function when theme activation.
